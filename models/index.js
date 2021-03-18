@@ -1,11 +1,17 @@
-const A = require('./A');
-const B = require('./B');
+const Patient = require('./Patient');
+const Doctor = require('./Doctor');
+const Feedback = require('./Feedback');
+const Chat = require('./Chat');
+const Test = require('./Test');
+const Treatment = require('./Treatment');
+const Visit = require('./Visit');
 
-A.hasMany(B, {
-    onDelete: 'cascade'
+Patient.hasMany(Test, {
+  onDelete: 'cascade'
 });
 
-B.belongsTo(A);
+Doctor.hasMany(Patient, {
+  
+});
 
-
-module.exports = { A, B };
+module.exports = { Doctor, Patient, Feedback, Chat, Test, Treatment, Visit };
