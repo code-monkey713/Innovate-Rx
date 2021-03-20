@@ -1,0 +1,22 @@
+<section class="container mx-auto" id="chatContainer">
+  <div class="row">
+    <div class="col-sm-12">
+      <h2>Welcome to your chat with Dr. {{{doctor.name}}}</h2>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12">
+      {{{#each chats as |chat|}}}
+      <div class="row">
+        <div class="col-sm-10">
+          <p>{{{chat.text}}}</p>
+        </div>
+        <div class="col-sm-2">
+          <h3>{{{chat.author}}}</h3>
+        </div>
+      </div>
+      {{{/each}}}
+    </div>
+  </div>
+</section>

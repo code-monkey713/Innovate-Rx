@@ -1,0 +1,53 @@
+async function registrationFailModal(){
+  $('#registrationFailModal').modal('show');
+}
+
+async function pageReload (){
+  location.reload();
+}
+
+
+// Sends Information from Registration Form to Patient Controller for Creating New Patient
+async function patientRegistrationHandler(event){
+  event.preventDefault();
+  alert('submitted')
+
+  const title = document.querySelector('#pRegisterTitle').value;
+  const firstName = document.querySelector('#pRegisterFirstName').value;
+  const lastName = document.querySelector('#pRegisterLastName').value;
+  const birthDate = document.querySelector('#pRegisterBirthDate').value;
+
+  const email = document.querySelector('#pRegisterEmail').value;
+  const password = document.querySelector('#pRegisterPassword').value;
+
+  console.log(firstName);
+  if (title && firstName && lastName && birthDate && email && password){
+    const response = await fetch(`/api/patients`, { //placeholder route//
+        method: 'POST',
+        body: JSON.stringify({
+        title,
+        firstName,
+        lastName,
+        birthDate,
+        email,
+        password,
+        }),
+        headers: {
+        'Content-Type': 'application/json',
+        },
+    },
+    console.log(response)
+    );
+
+    if (response.ok) {
+        document.location.replace('/patient_dashboard');
+    } else {
+        registrationFailModal();
+    }
+    }
+};
+
+document
+.querySelector('#registrationForm')
+.addEventListener('submit', patientRegistrationHandler);
+

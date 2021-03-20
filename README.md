@@ -28,7 +28,7 @@
         <li><a href="#license">License</a></li>
         <li><a href="#future-development">Future Development</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#conclusion">Contact</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
     </ol>
 </details>
 
@@ -113,4 +113,4 @@ You can contact us through the following sources:
 
 ### Conclusion
 
-We hope that our unconventional take on an Electronic Medical Record system for a small scale medical practice was both enjoyable and informative
+We hope that our unconventional take on an Electronic Medical Record system for a small scale medical practice was both enjoyable and informative.

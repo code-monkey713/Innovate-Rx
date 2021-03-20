@@ -1,0 +1,66 @@
+<section class="container mx-auto" id="patientDashboardContainer">
+  <div class="row" style="margin: 30px;">
+    <h1>Welcome to your dashboard</h1>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Your Information</h2>
+      </div>
+      <div class="card-body">
+        <p>Name: </p>
+        <p>Date of Birth: </p>
+        <p>Email: </p>
+        <p>Registration Date: </p>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Your Previous Visits</h2>
+      </div>
+      <div class="card-body">
+        {{{#each visits as |visit|}}}
+        <p>Date: {{{visit.date}}} with Dr. {{{visit.doctor}}}</p>
+        {{{/each}}}
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary">Start a new virtual visit</button>
+      </div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Tests prescribed</h2>
+      </div>
+      <div class="card-body">
+        {{{#each test_prescribed as |test_prescribed|}}}
+        <p>Name: {{{test_prescribed.name}}} : The result was {{{test_prescribed.result}}}</p>
+        {{{/each}}}
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Treatments Prescribed</h2>
+      </div>
+      <div class="card-body">
+        {{{#each treatments_prescribed as |treatment_prescribed|}}}
+        <p>Name: {{{treatment_prescribed.name}}}</p>
+        {{{/each}}}
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  </div>
+</section>
