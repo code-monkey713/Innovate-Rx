@@ -19,7 +19,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(routes);
 
-// FIXME: Turn force: true to force: false, these are not droids you are looking for
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT:${PORT}`));
 });
