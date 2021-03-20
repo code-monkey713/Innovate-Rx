@@ -1,0 +1,44 @@
+<section class="container mx-auto" id="doctorDashboardContainer">
+  <div class="row" style="margin: 30px;">
+    <h1>Welcome to your dashboard</h1>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Your information</h2>
+      </div>
+      <div class="card-body">
+        <p>Name: </p>
+        <p>Specialty:</p>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Your Patients</h2>
+      </div>
+      <div class="card-body">
+        {{{#each doctor.patients as |patient|}}}
+        <p>Name: {{{patient.name}}}</p>
+        <p>Number of Visits: {{{patient.visits.length}}}</p>
+        {{{/each}}}
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="card">
+      <div class="card-header">
+        <h2>Your messages</h2>
+      </div>
+      <div class="card-body"></div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  </div>
+</section>
