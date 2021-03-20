@@ -1,17 +1,31 @@
-const Patient = require('./Patient');
+const Chat = require('./Chat');
 const Doctor = require('./Doctor');
 const Feedback = require('./Feedback');
-const Chat = require('./Chat');
+const Patient = require('./Patient');
+const Specialty = require('./Specialty');
 const Test = require('./Test');
+// unique table of all the different treatments given
 const Treatment = require('./Treatment');
+// treatments are for the many patient, doctor, treatment type given
+const Treatments = require('./Treatments');
 const Visit = require('./Visit');
 
 Patient.hasMany(Test, {
   onDelete: 'cascade'
 });
 
-Doctor.hasMany(Patient, {
-  
+Patient.hasMany(Treatment, {
+  // onDelete: 'cascade'
 });
 
-module.exports = { Doctor, Patient, Feedback, Chat, Test, Treatment, Visit };
+Patient.hasMany(Visit, {
+  // onDelete: 'cascade'
+});
+
+Doctor.hasMany(Patient, {
+
+});
+
+
+
+module.exports = { Doctor, Patient, Feedback, Chat, Specialty, Test, Treatment, Treatments, Visit };
