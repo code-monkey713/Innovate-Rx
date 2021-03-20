@@ -11,6 +11,9 @@ Patient.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    title: {
+      type: DataTypes.STRING,
+    },
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,23 +23,26 @@ Patient.init(
       allowNull: false,
     },
     dob: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false,
     },
     email: {
       type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isEmail: true,
+      },
+    },
+    password: {
+      type: DataTypes.STRING,
+      validate: {
+        len: [8],
+      },
     },
     date_created: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
-    },
-    doctor_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'doctor',
-        key: 'id',
-      },
     },
   },
   {
