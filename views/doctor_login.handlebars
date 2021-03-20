@@ -1,0 +1,49 @@
+<section class="container mx-auto" id="portalContainer">
+  <div class="row" style="margin: 30px;">
+    <div class="col-sm-12 mx-auto" id="doctorLogin" style="margin: 30px;">
+      <div id="portalHeader">
+        <h2>Welcome to the Doctor portal.</h2>
+      </div>
+      <div id="portalSubheader">
+        <h3>Please Log In.</h3>
+        <p>If you have forgotten your credentials or are having issues logging in, please contact admin at
+          <span><a href="">weird_al@yankovich.com</a></span>.</p>
+      </div>
+      <div id="portalForm">
+
+        <form id="dLoginForm">
+          <div class="form-row">
+            <div class="form-group col-sm-12">
+              <label for="dLoginEmail">Email</label>
+              <input type="email" class="form-control" id="dLoginEmail" placeholder="Email">
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="dLoginPassword">Password</label>
+              <input type="password" class="form-control" id="dLoginPassword" placeholder="Password">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="doctorLoginSubmit">Log in</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="registrationFailModal" tabindex="-1" role="dialog"
+    aria-labelledby="registrationFailModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="registrationFailModalTitle">Registration Error</h5>
+          <button type="button" id="failModalCloseBtn" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Failed to register with these credentials. Please try again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
