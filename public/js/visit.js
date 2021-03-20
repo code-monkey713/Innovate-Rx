@@ -1,39 +1,78 @@
 async function submitVisitForm (event){
   event.preventDefault();
 
-  const headache = document.querySelector("#checkboxHeadache").checked;
-  const blurry_vision = document.querySelector("#checkboxBlurryVision").checked;
-  const runny_nose = document.querySelector("#checkboxRunnyNose").checked;
-  const cough = document.querySelector("#checkboxCough").checked;
-  const fever = document.querySelector("#checkboxFever").checked;
-  const high_blood_pressure = document.querySelector("#checkboxHighBloodPressure").checked;
-  const high_blood_sugar = document.querySelector("#checkboxHighBloodSugar").checked;
-  const nausea = document.querySelector("#checkboxNausea").checked;
-  const vomiting = document.querySelector("#checkboxVomiting").checked;
-  const back_pain = document.querySelector("#checkboxBackPain").checked;
-  const joint_pain = document.querySelector("#checkboxJointPain").checked;
-  const weakness = document.querySelector("#checkboxWeakness").checked;
-  const difficulty_breathing = document.querySelector("#checkboxDifficultyBreathing").checked;
-  const urinary_issues = document.querySelector("#checkboxUrinaryIssues").checked;
-  const digestive_issues = document.querySelector("#checkboxDigestiveIssues").checked;
-  const other = document.querySelector("#checkboxOther").checked;
-  const description = document.querySelector("#descriptionBox").value;
+  let symptomsArray = [];
+  let symptomsIdArray = [];
 
+  const headache = {id: 1,
+                    value: document.querySelector("#checkboxHeadache").checked,
+                  };
+  const blurry_vision =  {id: 2,
+    value: document.querySelector("#checkboxBlurryVision").checked,
+  };
+  const runny_nose =  {id: 3,
+    value: document.querySelector("#checkboxRunnyNose").checked,
+  };
+  const cough =  {id: 4,
+    value: document.querySelector("#checkboxCough").checked,
+  };
+  const fever =  {id: 5,
+    value: document.querySelector("#checkboxFever").checked,
+  };
+  const high_blood_pressure =  {id: 6,
+    value: document.querySelector("#checkboxHighBloodPressure").checked,
+  };
+  const high_blood_sugar =  {id: 7,
+    value: document.querySelector("#checkboxHighBloodSugar").checked,
+  };
+  const nausea =  {id: 8,
+    value: document.querySelector("#checkboxNausea").checked,
+  };
+  const vomiting =  {id: 9,
+    value: document.querySelector("#checkboxVomiting").checked,
+  };
+  const back_pain =  {id: 10,
+    value: document.querySelector("#checkboxBackPain").checked,
+  };
+  const joint_pain =  {id: 11,
+    value: document.querySelector("#checkboxJointPain").checked,
+  };
+  const weakness =  {id: 12,
+    value: document.querySelector("#checkboxWeakness").checked,
+  };
+  const difficulty_breathing =  {id: 13,
+    value: document.querySelector("#checkboxDifficultyBreathing").checked,
+  };
+  const urinary_issues =  {id: 14,
+    value: document.querySelector("#checkboxUrinaryIssues").checked,
+  };
+  const digestive_issues =  {id: 15,
+    value: document.querySelector("#checkboxDigestiveIssues").checked,
+  };
+  const other = {id: 16,
+                value: document.querySelector("#checkboxOther").checked,
+                text: document.querySelector("#descriptionBox").value,
+  };
+  
+  symptomsArray.push(headache, blurry_vision, runny_nose, cough, fever, high_blood_pressure, high_blood_sugar, nausea, vomiting, back_pain, joint_pain, weakness, difficulty_breathing, urinary_issues, digestive_issues, other);
+  
 
-  console.log(headache);
-  console.log(description);
+  const getId = symptomsArray.map((s)=>{
+    if (s.value === true){
+      symptomsIdArray.push(s.id);
+    }
+  });
+
+  console.log((symptomsIdArray));
 
 
   const response = await fetch(`/api/symptoms`, { //placeholder route//
       method: 'POST',
-      body: JSON.stringify({
-      headache, blurry_vision, runny_nose, cough, fever, high_blood_pressure, high_blood_sugar, nausea, vomiting,
-      back_pain, joint_pain, weakness, difficulty_breathing, urinary_issues, digestive_issues, other, description
-      }),
+      body: JSON.stringify(symptomsIdArray),
       headers: {
       'Content-Type': 'application/json',
       },
-    }),
+    });
 
 
   if (response.ok){
@@ -48,11 +87,11 @@ async function submitVisitForm (event){
 };
 
 async function launchVisitCompleteModal(){
-  document.querySelector('#visitCompleteModal').modal('show');
+  $('#visitCompleteModal').modal('show');
 };
 
 async function launchVisitFailModal(){
-  document.querySelector('#visitFailModal').modal('show');
+  $('#visitFailModal').modal('show');
 };
 
-document.querySelector("#visitForm").addEventListener('submit', submitVisitForm)
+document.querySelector("#symptomsForm").addEventListener('submit', submitVisitForm)

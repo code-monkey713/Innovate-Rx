@@ -25,7 +25,7 @@ if (response.ok) {
 };
 
 async function logoutFailModalLaunch (){
-document.querySelector('#myModal').modal('show');
+$('#myModal').modal('show');
 }
 
 
