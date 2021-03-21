@@ -2,7 +2,7 @@ const { Doctor } = require("../models");
 
 const doctorData = [
   {
-    intro: "coming soon",
+    intro: "Dr. Lecter is a world renowed nutritionist and has great expertise taking care of the elderly and the infirm. His motto is 'You are what you eat!'.",
     first_name: "Hannibal",
     last_name: "Lecter",
     email: "hlecter@email.com",
