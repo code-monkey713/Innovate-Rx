@@ -1,0 +1,53 @@
+<section class="container mx-auto" id="chooseDoctorContainer">
+  <div class="row">
+    <div class="col-sm-12" id="chooseHeader">
+      <h2 style="text-align: center;">Meet our Team!</h2>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12" id="chooseSubheader">
+      <p style="text-align: center;">Thank you for requesting an online visit. Please choose your doctor.</p>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12 mx-auto" id="">
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="chooseDoctorCard">
+        <img class="card-img-top" src="./images/lecter.jpeg" id="doctorImage">
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Dr. Hannibal Lecter</h4>
+          </div>
+          <div class="card-text">
+            <p>Dr. Lecter is a world renowed nutritionist and has great expertise taking
+              care of the elderly and the infirm. His motto is "You are what you eat!".</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" id="chooseDoctorButton" data-doctorId="{{{doctor.id}}}">Choose this
+            doctor!</button>
+        </div>
+      </div>
+      {{{#each doctors as |doctor|}}}
+      <div class="card text-white bg-dark mb-3" style="max-width: 18rem;" id="chooseDoctorCard">
+        <img class="card-img-top" src="{{{doctor.image}}}" id="doctorImage">
+        <div class="card-body">
+          <div class="card-title">
+            <h4>Dr. {{{doctor.first_name}}} {{{doctor.last_name}}}</h4>
+          </div>
+          <div class="card-text">
+            <p>{{{doctor.intro}}}</p>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button type="button" id="chooseDoctorButton" data-doctorId="{{{doctor.id}}}">Choose this
+            doctor!</button>
+        </div>
+      </div>
+      {{{/each}}}
+    </div>
+  </div>
+</section>
+
+<script src="../js/choose_doctor.js"></script>

@@ -1,0 +1,70 @@
+<section class="container mx-auto" id="treatmentsContainer">
+  <div class="row">
+    <div class="col-sm-12" id="treatmentsHeader">
+      <div class="card" id="treatmentCard">
+        <div class="card-header">
+          <h2 style="text-align: center;">Your Diagnosis and Treatment</h2>
+        </div>
+        <div class="card-body">
+          <p>Your test results have been analyzed by Dr. {{{doctor.last_name}}}.</p>
+          <br />
+          <p>Based on this analysis, you have been assigned a diagnosis and a treatment
+            recommendation.</p>
+          <br />
+          <p>Please choose the buttons below to choose which would you like to view.</p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+          <button class="btn btn-primary mx-auto" type="button" id="diagnosisModalBtn" data-toggle="modal"
+            data-target="#diagnosisModal">Your Diagnosis</button>
+          <button class="btn btn-primary mx-auto" type="button" id="treatmentModalBtn" data-toggle="modal"
+            data-target="#treatmentModal">Treatment
+            Recommendation</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagnosis Modal -->
+  <div class="modal fade" id="diagnosisModal" tabindex="-1" role="dialog" aria-labelledby="diagnosisModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diagnosisModalTitle">Your Diagnosis is ...</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{{diagnosis.name}}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Treatment Modal -->
+  <div class="modal fade" id="treatmentModal" tabindex="-1" role="dialog" aria-labelledby="treatmentModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="treatmentModalTitle">The Doctor recommends ...</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          {{{treatment.name}}}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/treatments.js"></script>
