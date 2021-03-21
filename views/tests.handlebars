@@ -1,0 +1,62 @@
+<section class="container mx-auto" id="testsContainer">
+  <div class="row">
+    <div class="col-sm-12" id="testsHeader">
+      <div class="card" id="testsCard">
+        <div class="card-header">
+          <h2 style="text-align: center;">Tests</h2>
+          <br />
+          <p>The following tests have been prescribed to you by your doctor. Once you have reviewed and
+            completed the tests, please click "I have completed the tests!".</p>
+        </div>
+        <div class="card-body">
+          {{{#each test_prescribed as |test}}}
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="card mx-auto" id="testCard">
+                <div class="card-header" id="testCardHeader">
+                  <h4>{{{test.name}}}</h4>
+                </div>
+                <div class="card-body" id="testCardBody">
+                  <p>Description: {{{test.description}}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          {{{/each}}}
+        </div>
+        <div class="card-footer d-flex justify-content-md-center">
+          <button class="btn btn-primary" type="button" id="testsCompletedBtn">I have completed the
+            tests!</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for post-test instructions -->
+  <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="instructionsModalTitle">Thank you!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Thank you for taking the tests. The results will now be sent to your doctor, who will analyze
+            them and assign a diagnosis, along with a treatment recommendation.</p>
+          <br />
+          <p>You will receive an email when your diagnosis and treatment recommendation are available.
+            Please sign in then to view them.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            id="instructionsModalClose">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/tests.js"></script>
