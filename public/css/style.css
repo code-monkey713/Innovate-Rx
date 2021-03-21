@@ -1,166 +1,98 @@
-:root {
-    --primary: #389393;
-    --secondary: #f5a25d;
-    --tertiary: #fa7f72;
-    --quatrinary: #6c6b67;
-    --light: #ebebeb;
-    --dark: #182c23;
-    --error: rgb(228, 46, 1);
-    --border-radius: 0.3rem;
-  }
-  
-  body {
-    font-family: Arial;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    justify-content: flex-start;
-    background-color: var(--quatrinary);
-  }
-  
-  header {
-    padding: 40px;
-    text-align: center;
-    background: var(--primary);
-    color: var(--secondary);
-    border-bottom-style: solid;
-  }
-  
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-grow: 1;
-  }
-  
-  aside {
-    flex: 0;
-    background-color: var(--tertiary);
-    padding: 80px;
-    text-align: left;
-    color: var(--light);
-  }
-  
-  nav {
-    display: flex;
-    background-color: var(--secondary);
-  }
-  
-  .menu-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 75%;
-    min-height: 100%;
-    margin: 0px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    background-color: #ebebeb;
-  }
-  
-  .add-dish-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    margin: 5px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    text-align: center;
-    background-color: var(--tertiary);
-  }
-  
-  .edit-dish-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    margin: 5px auto;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-    padding: 50px;
-    text-align: center;
-    background-color: var(--tertiary);
-  }
-  
-  /* CARDS */
-  .dish-card {
-    margin: 20px;
-    flex: 0 1 300px;
-    padding: 5px;
-    width: 35%;
-    min-height: 100%;
-    min-width: 35%;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-    background-color: var(--light);
-    color: var(--dark);
-  }
-  
-  .menu-card {
-    margin: 50px;
-    flex: 0 1 300px;
-    padding: 5px;
-    border: 3px solid var(--dark);
-    border-radius: var(--border-radius);
-    border-style: groove;
-    border-width: thick;
-    background-color: var(--light);
-    color: var(--dark);
-  }
-  
-  .card-header {
-    color: var(--light);
-    margin: 0;
-    background-color: var(--secondary);
-    padding: 0.625rem;
-    border: 3px solid var(--primary);
-    border-radius: var(--border-radius);
-    border-style: solid;
-    border-width: medium;
-  }
+html * {
+  line-height: 1.5rem;
+  font-family: "Merriweather", serif;
+}
 
-  .has-nuts {
-    color: var(--error)
-  }
+#logo {
+  height: 125px;
+  width: 200px;
+}
 
-  .dish-card-header {
-    font-size: 1.5rem;
-    color: var(--tertiary);
-    margin: 0;
-    background-color: var(--light);
-    padding: 0.625rem;
-    border-bottom-style: solid;
-  }
-  
-  .card-body {
-    padding: 2.5%;
-    font-size: 1.4rem;
-    text-align: center;
-  }
-  
-  /* LAYOUT */
-  .container {
-    display: flex;
-    flex-flow: column wrap;
-    align-content: flex-start;
-    align-items: center;
-  }
-  
+.carousel {
+  height: 500px;
+  width: 750px;
+}
+
+.navbar {
+  background-color: royalblue;
+}
+
+#carouselIndicators {
+  margin: 20px 30px 20px 30px;
+}
+
+.carousel-caption {
+  opacity: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.card {
+  width: 100%;
+}
+
+#portalContainer {
+  background-color: silver;
+  margin: 30px;
+  padding: 20px;
+}
+
+#portalHeader {
+  padding: 15px;
+  margin: 15px;
+  text-align: center;
+}
+
+#portalSubheader {
+  padding: 15px;
+  margin: 15px;
+}
+
+#portalForm {
+  padding: 15px;
+  margin: 15px;
+}
+
+#registerBirthDate {
+  width: 100%;
+  height: 50%;
+}
+
+.container {
+  background-color: lightgrey;
+  padding: 20px;
+  margin: 30px;
+}
+
+#chooseDoctorCard {
+  margin: 15px;
+  padding: 5px;
+  display: inline-flex;
+}
+
+#doctorImage {
+  height: 200px;
+  width: 17rem;
+}
+
+.form-check {
+  padding: 5px;
+  margin-right: 0px;
+}
+
+#testCard {
+  padding: 10px;
+  margin: 20px;
+}
+
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  height: 30px;
+  background: #222;
+  color: white;
+  text-align: center;
+}
