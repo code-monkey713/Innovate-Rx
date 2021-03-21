@@ -11,26 +11,36 @@ Visit.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    description: {
-      type: DataTypes.STRING,
-    },
-    date_created: {
+    date_visited: {
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    user_id: {
+    patient_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'user',
+        model: 'patient',
+        key: 'id',
+      },
+    },
+    test_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'test',
+        key: 'id',
+      },
+    },
+    diagnosis_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'diagnosis',
+        key: 'id',
+      },
+    },
+    doctor_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'doctor',
         key: 'id',
       },
     },
@@ -40,7 +50,7 @@ Visit.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'project',
+    modelName: 'visit',
   }
 );
 

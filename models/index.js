@@ -1,10 +1,12 @@
 // const Chat = require('./Chat');
 const Doctor = require('./Doctor');
+const Diagnosis = require('./Diagnosis');
 // const Feedback = require('./Feedback');
 const Patient = require('./Patient');
 // const Specialty = require('./Specialty');
 const Symptom = require('./Symptom');
-// const Test = require('./Test');
+const Test = require('./Test');
+const Visit = require('./Visit');
 
 // const Treatment = require('./Treatment');
 
@@ -31,13 +33,14 @@ const Symptom = require('./Symptom');
 
 module.exports = { 
   Doctor, 
+  Diagnosis, 
   Patient, 
   // Feedback, 
   // Chat, 
   // Specialty, 
-  Symptom,
-  // Test, 
+  Symptom, 
+  Test, 
   // Treatment, 
   // Treatments, 
-  // Visit 
+  Visit 
 };
