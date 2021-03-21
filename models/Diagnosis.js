@@ -1,9 +1,9 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 
-class Test extends Model {}
+class Diagnosis extends Model {}
 
-Test.init(
+Diagnosis.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -18,30 +18,14 @@ Test.init(
     description: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
-    },
-    needed_funding: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
-    },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'test',
+    modelName: 'diagnosis',
   }
 );
 
-module.exports = Test;
+module.exports = Diagnosis;

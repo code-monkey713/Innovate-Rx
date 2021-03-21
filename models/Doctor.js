@@ -11,6 +11,10 @@ Doctor.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    intro: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     first_name: {
       type: DataTypes.STRING,
       allowNull: false,

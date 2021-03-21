@@ -1,5 +1,6 @@
 // const Chat = require('./Chat');
 const Doctor = require('./Doctor');
+const Diagnosis = require('./Diagnosis');
 // const Feedback = require('./Feedback');
 const Patient = require('./Patient');
 // const Specialty = require('./Specialty');
@@ -31,6 +32,7 @@ const Symptom = require('./Symptom');
 
 module.exports = { 
   Doctor, 
+  Diagnosis,
   Patient, 
   // Feedback, 
   // Chat, 
