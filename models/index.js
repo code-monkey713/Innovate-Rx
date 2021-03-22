@@ -7,8 +7,9 @@ const Patient = require('./Patient');
 const Symptom = require('./Symptom');
 const Test = require('./Test');
 const Visit = require('./Visit');
+const STDmodel = require('./STDmodel');
 
-// const Treatment = require('./Treatment');
+const Treatment = require('./Treatment');
 
 // const Treatments = require('./Treatments');
 // const Visit = require('./Visit');
@@ -88,9 +89,10 @@ module.exports = {
   // Feedback, 
   // Chat, 
   // Specialty, 
+  STDmodel,
   Symptom, 
   Test, 
-  // Treatment, 
+  Treatment, 
   // Treatments, 
   Visit 
 };
