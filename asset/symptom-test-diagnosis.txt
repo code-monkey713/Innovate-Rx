@@ -1,0 +1,19 @@
+SYMPTOM                                     TEST                                      DIAGNOSIS                                       TREATMENT
+
+Headache                                 Head CAT Scan                               Brainus Explodus                        Tylo-NullPointerException
+Dizziness                               Inner Ear Exam                                Roomspinitis
+Vomiting                              H. pylori Screening                           Lunchus Regurgitis
+Blurry Vision                            Optical Exam                                Walkus Intowallus
+Runny Nose                              Sputum Analysis                               Kleenexitis
+Cough                                   Tonsillar Exam                              Coverus Urmouthus
+High Blood Pressure                   Arteriovenous Doppler                        Stressus Inormus
+High Blood Sugar                     Fasting Blood Sugar Test                      Type 2 Dia-eatus
+Fever                                Corona Virus Testing                            Stayhomeitis
+Back Pain                                  Spine MRI                              Status Kantstandicus
+Joint Pain                                Joint X-ray                               Flu in the Knees
+Abdominal Pain                        Abdominal Ultrasound                           Butts and Guts
+Heartburn                               Barium Swallow                           Chronic Biscuit Toxicity
+Difficulty Breathing                       V/Q scan                                Breathus Interruptus
+Weakness                            Complete Blood Count (CBC)                        Noenergitis
+Urinary Issues                          Urine Analysis                                Asparagitis
+I see dead people                    Mental Health Screening                        Talkus Toghostus

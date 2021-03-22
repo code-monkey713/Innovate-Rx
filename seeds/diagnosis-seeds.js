@@ -59,7 +59,7 @@ const diagnosisData = [
   }, 
   {
     name: "Something Bad Inside",
-    description: "Almost in a fit of ignorance, some healthcare professionals might say, (I dont know whats going on but they have an SBI.)"
+    description: "Almost in a fit of ignorance, some healthcare professionals might say, (I don't know whats going on but they have an SBI.)"
   },
   {
     name: "Chronic Biscuit Toxicity",
