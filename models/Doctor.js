@@ -41,6 +41,10 @@ Doctor.init(
       allowNull: false,
       defaultValue: DataTypes.NOW,
     },
+    image: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    }
   },
   {
     sequelize,
