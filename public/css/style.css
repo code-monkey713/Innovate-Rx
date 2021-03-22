@@ -8,6 +8,10 @@ html * {
   width: 200px;
 }
 
+.container {
+  box-shadow: 2px 2px 4px #767676;
+  margin-bottom: 50px;
+}
 .carousel {
   height: 500px;
   width: 750px;
@@ -95,4 +99,68 @@ footer {
   background: #222;
   color: white;
   text-align: center;
+  margin-top: 20px;
+}
+
+.splash,
+.splash.fade-out {
+  position: fixed;
+  height: 100vh;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  background-image: url(https://images.unsplash.com/photo-1604467581765-39485a42edeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwxfDB8MXxhbGx8fHx8fHx8fHwxNjE2Mzg5MDYx&ixlib=rb-1.2.1&q=80&w=1080&utm_source=unsplash_source&utm_medium=referral&utm_campaign=api-credit);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  text-align: center;
+}
+
+.splash.fade-out {
+  opacity: 0;
+  z-index: -10;
+  text-align: center;
+  transition: all 1s;
+}
+
+.splash.display-none {
+  display: none;
+}
+
+#splashImage {
+  height: 200px;
+  width: 200px;
+}
+
+#splashTitle,
+#splashSubTitle,
+#splashText {
+  font-size: 30px;
+}
+
+#splashSubtitle {
+  /* line-height: 50vh; */
+}
+
+#splashText {
+  /* line-height: 50vh; */
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in1 {
+  opacity: 0;
+  animation: fadeIn 2s ease-in forwards;
+}
+
+.fade-in2,
+.fade-in3 {
+  opacity: 0;
+  animation: fadeIn 3s ease-in forwards;
 }

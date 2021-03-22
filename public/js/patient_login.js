@@ -10,7 +10,6 @@ async function pageReload (){
 // Sends Information from Login form to Patient Controller for Logging In
 async function patientLoginHandler(event){
   event.preventDefault();
-  alert('login');
 
   const pLoginEmail = document.querySelector('#pLoginEmail').value;
   const pLoginPassword = document.querySelector('#pLoginPassword').value;
@@ -34,7 +33,9 @@ async function patientLoginHandler(event){
     } else {
         loginFailModal();
     }
-    }
+  } else {
+    loginFailModal();
+  }
 };
 
 document
