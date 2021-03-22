@@ -25,8 +25,8 @@ async function submitVisitForm (event){
   const high_blood_sugar =  {id: 7,
     value: document.querySelector("#checkboxHighBloodSugar").checked,
   };
-  const nausea =  {id: 8,
-    value: document.querySelector("#checkboxNausea").checked,
+  const dizziness =  {id: 8,
+    value: document.querySelector("#checkboxDizziness").checked,
   };
   const vomiting =  {id: 9,
     value: document.querySelector("#checkboxVomiting").checked,
@@ -46,15 +46,21 @@ async function submitVisitForm (event){
   const urinary_issues =  {id: 14,
     value: document.querySelector("#checkboxUrinaryIssues").checked,
   };
-  const digestive_issues =  {id: 15,
-    value: document.querySelector("#checkboxDigestiveIssues").checked,
+  const abdominal_pain =  {id: 15,
+    value: document.querySelector("#checkboxAbdominalPain").checked,
+  };
+  const heartburn =  {id: 16,
+    value: document.querySelector("#checkboxHeartburn").checked,
+  };
+  const i_see_dead_people =  {id: 17,
+    value: document.querySelector("#checkboxISeeDeadPeople").checked,
   };
   const other = {id: 16,
                 value: document.querySelector("#checkboxOther").checked,
                 text: document.querySelector("#descriptionBox").value,
   };
   
-  symptomsArray.push(headache, blurry_vision, runny_nose, cough, fever, high_blood_pressure, high_blood_sugar, nausea, vomiting, back_pain, joint_pain, weakness, difficulty_breathing, urinary_issues, digestive_issues, other);
+  symptomsArray.push(headache, blurry_vision, runny_nose, cough, fever, high_blood_pressure, high_blood_sugar, dizziness, vomiting, back_pain, joint_pain, weakness, difficulty_breathing, urinary_issues, abdominal_pain, heartburn, i_see_dead_people, other);
   
 
   const getId = symptomsArray.map((s)=>{
