@@ -35,14 +35,14 @@
 
   <body>
 
-    <div class="splash">
+    {{!-- <div class="splash">
       <img id="splashImage" src="../../images/dhhs.png" alt="DHHS Logo">
       <p class="fade-in1" id="splashTitle">The doctors on this website are fake. Do not consider their opinions
         medically qualified.</p>
       <p class="fade-in2" id="splashSubTitle">Innovate Rx</p>
       <p class="fade-in3" id="splashText">All our patients leave smiling!</p>
       <button type="button" id="dismissSplashBtn" class="btn btn-secondary">Enter Anyway</button>
-    </div>
+    </div> --}}
 
     <nav class="navbar navbar-expand-lg navbar-dark">
       <img src="../../images/logo.png" id="logo" alt="">
@@ -55,15 +55,15 @@
           <li class="nav-item active" style="border-right:solid 1px #000;">
             <a class="nav-link" href="/home">Home</a>
           </li>
-          {{#if patient.logged_in}}
+          {{#if loggedIn}}
           <li class="nav-item active" style="border-right:solid 1px #000;">
             <a class="nav-link" href="/patient/patient_dashboard">Dashboard</a>
           </li>
           <li class="nav-item active" style="border-right:solid 1px #000;">
-            <a class="nav-link" href="/patient/visit">New Visit</a>
+            <a class="nav-link" href="/patient/chat">Chat</a>
           </li>
           <li class="nav-item active" style="border-right:solid 1px #000;">
-            <a class="nav-link" href="/patient/chat">Chat</a>
+            <a class="nav-link" id="patientLogoutBtn">Logout</a>
           </li>
           {{else}}
           <li class="nav-item dropdown" style="border-right:solid 1px #000;">
@@ -127,12 +127,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
       integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg=="
       crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+      crossorigin="anonymous"></script>
     <script src="../../js/script.js"></script>
 
-    {{#if patient.logged_in}}
-    <script src="../../js/logout.js"></script>
-    {{else if doctor.logged_in}}
-    <script src="../../js/logout.js"></script>
+    {{#if loggedIn}}
+    <script src="../../js/patient_logout.js"></script>
     {{/if}}
 
 
