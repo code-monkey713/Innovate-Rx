@@ -15,6 +15,13 @@ Symptom.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    visit_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'visit',
+        key: 'id',
+      },
+    },
   },
   {
     sequelize,
