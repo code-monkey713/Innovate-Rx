@@ -10,7 +10,6 @@ async function pageReload (){
 // Sends Information from Registration Form to Patient Controller for Creating New Patient
 async function patientRegistrationHandler(event){
   event.preventDefault();
-  alert('submitted')
 
   const title = document.querySelector('#pRegisterTitle').value;
   const firstName = document.querySelector('#pRegisterFirstName').value;
@@ -20,7 +19,6 @@ async function patientRegistrationHandler(event){
   const email = document.querySelector('#pRegisterEmail').value;
   const password = document.querySelector('#pRegisterPassword').value;
 
-  console.log(firstName);
   if (title && firstName && lastName && birthDate && email && password){
     const response = await fetch(`/api/patients`, { //placeholder route//
         method: 'POST',
@@ -44,7 +42,9 @@ async function patientRegistrationHandler(event){
     } else {
         registrationFailModal();
     }
-    }
+  } else {
+    registrationFailModal();
+  }
 };
 
 document
