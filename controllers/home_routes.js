@@ -1,6 +1,25 @@
 const router = require('express').Router();
 const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty } = require('../models');
-const withAuth = require('../utils/auth');
+const { withPatientAuth, withDoctorAuth } = require('../utils/auth');
+
+
+//temporary route to get all patients in insomnia//
+router.get('/patients', async (req, res) => {
+  try {
+    const patientData = await Patient.findAll({
+      include: [{
+        model: Visit,
+      },{
+        model: Doctor,
+        through: Visit,
+        as: 'patients_doctor'
+      }],
+    });
+    res.status(200).json(patientData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/', async (req,res) => {
   try{
@@ -31,9 +50,24 @@ router.get('/patient_registration', async (req, res) => {
 });
 
 router.get('/patient_login', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/patient_dashboard');
+  }
+  res.render('patient_login');
+});
+
+router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
   try {
-    res.render('patient_login', {
-      loggedIn: req.session.loggedIn,
+    const patientData = await Patient.findByPk(req.session.user_id, {
+      attributes: {exclude: ['password'] },
+      include: [{ model: Visit }],
+    });
+
+    const patient = patientData.get({ plain: true });
+
+    res.render('patient_dashboard', {
+      ...patient, 
+      loggedIn: true 
     });
   } catch (err) {
     res.status(500).json(err);

@@ -9,10 +9,11 @@
         <h2>Your Information</h2>
       </div>
       <div class="card-body">
-        <p>Name: </p>
-        <p>Date of Birth: </p>
-        <p>Email: </p>
-        <p>Registration Date: </p>
+        <p>Title: {{{title}}}</p>
+        <p>Name: {{{first_name}}} {{{last_name}}}</p>
+        <p>Date of Birth: {{{dob}}} </p>
+        <p>Email: {{{email}}} </p>
+        <p>Registration Date: {{{format_date date_created}}}</p>
       </div>
       <div class="card-footer"></div>
     </div>
@@ -24,9 +25,9 @@
         <h2>Your Previous Visits</h2>
       </div>
       <div class="card-body">
-        {{{#each visits as |visit|}}}
+        {{!-- {{{#each visits as |visit|}}}
         <p>Date: {{{visit.date}}} with Dr. {{{visit.doctor}}}</p>
-        {{{/each}}}
+        {{{/each}}} --}}
       </div>
       <div class="card-footer">
         <button type="button" class="btn btn-primary">Start a new virtual visit</button>
@@ -40,9 +41,9 @@
         <h2>Tests prescribed</h2>
       </div>
       <div class="card-body">
-        {{{#each test_prescribed as |test_prescribed|}}}
+        {{!-- {{{#each test_prescribed as |test_prescribed|}}}
         <p>Name: {{{test_prescribed.name}}} : The result was {{{test_prescribed.result}}}</p>
-        {{{/each}}}
+        {{{/each}}} --}}
       </div>
       <div class="card-footer"></div>
     </div>
@@ -55,9 +56,9 @@
         <h2>Treatments Prescribed</h2>
       </div>
       <div class="card-body">
-        {{{#each treatments_prescribed as |treatment_prescribed|}}}
+        {{!-- {{{#each treatments_prescribed as |treatment_prescribed|}}}
         <p>Name: {{{treatment_prescribed.name}}}</p>
-        {{{/each}}}
+        {{{/each}}} --}}
       </div>
       <div class="card-footer"></div>
     </div>
