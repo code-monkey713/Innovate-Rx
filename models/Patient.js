@@ -23,7 +23,7 @@ Patient.init(
       allowNull: false,
     },
     dob: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.DATE,
       allowNull: false,
     },
     email: {
