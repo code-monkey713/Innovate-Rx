@@ -78,7 +78,16 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [{ model: Visit }],
+      include: [
+        { 
+          model: Visit,
+          include: [
+            {
+              model: Doctor,
+              attributes: ['last_name']
+            }
+          ]
+        }],
     });
 
     const patient = patientData.get({ plain: true });
@@ -103,7 +112,10 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
   try {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [{ model: Visit }],
+      include: [
+        { 
+          model: Visit,
+        }],
     });
 
     const doctor = doctorData.get({ plain: true });
