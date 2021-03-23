@@ -8,25 +8,8 @@ const Symptom = require('./Symptom');
 const Test = require('./Test');
 const Visit = require('./Visit');
 const STDmodel = require('./STDmodel');
-
+const Visit_Symptoms = require('./Visit_Symptoms');
 const Treatment = require('./Treatment');
-
-// const Treatments = require('./Treatments');
-// const Visit = require('./Visit');
-
-// Patient.hasMany(Test, {
-//   onDelete: 'cascade'
-// });
-
-// Patient.hasMany(Treatment, {
-//   // onDelete: 'cascade'
-// });
-
-
-
-// Doctor.hasMany(Patient, {
-
-// });
 
 Patient.hasMany(Visit, {
   foreignKey: 'patient_id',
@@ -62,7 +45,20 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
+Visit.hasMany(Visit_Symptoms, {
+  foreignKey: 'visit_id',
+});
 
+STDmodel.hasMany(Visit_Symptoms, {
+  foreignKey: 'stdmodel_id',
+});
+
+// Visit.hasMany(STDmodel, {
+//   through: {
+//     model: Visit_Symptoms,
+//     unique:false,
+//   }
+// });
 
 module.exports = { 
   Doctor, 
@@ -76,5 +72,6 @@ module.exports = {
   Test, 
   Treatment, 
   // Treatments, 
-  Visit 
+  Visit,
+  Visit_Symptoms,
 };

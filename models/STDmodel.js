@@ -5,12 +5,12 @@ class STDmodel extends Model {}
 
 STDmodel.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true,
-    // },
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     symptom: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -19,10 +19,10 @@ STDmodel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // diagnosis: {
-    //   type: DataTypes.STRING,
-    //   allowNull: false,
-    // },
+    diagnosis: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,

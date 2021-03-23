@@ -4,77 +4,77 @@ const STDmodelData = [
   {
     symptom: "Headache",
     test: "Head CAT Scan",
-    // diagnosis: "Brainus Explodus",
+    diagnosis: "Brainus Explodus",
   },
   {
     symptom: "Dizziness",
     test: "Inner Ear Exam",
-    // diagnosis: "Roomspinitis",
+    diagnosis: "Roomspinitis",
   },
   {
     symptom: "Vomiting",
     test: "H. pylori Screening",
-    // diagnosis: "Lunchus Regurgitis",
+    diagnosis: "Lunchus Regurgitis",
   },
   {
     symptom: "Blurry Vision",
     test: "Optical Exam",
-    // diagnosis: "Walkus Intowallus",
+    diagnosis: "Walkus Intowallus",
   },
   {
     symptom: "Runny Nose",
     test: "Sputum Analysis",
-    // diagnosis: "Kleenexitis",
+    diagnosis: "Kleenexitis",
   },
   {
     symptom: "Cough",
     test: "Tonsillar Exam",
-    // diagnosis: "Coverus Urmouthus",
+    diagnosis: "Coverus Urmouthus",
   },
   {
     symptom: "High Blood Pressure",
     test: "Arteriovenous Doppler",
-    // diagnosis: "Stressus Inormus",
+    diagnosis: "Stressus Inormus",
   },
   {
     symptom: "High Blood Sugar",
     test: "Fasting Blood Sugar Test",
-    // diagnosis: "Type 2 Dia-eatus",
+    diagnosis: "Type 2 Dia-eatus",
   },
   {
     symptom: "Fever",
     test: "Corona Virus Testing",
-    // diagnosis: "Stayhomeitis",
+    diagnosis: "Stayhomeitis",
   },
   {
     symptom: "Back Pain",
     test: "Spine MRI",
-    // diagnosis: "Status Kantstandicus",
+    diagnosis: "Status Kantstandicus",
   },
   {
     symptom: "Joint Pain",
     test: "Joint X-ray",
-    // diagnosis: "Flu in the Knees",
+    diagnosis: "Flu in the Knees",
   },
   {
     symptom: "Abdominal Pain",
     test: "Abdominal Ultrasound",
-    // diagnosis: "Butts and Guts",
+    diagnosis: "Butts and Guts",
   },
   {
     symptom: "Heartburn",
     test: "Barium Swallow",
-    // diagnosis: "Chronic Biscuit Toxicity",
+    diagnosis: "Chronic Biscuit Toxicity",
   },
   {
     symptom: "Difficulty Breathing",
     test: "V/Q Scan",
-    // diagnosis: "Breathus Interruptus",
+    diagnosis: "Breathus Interruptus",
   },
   {
     symptom: "Weakness",
     test: "Complete Blood Count (CBC)",
-    // diagnosis: "Noenergitis",
+    diagnosis: "Noenergitis",
   },
   {
     symptom: "Urinary Issues",
@@ -84,7 +84,7 @@ const STDmodelData = [
   {
     symptom: "I see dead people",
     test: "Mental Health Screening",
-    // diagnosis: "Talkus Toghostus",
+    diagnosis: "Talkus Toghostus",
   },
 ];
 
