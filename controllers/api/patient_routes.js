@@ -49,6 +49,7 @@ router.post('/patient_login', async (req, res) => {
     }
     
       req.session.save(() => {
+        req.session.isDoctor = false;
         req.session.user_id = patientData.id;
         req.session.loggedIn = true;
 

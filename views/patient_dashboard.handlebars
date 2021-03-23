@@ -11,7 +11,7 @@
       <div class="card-body">
         <p>Title: {{{title}}}</p>
         <p>Name: {{{first_name}}} {{{last_name}}}</p>
-        <p>Date of Birth: {{{dob}}} </p>
+        <p>Date of Birth: {{{format_date dob}}} </p>
         <p>Email: {{{email}}} </p>
         <p>Registration Date: {{{format_date date_created}}}</p>
       </div>
@@ -25,9 +25,9 @@
         <h2>Your Previous Visits</h2>
       </div>
       <div class="card-body">
-        {{!-- {{{#each visits as |visit|}}}
+        {{#each visits as |visit|}}
         <p>Date: {{{visit.date}}} with Dr. {{{visit.doctor}}}</p>
-        {{{/each}}} --}}
+        {{/each}}
       </div>
       <div class="card-footer">
         <button type="button" class="btn btn-primary">Start a new virtual visit</button>

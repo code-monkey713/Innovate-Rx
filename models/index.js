@@ -18,7 +18,9 @@ Patient.hasMany(Visit, {
 
 Visit.belongsTo(Patient, {
   foreignKey: 'patient_id',
-})
+});
+
+
 
 Doctor.hasMany(Visit, {
   foreignKey: 'doctor_id',
@@ -28,6 +30,8 @@ Doctor.hasMany(Visit, {
 Visit.belongsTo(Doctor, {
   foreignKey: 'doctor_id',
 });
+
+
 
 Patient.belongsToMany(Doctor,{
   through: {
@@ -59,6 +63,20 @@ STDmodel.hasMany(Visit_Symptoms, {
 //     unique:false,
 //   }
 // });
+
+Visit.hasMany(Symptom, {
+  foreignKey: 'visit_id',
+  onDelete: 'CASCADE'
+});
+
+Symptom.belongsTo(Visit, {
+  foreignKey: 'visit_id',
+});
+
+
+
+
+
 
 module.exports = { 
   Doctor, 

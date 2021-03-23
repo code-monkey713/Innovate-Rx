@@ -79,7 +79,7 @@ const STDmodelData = [
   {
     symptom: "Urinary Issues",
     test: "Urine Analysis",
-    diagnosis: "Asparagitis",
+    // diagnosis: "Asparagitis",
   },
   {
     symptom: "I see dead people",
