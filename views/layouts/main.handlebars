@@ -56,8 +56,9 @@
             <a class="nav-link" href="/home">Home</a>
           </li>
           {{#if loggedIn}}
+          {{#unless isDoctor}}
           <li class="nav-item active" style="border-right:solid 1px #000;">
-            <a class="nav-link" href="/patient/patient_dashboard">Dashboard</a>
+            <a class="nav-link" href="/patient_dashboard">Dashboard</a>
           </li>
           <li class="nav-item active" style="border-right:solid 1px #000;">
             <a class="nav-link disabled" href="/patient/chat">Chat</a>
@@ -65,6 +66,14 @@
           <li class="nav-item active" style="border-right:solid 1px #000;">
             <a class="nav-link" id="patientLogoutBtn">Logout</a>
           </li>
+          {{else}}
+          <li class="nav-item">
+            <a class="nav-link" href="/doctor/doctor_dashboard">Doctor Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="doctorLogoutBtn">Logout</a>
+          </li>
+          {{/unless}}
           {{else}}
           <li class="nav-item dropdown" style="border-right:solid 1px #000;">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Patient Portal</a>
@@ -75,15 +84,6 @@
               <div class="dropdown-divider"></div>
             </div>
           </li>
-          {{/if}}
-          {{#if doctor.logged_in}}
-          <li class="nav-item">
-            <a class="nav-link" href="/doctor/doctor_dashboard">Doctor Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link btn" id="doctorLogoutBtn">Logout</a>
-          </li>
-          {{else}}
           <li class="nav-item">
             <a class="nav-link" href="/doctor_login">Doctor Portal</a>
           </li>
@@ -133,7 +133,11 @@
     <script src="../../js/script.js"></script>
 
     {{#if loggedIn}}
+    {{#unless isDoctor}}
     <script src="../../js/patient_logout.js"></script>
+    {{else}}
+    <script src="../../js/doctor_logout.js"></script>
+    {{/unless}}
     {{/if}}
 
 

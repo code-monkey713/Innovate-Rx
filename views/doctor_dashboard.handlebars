@@ -9,7 +9,7 @@
         <h2>Your information</h2>
       </div>
       <div class="card-body">
-        <p>Name: </p>
+        <p>Name: {{{first_name}}} {{{last_name}}}</p>
         <p>Specialty:</p>
       </div>
       <div class="card-footer"></div>
@@ -22,10 +22,10 @@
         <h2>Your Patients</h2>
       </div>
       <div class="card-body">
-        {{{#each doctor.patients as |patient|}}}
+        {{#each doctor.patients as |patient|}}
         <p>Name: {{{patient.name}}}</p>
         <p>Number of Visits: {{{patient.visits.length}}}</p>
-        {{{/each}}}
+        {{/each}}
       </div>
       <div class="card-footer"></div>
     </div>

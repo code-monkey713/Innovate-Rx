@@ -21,6 +21,24 @@ router.get('/patients', async (req, res) => {
   }
 });
 
+//temporary route to get all doctors in insomnia//
+router.get('/doctors', async (req, res) => {
+  try {
+    const doctorsData = await Doctor.findAll({
+      include: [{
+        model: Visit,
+      },{
+        model: Patient,
+        through: Visit,
+        as: 'doctors_patient'
+      }],
+    });
+    res.status(200).json(doctorsData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/', async (req,res) => {
   try{
     res.redirect('/home');
@@ -75,14 +93,28 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
 });
 
 router.get('/doctor_login', async (req, res) => {
+  if (req.session.loggedIn) {
+    res.redirect('/doctor_dashboard');
+  }
+  res.render('doctor_login');
+});
+
+router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
   try {
-    res.render('doctor_login', {
-      loggedIn: req.session.loggedIn,
+    const doctorData = await Doctor.findByPk(req.session.user_id, {
+      attributes: {exclude: ['password'] },
+      include: [{ model: Visit }],
+    });
+
+    const doctor = doctorData.get({ plain: true });
+
+    res.render('doctor_dashboard', {
+      ...doctor, 
+      loggedIn: true 
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
-
 
 module.exports = router;
