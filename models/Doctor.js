@@ -12,7 +12,7 @@ Doctor.init(
       autoIncrement: true,
     },
     intro: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     first_name: {
