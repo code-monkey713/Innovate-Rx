@@ -26,7 +26,7 @@
       </div>
       <div class="card-body">
         {{#each visits as |visit|}}
-        <p>Date: {{{visit.date}}} with Dr. {{{visit.doctor}}}</p>
+        <p>Date: {{{format_date visit.date_visited}}} with Dr. {{{doctor.last_name}}}</p>
         {{/each}}
       </div>
       <div class="card-footer">
