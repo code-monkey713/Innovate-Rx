@@ -1,3 +1,15 @@
+let doctorButtons = document.querySelectorAll('#chooseDoctorButton');
+const doctorArray = ["Lecter.","Strange.","Xavier.", "House.", "Evil."];
+let chosenDoctorId ;
+
+async function chooseDoctor (){
+  chosenDoctorId = parseInt(this.dataset.doctorid);
+  document.querySelector('#chooseDoctorContainer').setAttribute('style','display: none');
+  document.querySelector('#visitContainer').removeAttribute('style');
+  const chosenDoctor = doctorArray[chosenDoctorId-1];
+  document.querySelector('#visitFormTitle').insertAdjacentHTML('beforeend', chosenDoctor);
+}
+
 async function submitVisitForm (event){
   event.preventDefault();
 
@@ -100,4 +112,10 @@ async function launchVisitFailModal(){
   $('#visitFailModal').modal('show');
 };
 
-document.querySelector("#symptomsForm").addEventListener('submit', submitVisitForm)
+console.log(doctorButtons)
+doctorButtons.forEach((b)=>{
+  b.addEventListener('click', chooseDoctor);
+});
+// document.querySelectorAll('#chooseDoctorButton').addEventListener('click', chooseDoctor);
+
+document.querySelector('#symptomsForm').addEventListener('submit', submitVisitForm)

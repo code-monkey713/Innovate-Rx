@@ -39,6 +39,22 @@ router.get('/doctors', async (req, res) => {
   }
 });
 
+//temporary route to get all visits in insomnia//
+router.get('/visits', async (req, res) => {
+  try {
+    const visitsData = await Visit.findAll({
+      include: [{
+        model: Patient,
+      },{
+        model: Doctor,
+      }],
+    });
+    res.status(200).json(visitsData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
 router.get('/', async (req,res) => {
   try{
     res.redirect('/home');
@@ -128,5 +144,29 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get('/visit', withPatientAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.session.user_id,{
+      attributes: {exclude: ['password']},
+      include: [
+        { 
+          model: Visit,
+        },{
+          model: Doctor,
+          through: Visit,
+          as: 'patients_doctor',
+        }],
+    });
+
+    const patient = patientData.get({ plain: true });
+    res.render('visit', {
+      ...patient,
+      loggedIn: true
+    });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
