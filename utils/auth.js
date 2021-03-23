@@ -1,5 +1,5 @@
 function withPatientAuth(req, res, next) {
-  if (!isDoctor) {
+  if (!req.session.isDoctor) {
     if (!req.session.loggedIn){
     res.redirect('/patient_login');
   } else {
