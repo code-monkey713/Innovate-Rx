@@ -10,9 +10,9 @@ STDmodel.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      // autoIncrement: true,
+      autoIncrement: true,
     },
-    name: {
+    symptom: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -24,17 +24,16 @@ STDmodel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    visit_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'visit',
-        key: 'id',
-      }
-    }
+    // visit_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'visit',
+    //     key: 'id',
+    //   }
+    // }
   },
   {
     sequelize,
-    // timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: 'stdmodel',

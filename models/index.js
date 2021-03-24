@@ -20,8 +20,6 @@ Visit.belongsTo(Patient, {
   foreignKey: 'patient_id',
 });
 
-
-
 Doctor.hasMany(Visit, {
   foreignKey: 'doctor_id',
   onDelete: 'cascade'
@@ -30,8 +28,6 @@ Doctor.hasMany(Visit, {
 Visit.belongsTo(Doctor, {
   foreignKey: 'doctor_id',
 });
-
-
 
 Patient.belongsToMany(Doctor,{
   through: {
@@ -49,21 +45,25 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
-Visit.belongsToMany(STDmodel,{
-  through: {
-    model: Visit_Symptoms,
-    unique: false
-  },
-  as: 'visits_symptoms',
-});
+// Visit.belongsToMany(STDmodel,{
+//   through: {
+//     model: Visit_Symptoms,
+//     unique: false
+//   },
+//   as: 'visits_symptoms',
+// });
 
-STDmodel.belongsToMany(Visit,{
-  through: {
-    model: Visit_Symptoms,
-    unique: false
-  },
-  as: 'symptoms_visits',
-});
+Visit.hasMany(Visit_Symptoms, {
+  foreignKey: 'visit_id',
+})
+
+// STDmodel.belongsToMany(Visit,{
+//   through: {
+//     model: Visit_Symptoms,
+//     unique: false
+//   },
+//   as: 'symptoms_visits',
+// });
 
 
 
