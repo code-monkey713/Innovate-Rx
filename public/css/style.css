@@ -4,8 +4,22 @@ html * {
 }
 
 #logo {
-  height: 125px;
+  height: 150px;
   width: 200px;
+}
+
+.nav-link,
+.dropdown--item {
+  font-size: large;
+}
+
+.nav-link {
+  margin: 20px;
+}
+
+#patientLogoutBtn,
+#doctorLogoutBtn {
+  cursor: pointer;
 }
 
 .container {
@@ -15,10 +29,17 @@ html * {
 .carousel {
   height: 500px;
   width: 750px;
+  padding: 0px;
+}
+
+#registrationWelcome,
+#patientLoginWelcome,
+#doctorLoginWelcome {
+  background-color: #cddddd;
 }
 
 .navbar {
-  background-color: royalblue;
+  background-color: black;
 }
 
 #carouselIndicators {
@@ -34,10 +55,12 @@ html * {
 
 .card {
   width: 100%;
+  background-color: #cddddd;
+  border: 0px;
 }
 
 #portalContainer {
-  background-color: silver;
+  background-color: #cddddd;
   margin: 30px;
   padding: 20px;
 }

@@ -45,25 +45,25 @@
     </div> --}}
 
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <img src="../../images/logo.png" id="logo" alt="">
+      <img src="../../images/logo4.png" id="logo" alt="">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item active" style="border-right:solid 1px #000;">
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link" href="/home">Home</a>
           </li>
           {{#if loggedIn}}
           {{#unless isDoctor}}
-          <li class="nav-item active" style="border-right:solid 1px #000;">
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link" href="/patient_dashboard">Dashboard</a>
           </li>
-          <li class="nav-item active" style="border-right:solid 1px #000;">
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link disabled" href="/patient/chat">Chat</a>
           </li>
-          <li class="nav-item active" style="border-right:solid 1px #000;">
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link" id="patientLogoutBtn">Logout</a>
           </li>
           {{else}}
@@ -75,13 +75,14 @@
           </li>
           {{/unless}}
           {{else}}
-          <li class="nav-item dropdown" style="border-right:solid 1px #000;">
+          <li class="nav-item dropdown" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Patient Portal</a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="/patient_registration">Register</a>
+            <div class="dropdown-menu" style="background-color: black;  padding-bottom: 0px"
+              aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_registration">Register</a>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/patient_login">Login</a>
-              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_login">Login</a>
+              <div class="dropdown-divider" style="margin-bottom: 0px;"></div>
             </div>
           </li>
           <li class="nav-item">
@@ -117,7 +118,7 @@
 
 
     <footer>
-      <p>Come see us soon!</p>
+      <p>Innovate Rx, a part of the Attempted Humor Group LLC. All Right Reserved.</p>
     </footer>
 
 
