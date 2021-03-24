@@ -7,13 +7,13 @@ async function createNewVisit (){
   document.querySelector('#visitContainer').removeAttribute('style');
 
   const doctor_id = chosenDoctorId;
-  const pId = document.querySelector('#pId').innerHTML;
-  const patient_id = parseInt(pId);
+  // const pId = document.querySelector('#pId').innerHTML;
+  // const patient_id = parseInt(pId);
 
   const response = await fetch(`/api/visits`, { //placeholder route//
     method: 'POST',
     body: JSON.stringify(
-      {doctor_id}
+      {doctor_id},
     ),
     headers: {
     'Content-Type': 'application/json',
@@ -22,6 +22,7 @@ async function createNewVisit (){
 
   if (response.ok){
     alert('new visit created')
+    console.log(response.body)
   } else {
     alert('new visit not created')
     console.log(response)
@@ -100,21 +101,20 @@ async function createNewSymptoms (event){
 
   console.log((symptomsIdArray));
   
-  const getSTDs = symptomsIdArray.map((symptom) => {
-      console.log(symptom);
-      const sid = symptom;
-
-  async function getSTD(sid){
-    const response = await fetch(`/api/stdmodels/:id`, { //placeholder route//
-        method: 'POST',
-        body: JSON.stringify({
-          id
-        }),
-        headers: {
-        'Content-Type': 'application/json',
-        },
-      });
-    }
+  const getVisitSymptoms = symptomsIdArray.forEach((stdmodel_id) => {
+    // const visit_id = ?????????????;
+    async function getSTD(){
+      const response = await post(`/api/Visit_Symptoms`, { //placeholder route//
+          method: 'POST',
+          body: JSON.stringify({
+            stdmodel_id,
+            visit_id,
+          }),
+          headers: {
+          'Content-Type': 'application/json',
+          },
+        });
+      }
   })
 
   // if (response.ok){
