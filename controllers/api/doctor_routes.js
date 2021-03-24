@@ -26,6 +26,18 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.get('/doctors', async (req, res)=> {
+  try { 
+    const doctorData = await Doctor.findAll({
+      exclude: ['password']
+    });
+
+    res.status(200).json(doctorData);
+  } catch (err) {
+    res.status(500).json(err)
+  }
+});
+
 router.post('/doctor_login', async (req, res) => {
   try {
 

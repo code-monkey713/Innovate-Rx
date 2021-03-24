@@ -49,13 +49,31 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
-Visit.hasMany(Visit_Symptoms, {
-  foreignKey: 'visit_id',
+Visit.belongsToMany(STDmodel,{
+  through: {
+    model: Visit_Symptoms,
+    unique: false
+  },
+  as: 'visits_symptoms',
 });
 
-STDmodel.hasMany(Visit_Symptoms, {
-  foreignKey: 'stdmodel_id',
+STDmodel.belongsToMany(Visit,{
+  through: {
+    model: Visit_Symptoms,
+    unique: false
+  },
+  as: 'symptoms_visits',
 });
+
+
+
+// Visit.hasMany(Visit_Symptoms, {
+//   foreignKey: 'visit_id',
+// });
+
+// STDmodel.hasMany(Visit_Symptoms, {
+//   foreignKey: 'stdmodel_id',
+// });
 
 // Visit.hasMany(STDmodel, {
 //   through: {

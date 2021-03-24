@@ -1,28 +1,65 @@
-<section class="container mx-auto" id="visitContainer">
+<section class="container mx-auto" id="chooseDoctorContainer">
+  <div class="row">
+    <div class="col-sm-12" id="chooseHeader">
+      <h2 style="text-align: center;">Meet our Team!</h2>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12" id="chooseSubheader">
+      <p style="text-align: center;">Thank you for requesting an online visit. Please choose your doctor.</p>
+    </div>
+  </div>
+  <br />
+  <div class="row mx-auto">
+    {{#each doctors as |doctor|}}
+    <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
+      id="chooseDoctorCard">
+      <img class="card-img-top" src="{{{image}}}" id="doctorImage">
+      <div class="card-body">
+        <div class="card-title">
+          <h4>Dr. {{{first_name}}} {{{last_name}}}</h4>
+        </div>
+        <div class="card-text">
+          <p>{{{intro}}}
+          </p>
+        </div>
+      </div>
+      <div class="card-footer mx-auto">
+        <button type="button" id="chooseDoctorButton" data-doctorId="{{{id}}}">Choose this
+          doctor!</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+
+<section class="container mx-auto" id="visitContainer" style="display: none;">
   <div class="row">
     <div class="col-sm-12">
-      <h2>Welcome to your online visit with Dr. {{{doctor.name}}}</h2>
+      <h2 style="text-align: center;" id="visitFormTitle">Welcome to your online visit.
+      </h2>
     </div>
   </div>
   <br />
   <div class="row">
     <div class="col-sm-12">
       <div class="row">
-        <div class="col-sm-3">
-          <p>Dr. {{{doctor.name}}}</p>
-        </div>
-        <div class="col-sm-9">
-          <p>Hello {{{patient.title}}} {{{patient.last_name}}}!. What brings you in today?</p>
+        <div class="col-sm-12">
+          <p id="pId" style="display: none;">{{{id}}}</p>
+          <h4 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in
+            today?</h4>
         </div>
       </div>
       <br />
       <div class="row">
         <div class="col-sm-12">
           <form id="symptomsForm">
-            <h3>Please check all the issues or symptoms you might be feeling today. (Select all that
-              apply).</h3>
-            <br />
-            <div class="row mx-auto">
+            <p style="padding: 5px 10px 5px 20px">Please check all the issues or symptoms you might be feeling today.
+              (Select all that
+              apply).</p>
+            <div class="row mx-auto" style="padding: 5px 10px 5px 20px">
               <div class="form-check col-sm-12 col-md-3">
                 <input type="checkbox" class="form-check-input" id="checkboxHeadache">
                 <label class="form-check-label" for="checkbox">Headache</label>

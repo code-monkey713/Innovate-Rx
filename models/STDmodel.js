@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
+const { Visit } = require('.');
 const sequelize = require('../config/connection');
 
 class STDmodel extends Model {}
@@ -9,9 +10,9 @@ STDmodel.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
-      autoIncrement: true,
+      // autoIncrement: true,
     },
-    symptom: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -23,6 +24,13 @@ STDmodel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    visit_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'visit',
+        key: 'id',
+      }
+    }
   },
   {
     sequelize,

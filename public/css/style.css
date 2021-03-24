@@ -69,6 +69,21 @@ html * {
   margin: 30px;
 }
 
+#patientInfoBody {
+  height: 200px;
+  overflow-y: auto;
+}
+
+#previousVisitBody {
+  overflow-y: auto;
+  height: 400px;
+}
+
+#previousVisitRow {
+  display: block;
+  border-bottom: 1px solid black;
+}
+
 #chooseDoctorCard {
   margin: 15px;
   padding: 5px;

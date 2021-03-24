@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty } = require('../models');
+const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty, STDmodel } = require('../models');
 const { withPatientAuth, withDoctorAuth } = require('../utils/auth');
 
 
@@ -34,6 +34,36 @@ router.get('/doctors', async (req, res) => {
       }],
     });
     res.status(200).json(doctorsData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//temporary route to get all visits in insomnia//
+router.get('/visits', async (req, res) => {
+  try {
+    const visitsData = await Visit.findAll({
+      include: [{
+        model: Patient,
+      },{
+        model: Doctor,
+      }],
+    });
+    res.status(200).json(visitsData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//temporary route to get all STDmodels in insomnia//
+router.get('/stdmodels', async (req, res) => {
+  try {
+    const patientData = await STDmodel.findAll({
+      include: [{ 
+          model: Visit
+        }],
+    });
+    res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -78,7 +108,16 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
   try {
     const patientData = await Patient.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [{ model: Visit }],
+      include: [
+        { 
+          model: Visit,
+          include: [
+            {
+              model: Doctor,
+              attributes: ['last_name']
+            }
+          ]
+        }],
     });
 
     const patient = patientData.get({ plain: true });
@@ -103,7 +142,10 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
   try {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [{ model: Visit }],
+      include: [
+        { 
+          model: Visit,
+        }],
     });
 
     const doctor = doctorData.get({ plain: true });
@@ -112,6 +154,51 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
       ...doctor, 
       loggedIn: true 
     });
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/visit', withPatientAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.session.user_id,{
+      attributes: {exclude: ['password']},
+      include: [
+        { 
+          model: Visit,
+        },{
+          model: Doctor,
+          through: Visit,
+          as: 'patients_doctor',
+        }],
+    });
+
+    const patient = patientData.get({ plain: true });
+
+
+    const doctorData = await Doctor.findAll();
+    const doctors = doctorData.map((doc) => {
+      const newDoc = doc.get({ plain: true });
+      return newDoc;
+    });
+    console.log(doctors)
+    
+    res.render('visit', {
+      ...patient,
+      loggedIn: true,
+      doctors,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+})
+
+router.get('/stdmodels/:id', async (req, res) => {
+  try {
+    const patientData = await STDmodel.findByPk(req.body.id);
+
+    res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
   }

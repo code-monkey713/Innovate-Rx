@@ -23,20 +23,6 @@ Visit.init(
         key: 'id',
       },
     },
-    test_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'test',
-        key: 'id',
-      },
-    },
-    diagnosis_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'diagnosis',
-        key: 'id',
-      },
-    },
     doctor_id: {
       type: DataTypes.INTEGER,
       references: {
