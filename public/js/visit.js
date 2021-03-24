@@ -1,23 +1,41 @@
 let doctorButtons = document.querySelectorAll('#chooseDoctorButton');
-const doctorArray = ["Lecter.","Strange.","Xavier.", "House.", "Evil."];
-let chosenDoctorId ;
 
-async function chooseDoctor (){
+
+async function createNewVisit (){
   chosenDoctorId = parseInt(this.dataset.doctorid);
   document.querySelector('#chooseDoctorContainer').setAttribute('style','display: none');
   document.querySelector('#visitContainer').removeAttribute('style');
-  const chosenDoctor = doctorArray[chosenDoctorId-1];
-  document.querySelector('#visitFormTitle').insertAdjacentHTML('beforeend', chosenDoctor);
+
+  const doctor_id = chosenDoctorId;
+  const pId = document.querySelector('#pId').innerHTML;
+  const patient_id = parseInt(pId);
+
+  const response = await fetch(`/api/visits`, { //placeholder route//
+    method: 'POST',
+    body: JSON.stringify(
+      {doctor_id}
+    ),
+    headers: {
+    'Content-Type': 'application/json',
+    },
+  });
+
+  if (response.ok){
+    alert('new visit created')
+  } else {
+    alert('new visit not created')
+    console.log(response)
+  }
 }
 
-async function submitVisitForm (event){
+async function createNewSymptoms (event){
   event.preventDefault();
 
   let symptomsArray = [];
   let symptomsIdArray = [];
 
   const headache = {id: 1,
-                    value: document.querySelector("#checkboxHeadache").checked,
+    value: document.querySelector("#checkboxHeadache").checked,
                   };
   const blurry_vision =  {id: 2,
     value: document.querySelector("#checkboxBlurryVision").checked,
@@ -67,14 +85,13 @@ async function submitVisitForm (event){
   const i_see_dead_people =  {id: 17,
     value: document.querySelector("#checkboxISeeDeadPeople").checked,
   };
-  const other = {id: 16,
+  const other = {id: 18,
                 value: document.querySelector("#checkboxOther").checked,
                 text: document.querySelector("#descriptionBox").value,
   };
   
   symptomsArray.push(headache, blurry_vision, runny_nose, cough, fever, high_blood_pressure, high_blood_sugar, dizziness, vomiting, back_pain, joint_pain, weakness, difficulty_breathing, urinary_issues, abdominal_pain, heartburn, i_see_dead_people, other);
   
-
   const getId = symptomsArray.map((s)=>{
     if (s.value === true){
       symptomsIdArray.push(s.id);
@@ -82,26 +99,31 @@ async function submitVisitForm (event){
   });
 
   console.log((symptomsIdArray));
+  
+  const getSTDs = symptomsIdArray.map((symptom) => {
+      console.log(symptom);
+      const sid = symptom;
 
+  async function getSTD(sid){
+    const response = await fetch(`/api/stdmodels/:id`, { //placeholder route//
+        method: 'POST',
+        body: JSON.stringify({
+          id
+        }),
+        headers: {
+        'Content-Type': 'application/json',
+        },
+      });
+    }
+  })
 
-  const response = await fetch(`/api/symptoms`, { //placeholder route//
-      method: 'POST',
-      body: JSON.stringify(symptomsIdArray),
-      headers: {
-      'Content-Type': 'application/json',
-      },
-    });
-
-
-  if (response.ok){
-    launchVisitCompleteModal();
-    window.location.replace('/tests');
-
-  } else {
-    launchVisitIncompleteModal();
-    window.location.replace('/patient_dashboard');
-
-  }
+  // if (response.ok){
+  //   launchVisitCompleteModal();
+  //   window.location.replace('/tests');
+  // } else {
+  //   launchVisitFailModal();
+  //   window.location.replace('/patient_dashboard');
+  // }
 };
 
 async function launchVisitCompleteModal(){
@@ -112,10 +134,10 @@ async function launchVisitFailModal(){
   $('#visitFailModal').modal('show');
 };
 
+
 console.log(doctorButtons)
 doctorButtons.forEach((b)=>{
-  b.addEventListener('click', chooseDoctor);
+  b.addEventListener('click', createNewVisit);
 });
-// document.querySelectorAll('#chooseDoctorButton').addEventListener('click', chooseDoctor);
 
-document.querySelector('#symptomsForm').addEventListener('submit', submitVisitForm)
+document.querySelector('#symptomsForm').addEventListener('submit', createNewSymptoms)

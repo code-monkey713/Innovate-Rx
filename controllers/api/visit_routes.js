@@ -4,14 +4,16 @@ const bcrypt = require('bcrypt');
 const { withPatientAuth } = require('../../utils/auth');
 
 router.post('/', withPatientAuth, async (req,res) => {
-  try {
+  try {   
     const newVisitData = await Visit.create({
-      ...req.body,
-      user_id: req.session.user_id,
+    ...req.body,
     });
-    req.statusCode(200).json(newVisitData)
+
+    console.log(newVisitData);
+    res.status(200).json(newVisitData)
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 

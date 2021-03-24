@@ -49,13 +49,24 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
-Visit.hasMany(Visit_Symptoms, {
+Visit.hasMany(STDmodel,{
   foreignKey: 'visit_id',
+  onDelete: 'CASCADE'
 });
 
-STDmodel.hasMany(Visit_Symptoms, {
-  foreignKey: 'stdmodel_id',
+STDmodel.belongsTo(Visit,{
+  foreignKey: 'visit_id'
 });
+
+
+
+// Visit.hasMany(Visit_Symptoms, {
+//   foreignKey: 'visit_id',
+// });
+
+// STDmodel.hasMany(Visit_Symptoms, {
+//   foreignKey: 'stdmodel_id',
+// });
 
 // Visit.hasMany(STDmodel, {
 //   through: {

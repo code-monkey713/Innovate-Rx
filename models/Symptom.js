@@ -15,6 +15,10 @@ Symptom.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
+    // is_positive: {
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    // },
     visit_id: {
       type: DataTypes.INTEGER,
       references: {

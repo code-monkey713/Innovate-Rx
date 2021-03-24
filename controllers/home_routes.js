@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty } = require('../models');
+const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty, STDmodel } = require('../models');
 const { withPatientAuth, withDoctorAuth } = require('../utils/auth');
 
 
@@ -50,6 +50,20 @@ router.get('/visits', async (req, res) => {
       }],
     });
     res.status(200).json(visitsData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+//temporary route to get all STDmodels in insomnia//
+router.get('/stdmodels', async (req, res) => {
+  try {
+    const patientData = await STDmodel.findAll({
+      include: [{ 
+          model: Visit
+        }],
+    });
+    res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
   }
@@ -160,13 +174,34 @@ router.get('/visit', withPatientAuth, async (req, res) => {
     });
 
     const patient = patientData.get({ plain: true });
+
+
+    const doctorData = await Doctor.findAll();
+    const doctors = doctorData.map((doc) => {
+      const newDoc = doc.get({ plain: true });
+      return newDoc;
+    });
+    console.log(doctors)
+    
     res.render('visit', {
       ...patient,
-      loggedIn: true
+      loggedIn: true,
+      doctors,
     });
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 })
+
+router.get('/stdmodels/:id', async (req, res) => {
+  try {
+    const patientData = await STDmodel.findByPk(req.body.id);
+
+    res.status(200).json(patientData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

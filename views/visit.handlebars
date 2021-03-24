@@ -1,7 +1,7 @@
 <section class="container mx-auto" id="chooseDoctorContainer">
   <div class="row">
     <div class="col-sm-12" id="chooseHeader">
-      <h2 style="text-align: center;">Meet our Team! {{{doctors.length}}}</h2>
+      <h2 style="text-align: center;">Meet our Team!</h2>
     </div>
   </div>
   <br />
@@ -12,92 +12,25 @@
   </div>
   <br />
   <div class="row mx-auto">
+    {{#each doctors as |doctor|}}
     <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
       id="chooseDoctorCard">
-      <img class="card-img-top" src="./images/lecter.jpeg" id="doctorImage">
+      <img class="card-img-top" src="{{{image}}}" id="doctorImage">
       <div class="card-body">
         <div class="card-title">
-          <h4>Dr. Hannibal Lecter</h4>
+          <h4>Dr. {{{first_name}}} {{{last_name}}}</h4>
         </div>
         <div class="card-text">
-          <p>Dr. Lecter is a world renowed nutritionist and has great expertise taking
-            care of the elderly and the infirm. His motto is "You are what you eat!".</p>
-        </div>
-      </div>
-      <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="1">Choose this
-          doctor!</button>
-      </div>
-    </div>
-    <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
-      id="chooseDoctorCard">
-      <img class="card-img-top" src="./images/strange.png" id="doctorImage">
-      <div class="card-body">
-        <div class="card-title">
-          <h4>Dr. Steven Strange</h4>
-        </div>
-        <div class="card-text">
-          <p>Dr. Strange is a highly accomplished neurosurgeon. He is extremely passionate about serving the community,
-            and his patients claim he has the 'magic' touch.</p>
-        </div>
-      </div>
-      <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="2">Choose this
-          doctor!</button>
-      </div>
-    </div>
-    <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
-      id="chooseDoctorCard">
-      <img class="card-img-top" src="./images/Xavier.png" id="doctorImage">
-      <div class="card-body">
-        <div class="card-title">
-          <h4>Dr. Charles Xavier</h4>
-        </div>
-        <div class="card-text">
-          <p>Professor Xavier has over 40 years of experience in psychotherapy, and spent most of his life in academic
-            dispensation. His skills have his patients convinced he can read their minds.</p>
-        </div>
-      </div>
-      <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="3">Choose this
-          doctor!</button>
-      </div>
-    </div>
-    <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
-      id="chooseDoctorCard">
-      <img class="card-img-top" src="./images/house.png" id="doctorImage">
-      <div class="card-body">
-        <div class="card-title">
-          <h4>Dr. Gregory House</h4>
-        </div>
-        <div class="card-text">
-          <p>A double board certified specialist in infectious disease and neurology, Dr. House's diagnostic skills are
-            only matched by his wit and bedside manner.</p>
-        </div>
-      </div>
-      <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="4">Choose this
-          doctor!</button>
-      </div>
-    </div>
-    <div class="card mx-auto col-sm-12 col-md-4 text-white bg-dark mb-3" style="max-width: 18rem;"
-      id="chooseDoctorCard">
-      <img class="card-img-top" src="./images/evil.png" id="doctorImage">
-      <div class="card-body">
-        <div class="card-title">
-          <h4>Dr. Douglas "Evil" Powers</h4>
-        </div>
-        <div class="card-text">
-          <p>Dr. Evil is known for his unorthodox treatment modalities like cryotherapy, which have earned him a loyal
-            following. He has earned various monetary awards from the government for his imaginative ideas and projects.
+          <p>{{{intro}}}
           </p>
         </div>
       </div>
       <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="5">Choose this
+        <button type="button" id="chooseDoctorButton" data-doctorId="{{{id}}}">Choose this
           doctor!</button>
       </div>
     </div>
+    {{/each}}
   </div>
 </section>
 
@@ -105,7 +38,8 @@
 <section class="container mx-auto" id="visitContainer" style="display: none;">
   <div class="row">
     <div class="col-sm-12">
-      <h2 style="text-align: center;" id="visitFormTitle">Welcome to your online visit with Dr. </h2>
+      <h2 style="text-align: center;" id="visitFormTitle">Welcome to your online visit.
+      </h2>
     </div>
   </div>
   <br />
@@ -113,7 +47,9 @@
     <div class="col-sm-12">
       <div class="row">
         <div class="col-sm-12">
-          <h4 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in today?</h4>
+          <p id="pId" style="display: none;">{{{id}}}</p>
+          <h4 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in
+            today?</h4>
         </div>
       </div>
       <br />
@@ -264,5 +200,3 @@
 </section>
 
 <script src="../js/visit.js"></script>
-
-<script src="../js/choose_doctor.js"></script>
