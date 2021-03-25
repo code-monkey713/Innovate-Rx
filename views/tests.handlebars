@@ -1,28 +1,38 @@
+<section class="container mx-auto" id="patientLoginWelcome">
+  <div class="row" style="margin: 0px;">
+    <div class="col-sm-12 mx-auto" id="patientTests" style="margin: 30px;">
+      <div id="testsHeader">
+        <h2>Post Visit Summary.</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="container mx-auto" id="testsContainer">
   <div class="row">
     <div class="col-sm-12" id="testsHeader">
       <div class="card" id="testsCard">
-        <div class="card-header">
+        <div class="card-title">
           <h2 style="text-align: center;">Tests</h2>
           <br />
           <p>The following tests have been prescribed to you by your doctor. Once you have reviewed and
-            completed the tests, please click "I have completed the tests!".</p>
+            completed the tests, please click "I have completed the tests!" {{{visits.length}}}.</p>
         </div>
         <div class="card-body">
-          {{{#each test_prescribed as |test}}}
+          {{!-- {{{#each visits_stdmodel as |std}}}
           <div class="row">
             <div class="col-sm-12">
               <div class="card mx-auto" id="testCard">
                 <div class="card-header" id="testCardHeader">
-                  <h4>{{{test.name}}}</h4>
+                  <h4>{{{std.test}}}</h4>
                 </div>
                 <div class="card-body" id="testCardBody">
-                  <p>Description: {{{test.description}}} </p>
+                  <p>Description: {{{std.test}}} </p>
                 </div>
               </div>
             </div>
           </div>
-          {{{/each}}}
+          {{{/each}}} --}}
         </div>
         <div class="card-footer d-flex justify-content-md-center">
           <button class="btn btn-primary" type="button" id="testsCompletedBtn">I have completed the

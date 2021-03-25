@@ -97,12 +97,15 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Based on your symptoms, your doctor has prescribed some tests for you. Please review the
-            tests and provide
-            your consent.</p>
+          <p>Based on your symptoms, your doctor has prescribed the following tests for you.</p>
+          <ul id="assignedTestsList">
+
+          </ul>
+          <p>Click 'Accept' to perform these tests. You will be redirected to your dashboard.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            id="visitCompleteModalCloseBtn">Accept</button>
         </div>
       </div>
     </div>

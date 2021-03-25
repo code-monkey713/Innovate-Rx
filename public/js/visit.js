@@ -1,4 +1,5 @@
 let doctorButtons = document.querySelectorAll("#chooseDoctorButton");
+
 const patientID = document.querySelector('#pId').textContent;
 
 let lastVisitId;
@@ -11,11 +12,8 @@ async function createNewVisit() {
   document.querySelector("#visitContainer").removeAttribute("style");
 
   const doctor_id = chosenDoctorId;
-  // const pId = document.querySelector('#pId').innerHTML;
-  // const patient_id = parseInt(pId);
 
   const response = await fetch(`/api/visits`, {
-    //placeholder route//
     method: "POST",
     body: JSON.stringify({ doctor_id }),
     headers: {
@@ -28,7 +26,6 @@ async function createNewVisit() {
     console.log(response);
   } else {
     alert("new visit not created");
-    // console.log(response);
   }
 }
 
@@ -66,14 +63,46 @@ async function getSymptoms(event) {
     alert('oops')
   }
 
-  const abc = checkedSymptomsIdArray.map(async (stdModelId) => {
+  // --------------------------------------------------------------------------------------
+  // Positive Test Shuffle Logic part 1
+  // This part is the logic that randomly assigns one test as positive.
+  // It uses a third-party array shuffle function known as "Durstenfeld Shuffle" for ES6.
+  // link: https://en.wikipedia.org/wiki/Fisher%E2%80%93Yates_shuffle#The_modern_algorithm
+
+  console.log(checkedSymptomsIdArray)
+  async function shuffleArray (checkedSymptomsIdArray) {
+    for (let i = checkedSymptomsIdArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [checkedSymptomsIdArray[i], checkedSymptomsIdArray[j]] = [checkedSymptomsIdArray[j], checkedSymptomsIdArray[i]];
+    }
+  };
+  shuffleArray(checkedSymptomsIdArray);
+  console.log(checkedSymptomsIdArray);
+  let x = 0;
+  let is_positive = false;
+  // ---------------------------------------------------------------------------------------
+
+  const stdMaker = checkedSymptomsIdArray.map(async (stdModelId) => {
+  
+    // -------------------------------------------------------------------------
+    //  Positive Test Shuffle Logic part 2 
+    if (x === 0){
+      is_positive = true;
+      x++;
+    } else {
+      is_positive = false;
+    }
+    // -------------------------------------------------------------------------
+
+    console.log(is_positive);
     console.log(stdModelId);
     console.log(lastVisitId);
     let response2 = await fetch(`/api/visit_symptoms`, {
       method: "POST",
       body: JSON.stringify({ 
         stdModelId,
-        lastVisitId }),
+        lastVisitId,
+        is_positive }),
       headers: {
         "Content-Type": "application/json",
       },
@@ -81,38 +110,61 @@ async function getSymptoms(event) {
 
     if (response2.ok) {
       console.log("new VS model created");
-      console.log(response2);
     } else {
       console.log("new VS model not created");
-      // console.log(response2);
     }
   })
 
+  const response3 = await fetch(`/visits/${lastVisitId}`, {
+    method: 'GET',
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
 
+  if (response3.ok){
+    let data3 = await response3.json();
+    // console.log(data3)
+    let stdArray = data3.visits_stdmodel;
+    let vsArray = data3.visit_symptoms;
+    console.log(vsArray);
 
-  // if (response.ok) {
-    // alert("new visit created");
-    // console.log(response);
-  // } else {
-  //   alert("new visit not created");
-    // console.log(response);
-  // }
-  // pass the visit_id, symptoms_id, random function to positive STDmodel on Visit_Symptoms table
+    // let whichTestIsPositiveArr = stdArray.map((std) => {
+    //   return std)
+    // });
 
-  // launchVisitCompleteModal();
+    let checkedSymptomArray = stdArray.map((std) => {
+      return std.symptom;
+    })
+
+    let assignedTestArray = stdArray.map((std) => {
+      return std.test;
+    })
+
+    let xyz = assignedTestArray.forEach((test) => {
+      let t = document.createElement('li');
+      t.innerHTML = test;
+      document.querySelector('#assignedTestsList').appendChild(t);
+    })
+  } else {
+    console.log('oopsie daisy')
+  }
+
+  launchVisitCompleteModal();
 }
 
 async function launchVisitCompleteModal() {
   $("#visitCompleteModal").modal("show");
-  // we need to redirect the patient to the patient_dashboard after the patient click 'ok' on the modal
-  // location.href = '/patient_dashboard';
+}
+
+async function redirectToPatientDashboard(){
+  location.href = '/patient_dashboard';
 }
 
 async function launchVisitFailModal() {
   $("#visitFailModal").modal("show");
 }
 
-// console.log(doctorButtons);
 doctorButtons.forEach((b) => {
   b.addEventListener("click", createNewVisit);
 });
@@ -120,3 +172,7 @@ doctorButtons.forEach((b) => {
 document
   .querySelector("#symptomsForm")
   .addEventListener("submit", getSymptoms);
+
+document
+  .querySelector("#visitCompleteModalCloseBtn").
+  addEventListener("click", redirectToPatientDashboard);

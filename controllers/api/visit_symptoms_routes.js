@@ -8,6 +8,7 @@ router.post('/', withPatientAuth, async (req,res) => {
     const newVisitSymptomsData = req.body;
     newVisitSymptomsData.visit_id = req.body.lastVisitId;
     newVisitSymptomsData.stdmodel_id = req.body.stdModelId;
+    newVisitSymptomsData.is_positive = req.body.is_positive;
     
     const newVisitSymptom = await Visit_Symptoms.create(newVisitSymptomsData);
 
