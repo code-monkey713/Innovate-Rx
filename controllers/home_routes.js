@@ -168,11 +168,11 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
               model: Patient,
               attributes: ['first_name', 'last_name']
             },
-            {
-              model: STDmodel,
-              through: Visit_Symptoms,
-              as: 'visits_stdmodel',
-            }
+            // {
+            //   model: STDmodel,
+            //   through: Visit_Symptoms,
+            //   as: 'visits_stdmodel',
+            // }
           ]
         }],
     });

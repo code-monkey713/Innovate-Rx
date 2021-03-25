@@ -11,6 +11,7 @@
       <div class="card-body">
         <p>Name: {{{first_name}}} {{{last_name}}}</p>
         <p>Your Intro: {{{intro}}}</p>
+        <p>When you joined the system: {{{format_date date_created}}}</p>
       </div>
       <div class="card-footer"></div>
     </div>
@@ -19,14 +20,27 @@
   <div class="row">
     <div class="card">
       <div class="card-header">
-        <h2>Your Patients</h2>
+        <h2>Your Patients - {{{visits.length}}}</h2>
       </div>
       <div class="card-body">
-        {{#if doctor.doctors_patient.length}}
+        {{!-- {{#if doctor.doctors_patient.length}}
         <p>Number of Visits: {{{doctors_patient.length}}}</p>
         {{#each doctors_patient as |patient|}}
         <p>Your Patient's Name: {{{first_name}}}{{{last_name}}}</p>
         {{/each}}
+        {{/if}} --}}
+        {{#if visits.length}}
+        {{#each visits as |visit|}}
+        <div class="row" id="previousVisitRow">
+          <p>Date: {{{format_date visit.date_visited}}} with patient {{{visit.patient.first_name}}} {{{visit.patient.last_name}}}.</p>
+          <p>Patient was presented with these symptoms: symptoms list </p>
+          <p>Patient was given the following tests: tests list </p>
+          <p>Patient {{{visit.patient.last_name}}} was given the diagnosis of blah blah</p>
+        </div>
+        <br />
+        {{/each}}
+        {{else}}
+        <h4>You don't had any visits yet!</h4>
         {{/if}}
       </div>
       <div class="card-footer"></div>
