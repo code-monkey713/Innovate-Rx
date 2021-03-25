@@ -13,30 +13,48 @@
     <div class="col-sm-12" id="testsHeader">
       <div class="card" id="testsCard">
         <div class="card-title">
-          <h2 style="text-align: center;">Tests</h2>
-          <br />
-          <p>The following tests have been prescribed to you by your doctor. Once you have reviewed and
-            completed the tests, please click "I have completed the tests!" {{{visits.length}}}.</p>
+          <h2 style="text-align: center;">Here is your post visit summary.</h2>
+          <p id="pId" style="display: none;">{{{id}}}</p>
         </div>
         <div class="card-body">
-          {{!-- {{{#each visits_stdmodel as |std}}}
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="card mx-auto" id="testCard">
-                <div class="card-header" id="testCardHeader">
-                  <h4>{{{std.test}}}</h4>
-                </div>
-                <div class="card-body" id="testCardBody">
-                  <p>Description: {{{std.test}}} </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {{{/each}}} --}}
+          <p>Thank you for completing the tests assigned to you. The results have arrived and your doctor has assigned a
+            preliminary diagnosis. Please click below to see your test results and diagnosis.</p>
         </div>
         <div class="card-footer d-flex justify-content-md-center">
-          <button class="btn btn-primary" type="button" id="testsCompletedBtn">I have completed the
-            tests!</button>
+          <button class='btn btn-success mx-auto' type='button' id='showDiagnosisBtn'>View Diagnosis</button>
+          <br />
+          <button class='btn btn-primary mx-auto' type='button' id='returnToDashboardBtn'>Go to my dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal for Diagnosis-->
+  <div class="modal fade" id="diagnosisModal" tabindex="-1" role="dialog" aria-labelledby="diagnosisModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diagnosisModalTitle">Your Diagnosis</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Your test results</p>
+          <ul id="testResultsList">
+
+          </ul>
+          <br />
+          <p id="diagnosisIntro">Based on the test results above, the following diagnosis has been assigned by Dr. </p>
+          <br/>
+          <h2 style="text-align: center; font-weight: bolder; color: blue;" id="diagnosisTitle"></h2>
+          <br/>
+          <p>Please press the Close button below to return to your dashboard.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            id="diagnosisModalCloseBtn">Close</button>
         </div>
       </div>
     </div>

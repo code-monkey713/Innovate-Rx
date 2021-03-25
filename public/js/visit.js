@@ -129,10 +129,6 @@ async function getSymptoms(event) {
     let vsArray = data3.visit_symptoms;
     console.log(vsArray);
 
-    // let whichTestIsPositiveArr = stdArray.map((std) => {
-    //   return std)
-    // });
-
     let checkedSymptomArray = stdArray.map((std) => {
       return std.symptom;
     })
@@ -158,7 +154,7 @@ async function launchVisitCompleteModal() {
 }
 
 async function redirectToPatientDashboard(){
-  location.href = '/patient_dashboard';
+  location.href = '/tests';
 }
 
 async function launchVisitFailModal() {

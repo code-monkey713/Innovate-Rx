@@ -311,7 +311,12 @@ router.get('/visits/:id', async (req, res) => {
         through: Visit_Symptoms,
         as: 'visits_stdmodel',
       },{
+        model: Doctor,
+      },{
         model: Visit_Symptoms,
+        include: [{
+          model: STDmodel,
+        }]
       }]
     });
 
