@@ -77,4 +77,7 @@ router.post('/patient_logout', (req, res) => {
   }
 });
 
+
+
+
 module.exports = router;
