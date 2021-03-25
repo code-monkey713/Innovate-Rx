@@ -5,11 +5,12 @@ class Visit_Symptoms extends Model {}
 
 Visit_Symptoms.init(
   {
-    // id: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
-    //   primaryKey: true,
-    //   autoIncrement: true,
+    id: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     visit_id: {
       type: DataTypes.INTEGER,
       references: {
