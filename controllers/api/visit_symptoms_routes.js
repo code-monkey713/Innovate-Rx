@@ -6,7 +6,7 @@ const { withPatientAuth } = require('../../utils/auth');
 router.post('/', withPatientAuth, async (req,res) => {
   try {
     const newVisitSymptomsData = req.body;
-    newVisitSymptomsData.visit_id = req.body.visit_id;
+    newVisitSymptomsData.visit_id = req.body.lastVisitId;
     newVisitSymptomsData.stdmodel_id = req.body.stdModelId;
     
     const newVisitSymptom = await Visit_Symptoms.create(newVisitSymptomsData);

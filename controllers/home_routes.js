@@ -81,6 +81,20 @@ router.get('/stdmodels', async (req, res) => {
   }
 });
 
+router.get('/visit_symptoms', async (req, res) => {
+  try {
+    const vsData = await Visit_Symptoms.findAll({
+      include: [{ 
+          model: Visit
+        }],
+    });
+    res.status(200).json(vsData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+});
+
 router.get('/', async (req,res) => {
   try{
     res.redirect('/home');
