@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty, STDmodel } = require('../models');
+const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty, STDmodel, Visit_Symptoms } = require('../models');
 const { withPatientAuth, withDoctorAuth } = require('../utils/auth');
 
 
@@ -9,6 +9,11 @@ router.get('/patients', async (req, res) => {
     const patientData = await Patient.findAll({
       include: [{
         model: Visit,
+        include: {
+          model: STDmodel,
+          through: Visit_Symptoms,
+          as: 'visits_stdmodel',
+        }
       },{
         model: Doctor,
         through: Visit,
@@ -18,6 +23,7 @@ router.get('/patients', async (req, res) => {
     res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 
@@ -47,11 +53,16 @@ router.get('/visits', async (req, res) => {
         model: Patient,
       },{
         model: Doctor,
+      },{
+        model: STDmodel,
+        through: Visit_Symptoms,
+        as: 'visits_stdmodel'
       }],
     });
     res.status(200).json(visitsData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
@@ -59,13 +70,14 @@ router.get('/visits', async (req, res) => {
 router.get('/stdmodels', async (req, res) => {
   try {
     const patientData = await STDmodel.findAll({
-      include: [{ 
-          model: Visit
-        }],
+      // include: [{ 
+      //     model: Visit
+      //   }],
     });
     res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err)
   }
 });
 

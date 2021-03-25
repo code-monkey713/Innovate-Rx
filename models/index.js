@@ -45,13 +45,13 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
-// Visit.belongsToMany(STDmodel,{
-//   through: {
-//     model: Visit_Symptoms,
-//     unique: false
-//   },
-//   as: 'visits_symptoms',
-// });
+Visit.belongsToMany(STDmodel,{
+  through: {
+    model: Visit_Symptoms,
+    unique: false
+  },
+  as: 'visits_stdmodel',
+});
 
 Visit.hasMany(Visit_Symptoms, {
   foreignKey: 'visit_id',
@@ -62,14 +62,28 @@ Visit.hasMany(Visit_Symptoms, {
 //     model: Visit_Symptoms,
 //     unique: false
 //   },
-//   as: 'symptoms_visits',
+//   as: 'stdmodel_visits',
 // });
 
 
 
-// Visit.hasMany(Visit_Symptoms, {
-//   foreignKey: 'visit_id',
-// });
+Visit.hasMany(Visit_Symptoms, {
+  foreignKey: 'visit_id',
+});
+
+Visit_Symptoms.belongsTo(Visit, {
+  foreignKey: 'visit_id'
+});
+
+STDmodel.hasMany(Visit_Symptoms, {
+  foreignKey: 'stdmodel_id',
+});
+
+Visit_Symptoms.belongsTo(STDmodel, {
+  foreignKey: 'stdmodel_id'
+});
+
+
 
 // STDmodel.hasMany(Visit_Symptoms, {
 //   foreignKey: 'stdmodel_id',
@@ -82,14 +96,14 @@ Visit.hasMany(Visit_Symptoms, {
 //   }
 // });
 
-Visit.hasMany(Symptom, {
-  foreignKey: 'visit_id',
-  onDelete: 'CASCADE'
-});
+// Visit.hasMany(Symptom, {
+//   foreignKey: 'visit_id',
+//   onDelete: 'CASCADE'
+// });
 
-Symptom.belongsTo(Visit, {
-  foreignKey: 'visit_id',
-});
+// Symptom.belongsTo(Visit, {
+//   foreignKey: 'visit_id',
+// });
 
 
 
