@@ -9,9 +9,18 @@
         <h2>Your information</h2>
       </div>
       <div class="card-body">
-        <p>Name: {{{first_name}}} {{{last_name}}}</p>
-        <p>Your Intro: {{{intro}}}</p>
-        <p>When you joined the system: {{{format_date date_created}}}</p>
+        <div class="row mx-auto">
+          <div class="col-sm-12 col-md-4 my-auto">
+            <img id="doctorDashboardImg" src="{{{image}}}" alt="doctor_pic">
+          </div>
+          <div class="col-sm-12 col-md-8 my-auto">
+            <div id="doctorDashboardInfo">
+              <p>Name: {{{first_name}}} {{{last_name}}}</p>
+              <p>Intro: {{{intro}}}</p>
+              <p>Join Date: {{{format_date date_created}}}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-footer"></div>
     </div>
@@ -32,7 +41,8 @@
         {{#if visits.length}}
         {{#each visits as |visit|}}
         <div class="row" id="previousVisitRow">
-          <p>Date: {{{format_date visit.date_visited}}} with patient {{{visit.patient.first_name}}} {{{visit.patient.last_name}}}.</p>
+          <p>Date: {{{format_date visit.date_visited}}} with patient {{{visit.patient.first_name}}}
+            {{{visit.patient.last_name}}}.</p>
           <p>Patient was presented with these symptoms: symptoms list </p>
           <p>Patient was given the following tests: tests list </p>
           <p>Patient {{{visit.patient.last_name}}} was given the diagnosis of blah blah</p>
