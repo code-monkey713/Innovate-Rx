@@ -128,6 +128,16 @@ html * {
   margin: 20px;
 }
 
+#doctorDashboardImg {
+  height: 250px;
+  width: 250px;
+  box-shadow: 2px 2px 4px #767676;
+  margin: 15px;
+}
+
+#doctorDashboardInfo {
+}
+
 footer {
   position: fixed;
   width: 100%;

@@ -43,8 +43,6 @@ router.post('/doctor_login', async (req, res) => {
 
     console.log(req.body);
     const doctorData = await Doctor.findOne({ where: { email: req.body.dLoginEmail } });
-
-    console.log(doctorData);
     
     if (!doctorData) {
       res
@@ -53,7 +51,12 @@ router.post('/doctor_login', async (req, res) => {
       return;
     }
 
-    if (!req.body.dLoginPassword === doctorData.password){
+    const validPassword = await bcrypt.compareSync(
+      req.body.dLoginPassword,
+      doctorData.password
+    );
+
+    if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Invalid credentials. Please try again!' });

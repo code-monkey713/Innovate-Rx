@@ -36,24 +36,18 @@ router.post('/patient_login', async (req, res) => {
         .json({ message: 'Login failed. Please try again!' });
       return;
     }
-    // const validPassword = await bcrypt.compareSync(
-    //   req.body.password,
-    //   patientData.password
-    // );
+    
+    const validPassword = await bcrypt.compareSync(
+      req.body.password,
+      patientData.password
+    );
 
-    if (!req.body.password === patientData.password){
+    if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Invalid credentials. Please try again!' });
       return;
     }
-
-    // if (!validPassword) {
-    //   res
-    //     .status(400)
-    //     .json({ message: 'Invalid credentials. Please try again!' });
-    //   return;
-    // }
     
       req.session.save(() => {
         req.session.isDoctor = false;

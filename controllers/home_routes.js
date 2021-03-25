@@ -178,21 +178,16 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
   try {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [
-        { 
-          model: Visit,
-          include: [
-            {
-              model: Patient,
-              attributes: ['first_name', 'last_name']
-            },
-            // {
-            //   model: STDmodel,
-            //   through: Visit_Symptoms,
-            //   as: 'visits_stdmodel',
-            // }
-          ]
-        }],
+      include: [{
+        model: Visit,
+          include: [{
+            model: STDmodel,
+            through: Visit_Symptoms,
+            as: 'visits_stdmodel',
+          },{
+            model: Patient,
+          }]
+      }]
     });
 
     const doctor = doctorData.get({ plain: true });
@@ -248,6 +243,37 @@ router.get('/visit', withPatientAuth, async (req, res) => {
   }
 })
 
+router.get('/tests', withPatientAuth, async (req, res) => {
+  try {
+    const patientData = await Patient.findByPk(req.session.user_id,{
+      attributes: {exclude: ['password']},
+      include: [
+        { 
+          model: Visit,
+          include: {
+            model: STDmodel,
+            through: Visit_Symptoms,
+            as: 'visits_stdmodel',
+          }
+        },{
+          model: Doctor,
+          through: Visit,
+          as: 'patients_doctor',
+        }],
+    });
+
+    const patient = patientData.get({ plain: true });
+    
+    res.render('tests', {
+      ...patient,
+      loggedIn: true,
+    });
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+})
+
 router.get('/stdmodels/:id', async (req, res) => {
   try {
     const stdData = await STDmodel.findByPk(req.body.id);
@@ -266,6 +292,30 @@ router.get('/patients/:id', async (req, res) => {
     });
 
     res.status(200).json(patientData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
+
+router.get('/visits/:id', async (req, res) => {
+  try{
+    console.log(req.params.id)
+    const visitData = await Visit.findByPk(req.params.id,{
+      include: [{ 
+        model: STDmodel,
+        through: Visit_Symptoms,
+        as: 'visits_stdmodel',
+      },{
+        model: Doctor,
+      },{
+        model: Visit_Symptoms,
+        include: [{
+          model: STDmodel,
+        }]
+      }]
+    });
+
+    res.status(200).json(visitData);
   } catch (err) {
     res.status(500).json(err);
   }

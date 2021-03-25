@@ -1,6 +1,6 @@
 <section class="container mx-auto" id="doctorDashboardContainer">
   <div class="row" style="margin: 30px;">
-    <h1>Welcome to your dashboard</h1>
+    <h1>Welcome to your dashboard, Dr. {{{last_name}}}</h1>
   </div>
   <br />
   <div class="row">
@@ -9,53 +9,69 @@
         <h2>Your information</h2>
       </div>
       <div class="card-body">
-        <p>Name: {{{first_name}}} {{{last_name}}}</p>
-        <p>Your Intro: {{{intro}}}</p>
-        <p>When you joined the system: {{{format_date date_created}}}</p>
+        <div class="row mx-auto">
+          <div class="col-sm-12 col-md-4 my-auto">
+            <img id="doctorDashboardImg" src="{{{image}}}" alt="doctor_pic">
+          </div>
+          <div class="col-sm-12 col-md-8 my-auto">
+            <div id="doctorDashboardInfo">
+              <p>Name: {{{first_name}}} {{{last_name}}}</p>
+              <p>Intro: {{{intro}}}</p>
+              <p>Join Date: {{{format_date date_created}}}</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="card-footer"></div>
     </div>
   </div>
-  <br />
+</section>
+<br />
+<section class="container mx-auto">
   <div class="row">
     <div class="card">
       <div class="card-header">
-        <h2>Your Patients - {{{visits.length}}}</h2>
+        <h2>Your Visits - {{{visits.length}}} total.</h2>
       </div>
-      <div class="card-body">
-        {{!-- {{#if doctor.doctors_patient.length}}
-        <p>Number of Visits: {{{doctors_patient.length}}}</p>
-        {{#each doctors_patient as |patient|}}
-        <p>Your Patient's Name: {{{first_name}}}{{{last_name}}}</p>
-        {{/each}}
-        {{/if}} --}}
+      <div class="card-body" id="previousVisitBody">
         {{#if visits.length}}
-        {{#each visits as |visit|}}
-        <div class="row" id="previousVisitRow">
-          <p>Date: {{{format_date visit.date_visited}}} with patient {{{visit.patient.first_name}}} {{{visit.patient.last_name}}}.</p>
-          <p>Patient was presented with these symptoms: symptoms list </p>
-          <p>Patient was given the following tests: tests list </p>
-          <p>Patient {{{visit.patient.last_name}}} was given the diagnosis of blah blah</p>
-        </div>
-        <br />
-        {{/each}}
+        <ol>
+          {{#each visits as |visit|}}
+          <li class='row' id='previousVisitRow'>
+            <p>Date: {{{format_date visit.date_visited}}}</p>
+            <p>Patient Name: {{{visit.patient.title}}} {{{visit.patient.first_name}}} {{{visit.patient.last_name}}}
+            </p>
+            <p>Patient Date of Birth: {{{format_date visit.patient.dob}}}</p>
+            <p>Patient presented with:
+            <ul>
+              {{#each visit.visits_stdmodel as |std|}}
+              <li>{{{std.symptom}}}</li>
+              {{/each}}
+            </ul>
+            </p>
+            <p>Patient tested for:
+            <ul>
+              {{#each visit.visits_stdmodel as |std|}}
+              <li>{{{std.test}}}{{#if std.visit_symptoms.is_positive}}<span style='color: red;'> (positive)
+                </span>{{/if}}
+              </li>
+              {{/each}}
+            </ul>
+            <br />
+            <p> You assigned the patient the diagnosis of
+              {{#each visit.visits_stdmodel as |std|}}
+              {{#if std.visit_symptoms.is_positive}}<span style='font-weight: bolder; color: blue;'>
+                "{{{std.diagnosis}}}"</span>
+              {{/if}} {{/each}}. </p>
+          </li>
+          {{/each}}
+        </ol>
         {{else}}
         <h4>You don't had any visits yet!</h4>
         {{/if}}
       </div>
       <div class="card-footer"></div>
     </div>
-  </div>
-  <br />
-  <div class="row">
-    <div class="card">
-      <div class="card-header">
-        <h2>Your messages</h2>
-      </div>
-      <div class="card-body"></div>
-      <div class="card-footer"></div>
-    </div>
-  </div>
   </div>
 </section>
 
