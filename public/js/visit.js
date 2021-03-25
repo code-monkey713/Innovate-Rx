@@ -1,5 +1,8 @@
 let doctorButtons = document.querySelectorAll("#chooseDoctorButton");
 const patientID = document.querySelector('#pId').textContent;
+
+let lastVisitId;
+
 async function createNewVisit() {
   chosenDoctorId = parseInt(this.dataset.doctorid);
   document
@@ -39,7 +42,8 @@ async function getSymptoms(event) {
   const symptomsArr = Array.from(symptoms)
   const newArr = symptomsArr.map((s) => {
     if (s.checked){
-      checkedSymptomsIdArray.push(s.dataset.id)
+      s.intId = parseInt(s.dataset.id)
+      checkedSymptomsIdArray.push(s.intId)
     }
   });
   console.log(checkedSymptomsIdArray);
@@ -56,13 +60,15 @@ async function getSymptoms(event) {
     let data = await response1.json();
     let visitArr = data.visits
     let lastId = visitArr.length -1;
-    let lastVisitId = visitArr[lastId].id;
+    lastVisitId = parseInt(visitArr[lastId].id);
     console.log(lastVisitId);
   } else  {
     alert('oops')
   }
 
-  const abc = checkedSymptomsIdArray.forEach((stdModelId) => {
+  const abc = checkedSymptomsIdArray.map(async (stdModelId) => {
+    console.log(stdModelId);
+    console.log(lastVisitId);
     let response2 = await fetch(`/api/visit_symptoms`, {
       method: "POST",
       body: JSON.stringify({ 
@@ -73,12 +79,12 @@ async function getSymptoms(event) {
       },
     });
 
-    if (response.ok) {
+    if (response2.ok) {
       console.log("new VS model created");
-      console.log(response);
+      console.log(response2);
     } else {
       console.log("new VS model not created");
-      // console.log(response);
+      // console.log(response2);
     }
   })
 
