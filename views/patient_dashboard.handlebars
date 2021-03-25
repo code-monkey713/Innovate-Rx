@@ -22,25 +22,39 @@
   <div class="row">
     <div class="card">
       <div class="card-header">
-        <h2>Your Previous Visits - {{{visits.length}}}</h2>
+        <h2 style="display: inline;">Your Previous Visits - {{{visits.length}}}</h2>
+        <button type="button" class="btn btn-success" id="newVisitStartBtn" style="float: right;">Start a new virtual
+          visit</button>
       </div>
       <div class="card-body" id="previousVisitBody">
         {{#if visits.length}}
         {{#each visits as |visit|}}
         <div class="row" id="previousVisitRow">
           <p>Date: {{{format_date visit.date_visited}}} with Dr. {{{visit.doctor.last_name}}}.</p>
-          <p>You presented with these symptoms: .</p>
-          <p>You were assigned the following tests: .</p>
-          <p> Dr. {{{visit.doctor.last_name}}} gave you the diagnosis of ABC and prescribed XYZ as the treatment.</p>
+          <p>You presented with these symptoms:
+          <ul>
+            {{#each visit.visits_stdmodel as |std|}}
+            <li>{{{std.symptom}}}</li>
+            {{/each}}
+          </ul>
+          </p>
+
+          <p>You were assigned the following tests:
+          <ul>
+            {{#each visit.visits_stdmodel as |std|}}
+            <li>{{{std.test}}}{{#if std.visit_symptoms.is_positive}} (positive) {{/if}}</li>
+            {{/each}}
+          </ul>
+          <p> Based on your test results, Dr. {{{visit.doctor.last_name}}} gave you the diagnosis of
+            {{#each visit.visits_stdmodel as |std|}}
+            {{#if std.visit_symptoms.is_positive}} "{{{std.diagnosis}}}" {{/if}} {{/each}}.
+          </p>
         </div>
         <br />
         {{/each}}
         {{else}}
         <h4>You haven't had any visits yet!</h4>
         {{/if}}
-      </div>
-      <div class="card-footer">
-        <button type="button" class="btn btn-primary" id="newVisitStartBtn">Start a new virtual visit</button>
       </div>
     </div>
   </div>

@@ -4,10 +4,12 @@ const bcrypt = require('bcrypt');
 const { withPatientAuth } = require('../../utils/auth');
 
 router.post('/', withPatientAuth, async (req,res) => {
-  try {   
-    const newVisitSymptomsData = await Visit_Symptoms.create({
-    ...req.body,
-    });
+  try {
+    const newVisitSymptomsData = req.body;
+    newVisitSymptomsData.visit_id = req.body.visit_id;
+    newVisitSymptomsData.stdmodel_id = req.body.stdModelId;
+    
+    const newVisitSymptom = await Visit_Symptoms.create(newVisitSymptomsData);
 
     console.log(newVisitSymptomsData);
     res.status(200).json(newVisitSymptomsData)

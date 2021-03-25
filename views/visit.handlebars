@@ -58,81 +58,14 @@
           <form id="symptomsForm">
             <p style="padding: 5px 10px 5px 20px">Please check all the issues or symptoms you might be feeling today.
               (Select all that
-              apply).</p>
+              apply {{{stds.length}}}).</p>
             <div class="row mx-auto" style="padding: 5px 10px 5px 20px">
+              {{#each stds as |std|}}
               <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxHeadache">
-                <label class="form-check-label" for="checkbox">Headache</label>
+                <input type="checkbox" class="form-check-input" data-id="{{{std.id}}}" id="checkbox{{{std.symptom}}}">
+                <label class="form-check-label" for="checkbox">{{{std.symptom}}}</label>
               </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxBlurryVision">
-                <label class="form-check-label" for="checkbox">Blurry Vision</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxRunnyNose">
-                <label class="form-check-label" for="checkbox">Runny Nose</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxCough">
-                <label class="form-check-label" for="checkbox">Cough</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxFever">
-                <label class="form-check-label" for="checkbox">Fever</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxHighBloodPressure">
-                <label class="form-check-label" for="checkbox">High Blood Pressure</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxHighBloodSugar">
-                <label class="form-check-label" for="checkbox">High Blood Sugar</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxDizziness">
-                <label class="form-check-label" for="checkbox">Dizziness</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxVomiting">
-                <label class="form-check-label" for="checkbox">Vomiting</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxBackPain">
-                <label class="form-check-label" for="checkbox">Back Pain</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxJointPain">
-                <label class="form-check-label" for="checkbox">Joint Pain</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxAbdominalPain">
-                <label class="form-check-label" for="checkbox">Abdominal Pain</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxHeartburn">
-                <label class="form-check-label" for="checkbox">Heartburn</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxWeakness">
-                <label class="form-check-label" for="checkbox">Weakness</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxDifficultyBreathing">
-                <label class="form-check-label" for="checkbox">Difficulty Breathing</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxUrinaryIssues">
-                <label class="form-check-label" for="checkbox">Urinary Issues</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxISeeDeadPeople">
-                <label class="form-check-label" for="checkbox">I See Dead People</label>
-              </div>
-              <div class="form-check col-sm-12 col-md-3">
-                <input type="checkbox" class="form-check-input" id="checkboxOther">
-                <label class="form-check-label" for="checkbox">Other (please provide
-                  details)</label>
-              </div>
+              {{/each}}
             </div>
             <br />
             <div class="row">
