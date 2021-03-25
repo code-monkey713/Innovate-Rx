@@ -142,7 +142,7 @@ async function getSymptoms(event) {
   });
   console.log(allVisit);
 
-  if (response.ok) {
+  if (allVisit.ok) {
     alert("new visit created");
     // console.log(response);
   } else {

@@ -26,7 +26,7 @@ router.post('/', async (req, res) => {
   }
 });
 
-router.get('/doctors', async (req, res)=> {
+router.get('/', async (req, res)=> {
   try { 
     const doctorData = await Doctor.findAll({
       exclude: ['password']
