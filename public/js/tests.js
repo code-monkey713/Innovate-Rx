@@ -20,14 +20,12 @@ async function showDiagnosis(){
   });
 
   if (response1.ok){
-    console.log(response1);
     let data = await response1.json();
     let visitArr = data.visits
     let lastId = visitArr.length -1;
     lastVisitId = parseInt(visitArr[lastId].id);
-    console.log(lastVisitId);
   } else  {
-    alert('oops')
+    showErrorModal();
   }
 
   const response2 = await fetch(`/visits/${lastVisitId}`, {
@@ -40,7 +38,6 @@ async function showDiagnosis(){
   if (response2.ok){
     let data2 = await response2.json();
     const allResults = data2.visit_symptoms;
-    console.log(data2);
 
     let allTests = allResults.forEach((test) => {
       let t = document.createElement('li');
@@ -63,17 +60,21 @@ async function showDiagnosis(){
     diagnosisIntro.innerHTML += diagnosingDoctor;
     diagnosisTitle.textContent = diagnosis;
 
-
-
-
-    $('#diagnosisModal').modal('show');
   } else {
-    alert('Error')
+    showErrorModal();
   }
 };
 
-// $('#diagnosisModal').on('hidden.bs.modal', function (e) {
-//   document.location.replace('/patient_dashboard')
-// });
+showDiagnosis();
 
-showDiagnosisBtn.addEventListener('click', showDiagnosis);
+async function showErrorModal(){
+  $('#errorModal').modal('show');
+}
+async function showDiagnosisModal(){
+  $('#diagnosisModal').modal('show');
+};
+
+showDiagnosisBtn.addEventListener('click', showDiagnosisModal);
+returnToDashboardBtn.addEventListener('click', function(){
+  location.href = '/patient_dashboard'
+})

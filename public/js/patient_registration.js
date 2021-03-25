@@ -1,5 +1,9 @@
 let birthDate ;
 
+document.querySelector('#pRegisterBirthDate').addEventListener("change", function() {
+  const input = this.value;
+  birthDate = moment.utc(input).format();
+});
 
 async function registrationFailModal(){
   $('#registrationFailModal').modal('show');
@@ -9,8 +13,6 @@ async function pageReload (){
   location.reload();
 }
 
-
-// Sends Information from Registration Form to Patient Controller for Creating New Patient
 async function patientRegistrationHandler(event){
   event.preventDefault();
 
@@ -49,8 +51,3 @@ async function patientRegistrationHandler(event){
 document
 .querySelector('#registrationForm')
 .addEventListener('submit', patientRegistrationHandler);
-
-document.querySelector('#pRegisterBirthDate').addEventListener("change", function() {
-  const input = this.value;
-  birthDate = moment.utc(input).format();
-});

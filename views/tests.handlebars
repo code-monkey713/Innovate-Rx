@@ -2,7 +2,7 @@
   <div class="row" style="margin: 0px;">
     <div class="col-sm-12 mx-auto" id="patientTests" style="margin: 30px;">
       <div id="testsHeader">
-        <h2>Post Visit Summary.</h2>
+        <h2 style="text-align: center;">After Visit Summary.</h2>
       </div>
     </div>
   </div>
@@ -13,7 +13,7 @@
     <div class="col-sm-12" id="testsHeader">
       <div class="card" id="testsCard">
         <div class="card-title">
-          <h2 style="text-align: center;">Here is your post visit summary.</h2>
+          <h3 style="text-align: center;">Visit complete!</h3>
           <p id="pId" style="display: none;">{{{id}}}</p>
         </div>
         <div class="card-body">
@@ -49,9 +49,7 @@
           <p id="diagnosisIntro">Based on the test results above, the following diagnosis has been assigned by Dr. </p>
           <br/>
           <h2 style="text-align: center; font-weight: bolder; color: blue;" id="diagnosisTitle"></h2>
-          <br/>
-          <p>Please press the Close button below to return to your dashboard.</p>
-        </div>
+       </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal"
             id="diagnosisModalCloseBtn">Close</button>
@@ -60,27 +58,16 @@
     </div>
   </div>
 
-  <!-- Modal for post-test instructions -->
-  <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsModalTitle"
+  <!-- Error Modal -->
+  <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle"
     aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="instructionsModalTitle">Thank you!</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <h5 class="modal-title" id="errorModalTitle">An unknown error occurred. Please close this notification and refresh the page.</h5>
+          <button type="button" class="close" id="errorModalCloseBtn" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-        </div>
-        <div class="modal-body">
-          <p>Thank you for taking the tests. The results will now be sent to your doctor, who will analyze
-            them and assign a diagnosis, along with a treatment recommendation.</p>
-          <br />
-          <p>You will receive an email when your diagnosis and treatment recommendation are available.
-            Please sign in then to view them.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal"
-            id="instructionsModalClose">Close</button>
         </div>
       </div>
     </div>
