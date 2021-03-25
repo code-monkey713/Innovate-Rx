@@ -33,7 +33,13 @@ router.get('/doctors', async (req, res) => {
     const doctorsData = await Doctor.findAll({
       include: [{
         model: Visit,
-      },{
+        include: {
+          model: STDmodel,
+          through: Visit_Symptoms,
+          as: 'visits_stdmodel',
+        }
+      },
+      {
         model: Patient,
         through: Visit,
         as: 'doctors_patient'
@@ -157,6 +163,17 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
       include: [
         { 
           model: Visit,
+          include: [
+            {
+              model: Patient,
+              attributes: ['first_name', 'last_name']
+            },
+            {
+              model: STDmodel,
+              through: Visit_Symptoms,
+              as: 'visits_stdmodel',
+            }
+          ]
         }],
     });
 
