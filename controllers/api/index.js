@@ -10,6 +10,7 @@ const diagnosisRoutes = require('./diagnosis_routes');
 const chatRoutes = require('./chat_routes');
 const feedbackRoutes = require('./feedback_routes');
 const specialtyRoutes = require('./specialty_routes');
+const visitSymptomsRoutes = require ('./visit_symptoms_routes')
 
 
 router.use('/patients', patientRoutes);
@@ -22,5 +23,6 @@ router.use('/diagnosis', diagnosisRoutes);
 router.use('/chats', chatRoutes);
 router.use('/feedback', feedbackRoutes);
 router.use('/specialty', specialtyRoutes);
+router.use('/visit_symptoms', visitSymptomsRoutes);
 
 module.exports = router;

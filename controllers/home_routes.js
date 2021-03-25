@@ -133,6 +133,10 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
             {
               model: Doctor,
               attributes: ['last_name']
+            },{
+              model: STDmodel,
+              through: Visit_Symptoms,
+              as: 'visits_stdmodel',
             }
           ]
         }],
@@ -204,6 +208,12 @@ router.get('/visit', withPatientAuth, async (req, res) => {
 
     const patient = patientData.get({ plain: true });
 
+    const stdData = await STDmodel.findAll();
+    const stds = stdData.map((std) => {
+      const newSTD = std.get({ plain: true });
+      return newSTD;
+    });
+    console.log(stds)
 
     const doctorData = await Doctor.findAll();
     const doctors = doctorData.map((doc) => {
@@ -216,6 +226,7 @@ router.get('/visit', withPatientAuth, async (req, res) => {
       ...patient,
       loggedIn: true,
       doctors,
+      stds,
     });
   } catch (err) {
     res.status(500).json(err);
@@ -225,12 +236,25 @@ router.get('/visit', withPatientAuth, async (req, res) => {
 
 router.get('/stdmodels/:id', async (req, res) => {
   try {
-    const patientData = await STDmodel.findByPk(req.body.id);
+    const stdData = await STDmodel.findByPk(req.body.id);
+
+    res.status(200).json(stdData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
+
+router.get('/patients/:id', async (req, res) => {
+  try{
+    console.log(req.params.id)
+    const patientData = await Patient.findByPk(req.params.id,{
+      include: { model: Visit },
+    });
 
     res.status(200).json(patientData);
   } catch (err) {
     res.status(500).json(err);
   }
-});
+})
 
 module.exports = router;
