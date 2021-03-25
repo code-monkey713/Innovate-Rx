@@ -42,12 +42,14 @@
           <p>You were assigned the following tests:
           <ul>
             {{#each visit.visits_stdmodel as |std|}}
-            <li>{{{std.test}}}{{#if std.visit_symptoms.is_positive}} (positive) {{/if}}</li>
+            <li>{{{std.test}}}{{#if std.visit_symptoms.is_positive}} <span style='color: red;'>(positive) </span>{{/if}}
+            </li>
             {{/each}}
           </ul>
           <p> Based on your test results, Dr. {{{visit.doctor.last_name}}} gave you the diagnosis of
             {{#each visit.visits_stdmodel as |std|}}
-            {{#if std.visit_symptoms.is_positive}} "{{{std.diagnosis}}}" {{/if}} {{/each}}.
+            {{#if std.visit_symptoms.is_positive}} <span
+              style='font-weight: bolder; color: blue;'>"{{{std.diagnosis}}}"</span> {{/if}} {{/each}}.
           </p>
         </div>
         <br />
@@ -60,4 +62,4 @@
   </div>
 </section>
 
-<script src="../js/patient_dashboard.js"></script>
+<script src="../js/doctor_dashboard.js"></script>

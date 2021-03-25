@@ -178,21 +178,16 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
   try {
     const doctorData = await Doctor.findByPk(req.session.user_id, {
       attributes: {exclude: ['password'] },
-      include: [
-        { 
-          model: Visit,
-          include: [
-            {
-              model: Patient,
-              attributes: ['first_name', 'last_name']
-            },
-            // {
-            //   model: STDmodel,
-            //   through: Visit_Symptoms,
-            //   as: 'visits_stdmodel',
-            // }
-          ]
-        }],
+      include: [{
+        model: Visit,
+          include: [{
+            model: STDmodel,
+            through: Visit_Symptoms,
+            as: 'visits_stdmodel',
+          },{
+            model: Patient,
+          }]
+      }]
     });
 
     const doctor = doctorData.get({ plain: true });
