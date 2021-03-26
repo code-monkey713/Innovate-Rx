@@ -10,7 +10,10 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // import FileUploadWithPreview from "file-upload-with-preview";
 // const upload = new FileUploadWithPreview("myUniqueUploadId");
 // import "file-upload-with-preview/dist/file-upload-with-preview.min.css";
-const aws = require('aws-sdk');
+// const aws = require('aws-sdk');
+const path = require('path');
+const uuid = require('uuid').v1;
+
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -38,10 +41,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
-aws.config.region = process.env.AWSRegion;
-const S3_BUCKET = process.env.S3_BUCKET;
-
-
+// aws.config.region = process.env.AWSRegion;
+// const S3_BUCKET = process.env.S3_BUCKET;
 
 app.use(routes);
 

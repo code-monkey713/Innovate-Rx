@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty } = require('../../models');
+const { Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel } = require('../../models');
 const bcrypt = require('bcrypt');
 const withPatientAuth = require('../../utils/auth');
 
@@ -36,29 +36,25 @@ router.post('/patient_login', async (req, res) => {
         .json({ message: 'Login failed. Please try again!' });
       return;
     }
-    // const validPassword = await bcrypt.compareSync(
-    //   req.body.password,
-    //   patientData.password
-    // );
+    
+    const validPassword = await bcrypt.compareSync(
+      req.body.password,
+      patientData.password
+    );
 
-    if (!req.body.password === patientData.password){
+    if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Invalid credentials. Please try again!' });
       return;
     }
-
-    // if (!validPassword) {
-    //   res
-    //     .status(400)
-    //     .json({ message: 'Invalid credentials. Please try again!' });
-    //   return;
-    // }
     
       req.session.save(() => {
         req.session.isDoctor = false;
         req.session.user_id = patientData.id;
         req.session.loggedIn = true;
+
+        console.log(req.session)
 
         res.status(200).json({ patient: patientData, message: 'You are now logged in!' });
       });
@@ -68,13 +64,16 @@ router.post('/patient_login', async (req, res) => {
 });
 
 router.post('/patient_logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).json(err);
-  }
+  try {
+    if (req.session.loggedIn ) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+  
+    }catch (err) {
+      res.status(404).json(err);
+    };
 });
 
 

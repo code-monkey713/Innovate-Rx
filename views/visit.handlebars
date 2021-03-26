@@ -1,7 +1,7 @@
 <section class="container mx-auto" id="chooseDoctorContainer">
   <div class="row">
     <div class="col-sm-12" id="chooseHeader">
-      <h2 style="text-align: center;">Meet our Team!</h2>
+      <h1 style="text-align: center; margin: 15px">Meet our Team!</h1>
     </div>
   </div>
   <br />
@@ -26,7 +26,7 @@
         </div>
       </div>
       <div class="card-footer mx-auto">
-        <button type="button" id="chooseDoctorButton" data-doctorId="{{{id}}}">Choose this
+        <button class="btn btn-primary" type="button" id="chooseDoctorButton" data-doctorId="{{{id}}}">Choose this
           doctor!</button>
       </div>
     </div>
@@ -38,8 +38,8 @@
 <section class="container mx-auto" id="visitContainer" style="display: none;">
   <div class="row">
     <div class="col-sm-12">
-      <h2 style="text-align: center;" id="visitFormTitle">Welcome to your online visit.
-      </h2>
+      <h1 style="text-align: center; margin: 15px" id="visitFormTitle">Welcome to your online visit.
+      </h1>
     </div>
   </div>
   <br />
@@ -48,8 +48,8 @@
       <div class="row">
         <div class="col-sm-12">
           <p id="pId" style="display: none;">{{{id}}}</p>
-          <h4 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in
-            today?</h4>
+          <h3 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in
+            today?</h3>
         </div>
       </div>
       <br />
@@ -58,7 +58,7 @@
           <form id="symptomsForm">
             <p style="padding: 5px 10px 5px 20px">Please check all the issues or symptoms you might be feeling today.
               (Select all that
-              apply {{{stds.length}}}).</p>
+              apply.)</p>
             <div class="row mx-auto" style="padding: 5px 10px 5px 20px">
               {{#each stds as |std|}}
               <div class="form-check col-sm-12 col-md-3">
@@ -97,12 +97,15 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>Based on your symptoms, your doctor has prescribed some tests for you. Please review the
-            tests and provide
-            your consent.</p>
+          <p>Based on your symptoms, your doctor has prescribed the following tests for you.</p>
+          <ul id="assignedTestsList">
+
+          </ul>
+          <p>Click 'Accept' to perform these tests. You will be redirected to your dashboard.</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            id="visitCompleteModalCloseBtn">Accept</button>
         </div>
       </div>
     </div>
@@ -120,9 +123,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p>The visit did not get recorded successfully. Please start a new visit from your dashboard. We
-            apologize for
-            the inconvenience.</p>
+          <p>You did not select at least one option. Please select one or more to continue.</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

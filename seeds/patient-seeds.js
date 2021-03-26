@@ -7,7 +7,7 @@ const patientData = [
     last_name: "Wick",
     dob: "9-1-1964",
     email: "jwick@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
   },
   {
     title: "Mr",
@@ -15,7 +15,7 @@ const patientData = [
     last_name: "Bourne",
     dob: "9-12-1970",
     email: "jbourne@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
   },
   {
     title: "Mr",
@@ -23,7 +23,7 @@ const patientData = [
     last_name: "Chan",
     dob: "4-7-1954",
     email: "jchan@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
   },
   {
     title: "Mr",
@@ -31,7 +31,7 @@ const patientData = [
     last_name: "Freeman",
     dob: "6-1-1937",
     email: "mfreeman@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
   },
   {
     title: "Ms",
@@ -39,7 +39,7 @@ const patientData = [
     last_name: "Grey",
     dob: "9-1-1963",
     email: "jgrey@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
   },
 ];
 

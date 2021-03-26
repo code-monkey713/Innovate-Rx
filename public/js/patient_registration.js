@@ -50,8 +50,3 @@ async function patientRegistrationHandler(event){
 document
 .querySelector('#registrationForm')
 .addEventListener('submit', patientRegistrationHandler);
-
-document.querySelector('#pRegisterBirthDate').addEventListener("change", function() {
-  const input = this.value;
-  birthDate = moment.utc(input).format();
-});

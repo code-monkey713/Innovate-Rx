@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Doctor, Visit, Symptom, Diagnosis, Test, Treatment} = require('../../models');
+const { Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel} = require('../../models');
 const bcrypt = require('bcrypt');
 const withDoctorAuth = require('../../utils/auth');
 
@@ -43,8 +43,6 @@ router.post('/doctor_login', async (req, res) => {
 
     console.log(req.body);
     const doctorData = await Doctor.findOne({ where: { email: req.body.dLoginEmail } });
-
-    console.log(doctorData);
     
     if (!doctorData) {
       res
@@ -53,7 +51,11 @@ router.post('/doctor_login', async (req, res) => {
       return;
     }
 
-    if (!req.body.dLoginPassword === doctorData.password){
+    const validPassword = await bcrypt.compareSync(
+      req.body.dLoginPassword,
+      doctorData.password
+    );
+    if (!validPassword) {
       res
         .status(400)
         .json({ message: 'Invalid credentials. Please try again!' });
@@ -65,6 +67,8 @@ router.post('/doctor_login', async (req, res) => {
         req.session.user_id = doctorData.id;
         req.session.loggedIn = true;
 
+        console.log(req.session)
+
         res.status(200).json({ doctor: doctorData, message: 'Doctor, You are now logged in!' });
       });
     } catch (err) {
@@ -73,13 +77,16 @@ router.post('/doctor_login', async (req, res) => {
 });
 
 router.post('/doctor_logout', (req, res) => {
-  if (req.session.doctor.loggedIn) {
+  try {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });
-  } else {
-    res.status(404).json(err);
   }
+
+  }catch (err) {
+    res.status(404).json(err);
+  };
 });
 
 module.exports = router;

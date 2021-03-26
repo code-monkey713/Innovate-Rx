@@ -6,7 +6,7 @@ const doctorData = [
     first_name: "Hannibal",
     last_name: "Lecter",
     email: "hlecter@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
     image: "../images/lecter.jpeg",
   }, 
   {
@@ -14,15 +14,15 @@ const doctorData = [
     first_name: "Steven",
     last_name: "Strange",
     email: "sstrange@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
     image: "../images/strange.png",
   }, 
   {
-    intro: "A double board certified specialist in infectious disease and neurology, Dr. House's diagnostic skills are only matched by his wit and bedside manner.",
+    intro: "A double board certified specialist in infectious disease and nephrology, Dr. House's diagnostic skills are only matched by his wit and bedside manner.",
     first_name: "Greg",
     last_name: "House",
     email: "ghouse@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
     image: "../images/house.png",
   }, 
   {
@@ -30,7 +30,7 @@ const doctorData = [
     first_name: "Charles",
     last_name: "Xavier",
     email: "cxavier@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
     image: "../images/Xavier.png",
   }, 
   {
@@ -38,7 +38,7 @@ const doctorData = [
     first_name: "Douglas",
     last_name: "Evil",
     email: "devil@email.com",
-    password: "password1",
+    password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
     image: "../images/evil.png",
   }, 
 ];
