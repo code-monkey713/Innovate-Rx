@@ -1,5 +1,5 @@
 let birthDate ;
-
+let upload = new FileUploadWithPreview("myUniqueUploadId");
 
 async function registrationFailModal(){
   $('#registrationFailModal').modal('show');
@@ -8,6 +8,7 @@ async function registrationFailModal(){
 async function pageReload (){
   location.reload();
 }
+
 
 
 // Sends Information from Registration Form to Patient Controller for Creating New Patient

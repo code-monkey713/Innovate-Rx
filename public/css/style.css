@@ -202,3 +202,8 @@ footer {
   opacity: 0;
   animation: fadeIn 3s ease-in forwards;
 }
+
+.custom-file-container {
+  max-width: 400px;
+  margin: 0 auto;
+}
