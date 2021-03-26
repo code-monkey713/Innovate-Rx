@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty } = require('../../models');
+const { Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel } = require('../../models');
 const bcrypt = require('bcrypt');
 const withPatientAuth = require('../../utils/auth');
 
@@ -54,6 +54,8 @@ router.post('/patient_login', async (req, res) => {
         req.session.user_id = patientData.id;
         req.session.loggedIn = true;
 
+        console.log(req.session)
+
         res.status(200).json({ patient: patientData, message: 'You are now logged in!' });
       });
     } catch (err) {
@@ -62,13 +64,16 @@ router.post('/patient_login', async (req, res) => {
 });
 
 router.post('/patient_logout', (req, res) => {
-  if (req.session.loggedIn) {
-    req.session.destroy(() => {
-      res.status(204).end();
-    });
-  } else {
-    res.status(404).json(err);
-  }
+  try {
+    if (req.session.loggedIn) {
+      req.session.destroy(() => {
+        res.status(204).end();
+      });
+    }
+  
+    }catch (err) {
+      res.status(404).json(err);
+    };
 });
 
 

@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Symptoms } = require('../../models');
+const { PDoctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel } = require('../../models');
 const bcrypt = require('bcrypt');
 const { withPatientAuth } = require('../../utils/auth');
 

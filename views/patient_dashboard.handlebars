@@ -51,6 +51,14 @@
             {{#if std.visit_symptoms.is_positive}} <span
               style='font-weight: bolder; color: blue;'>"{{{std.diagnosis}}}"</span> {{/if}} {{/each}}.
           </p>
+          <br />
+          {{#if visit.treatment}}
+          <p>Dr. {{{visit.doctor.last_name}}}'s recommended treatment for this diagnosis was <span
+              style='font-weight: bolder; color: green;'>{{{visit.treatment}}}</span>.</p>
+          {{else}}
+          <p>No treatment assigned yet. Please wait for Dr. {{{visit.doctor.last_name}}} to analyze your results and
+            diagnosis, and make a recommendation.</p>
+          {{/if}}
         </div>
         <br />
         {{/each}}
@@ -62,4 +70,4 @@
   </div>
 </section>
 
-<script src="../js/doctor_dashboard.js"></script>
+<script src="../js/patient_dashboard.js"></script>

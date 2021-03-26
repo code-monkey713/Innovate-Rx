@@ -1,15 +1,6 @@
 const router = require("express").Router();
 const {
-  Patient,
-  Doctor,
-  Visit,
-  Symptom,
-  Diagnosis,
-  Test,
-  Treatment,
-  Feedback,
-  Chat,
-  Specialty,
+  Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel
 } = require("../../models");
 const bcrypt = require("bcrypt");
 const { withPatientAuth } = require("../../utils/auth");
@@ -33,14 +24,30 @@ router.post("/", withPatientAuth, async (req, res) => {
       patient_id: req.session.user_id,
     });
 
-    // console.log(`New Visit: ${res}`);
     res.status(200).json(newVisitData);
   } catch (err) {
     res.status(500).json(err);
-    // console.log(err)
   }
 });
 
-// router.post('')
+router.put('/:id', async (req,res) => {
+  try {
+      const editVisit = await Visit.update(req.body, {
+          where: {
+              id: req.params.id,
+          },
+      });
+
+      if(!editVisit){
+          res.status(404).json('No Visit found')
+      }
+
+      res.status(200).json(editVisit);
+      console.log(editVisit)
+  } catch (err) {
+      res.status(500).json(err);
+      console.log(err)
+  }
+})
 
 module.exports = router;
