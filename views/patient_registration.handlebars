@@ -78,7 +78,7 @@
 
 </section>
 
-  <div>
+  {{!-- <div>
     <div>
       <h4>You may upload your profile image below!</h4>
     </div>
@@ -97,6 +97,16 @@
       </label>
       <div class="custom-file-container__image-preview"></div>
     </div>
+  </div> --}}
+
+  <div>
+    
+  
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input type="file" name="avatar" multiple />
+      <button>Submit</button>
+    </form>
+    <h4>File Upload Here</h4>
   </div>
 
 <script src="../js/patient_registration.js"></script>
