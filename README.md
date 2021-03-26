@@ -60,20 +60,21 @@ Side effects include; none! That's right, 'humerus' therapy has not been proven 
 
 ### Application-Description
 
-This application simulates a basic EMR (Electronic Medical Records) system for a small scale medical practice. In this case, the application serves as a website for a non-traditional (read 'Innovative'!) treatment practice where the doctors specialize in what they call 'humor'.
+This application simulates an Online Medical Visit Simulator for a small medical practice. In this case, the application serves as a website for a non-traditional (read 'Innovative'!) treatment practice where the doctors specialize in their own brand of innovative treatments.
 
 ### Features
 
 Our web application works with the following steps:
 
 - Sign-Up and Log-In for patients
-- Safely store private medical information
-- Choose a doctor from a list
+- Hashed password storage for security
 - Request an appointment
+- Choose a doctor from a list
 - Accept the prescribed tests
 - Look up test results
-- Look up prescribed treatments
-- Give feedback on the treatment and request new ones if not satisfied with current one
+- Doctor logs in to review test results and preliminary diagnosis
+- Doctor prescribes treatment (based on their character and personality)
+- Look up your prescribed treatments
 
 ### Relational-Database-Diagram
 
@@ -101,7 +102,14 @@ This application is hosted under the MIT license.
 
 ### Future-Development
 
-We aim to build a larger database with more doctors, tests and treatment responses. We also plan on hosting relevant and similarly themed articles in a new 'readables' resource section for our patients.
+We aim to add the following features for the app in the future:
+
+- Build a larger database with more doctors, tests and treatment responses
+- Hosting relevant and similarly themed articles in a new 'readables' resource section
+- Give feedback on the treatment
+- Request new treatment
+- Give feedback on the doctors and treatments
+- Use a private messageboard-style chat to communicate directly with your doctors
 
 ### Contact
 
@@ -113,4 +121,4 @@ You can contact us through the following sources:
 
 ### Conclusion
 
-We hope that our unconventional take on an Electronic Medical Record system for a small scale medical practice was both enjoyable and informative.
+We hope that our unconventional take on an Online Medical Visit Simulator for a small medical practice was both enjoyable and informative. We look forward to your feedback! Cheers!
