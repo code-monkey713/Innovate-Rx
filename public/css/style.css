@@ -3,18 +3,26 @@ html * {
   font-family: "Merriweather", serif;
 }
 
+body {
+  background-color: whitesmoke;
+}
+
 #logo {
   height: 150px;
   width: 200px;
 }
 
 .nav-link,
-.dropdown--item {
+.dropdown-item {
   font-size: large;
 }
 
 .nav-link {
   margin: 20px;
+}
+
+.dropdown-item:hover {
+  background-color: rgb(50, 49, 49);
 }
 
 #patientLogoutBtn,
@@ -23,7 +31,7 @@ html * {
 }
 
 .container {
-  box-shadow: 2px 2px 4px #767676;
+  box-shadow: 2px 2px 4px 2px #767676;
   margin-bottom: 50px;
 }
 .carousel {
@@ -35,7 +43,7 @@ html * {
 #registrationWelcome,
 #patientLoginWelcome,
 #doctorLoginWelcome {
-  background-color: #cddddd;
+  background-color: whitesmoke;
 }
 
 .navbar {
@@ -55,12 +63,11 @@ html * {
 
 .card {
   width: 100%;
-  background-color: #cddddd;
+  background-color: whitesmoke;
   border: 0px;
 }
 
 #portalContainer {
-  background-color: #cddddd;
   margin: 30px;
   padding: 20px;
 }
@@ -87,14 +94,13 @@ html * {
 }
 
 .container {
-  background-color: lightgrey;
   padding: 20px;
   margin: 30px;
 }
 
-#patientInfoBody {
-  height: 200px;
-  overflow-y: auto;
+#patientVisitContainer .card .card-body li {
+  /* border: 1px solid grey; */
+  padding: 10px;
 }
 
 #previousVisitBody {

@@ -65,7 +65,7 @@ router.post('/patient_login', async (req, res) => {
 
 router.post('/patient_logout', (req, res) => {
   try {
-    if (req.session.loggedIn) {
+    if (req.session.loggedIn ) {
       req.session.destroy(() => {
         res.status(204).end();
       });

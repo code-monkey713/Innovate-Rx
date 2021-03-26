@@ -15,7 +15,7 @@ async function pageReload (){
   const dLoginPassword = document.querySelector('#dLoginPassword').value;
 
   if (dLoginEmail && dLoginPassword){
-    const response = await fetch(`/api/doctors/doctor_login`, { //placeholder route//
+    const response = await fetch(`/api/doctors/doctor_login`, {
         method: 'POST',
         body: JSON.stringify({
         dLoginEmail,

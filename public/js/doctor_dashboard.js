@@ -1,4 +1,4 @@
-const treatmentButton = document.querySelector('#assignTreatmentButton');
+const treatmentButtons = document.querySelectorAll('#assignTreatmentButton');
 const saveTreatmentButton = document.querySelector('#saveAssignedTreatmentBtn');
 const treatmentSelect = document.querySelector('#treatmentSelect');
 
@@ -6,7 +6,7 @@ let visit_id;
 let treatment_id;
 
 async function assignTreatment (){
-  $('#assignModal').modal('show');
+  $(`#assignModal${this.dataset.id}`).modal('show');
   console.log(this.dataset.id)
 };
 
@@ -37,8 +37,12 @@ async function saveTreatment (){
 
 };
 
-if (treatmentButton){
-treatmentButton.addEventListener('click', assignTreatment);
+if (treatmentButtons){
+  let x = treatmentButtons.forEach((treatmentButton)=>{
+    console.log(treatmentButton.dataset.id)
+    treatmentButton.addEventListener('click', assignTreatment);
+  })
+
 };
 
 

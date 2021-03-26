@@ -195,6 +195,10 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
               model: STDmodel,
               through: Visit_Symptoms,
               as: 'visits_stdmodel',
+            },{
+              model: Treatment,
+              through: Visit_Treatment,
+              as: 'visit_treatment'
             }
           ]
         }],
@@ -204,7 +208,8 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
 
     res.render('patient_dashboard', {
       ...patient, 
-      loggedIn: true 
+      loggedIn: req.session.loggedIn,
+      isDoctor: req.session.isDoctor 
     });
   } catch (err) {
     res.status(500).json(err);
@@ -244,7 +249,8 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
 
     res.render('doctor_dashboard', {
       ...doctor, 
-      loggedIn: true 
+      loggedIn: req.session.loggedIn,
+      isDoctor: req.session.isDoctor 
     });
   } catch (err) {
     res.status(500).json(err);

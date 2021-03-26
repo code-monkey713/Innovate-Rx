@@ -5,5 +5,6 @@ module.exports = {
 }),
   is_true: ((value) => {
     return value !== false;
+    // return value ;
   })
 };

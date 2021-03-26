@@ -56,7 +56,7 @@
             <a class="nav-link" href="/home">Home</a>
           </li>
           {{#if loggedIn}}
-          {{#if (is_true isDoctor)}}
+          {{#if isDoctor}}
           <li class="nav-item">
             <a class="nav-link" href="/doctor_dashboard">Doctor Dashboard</a>
           </li>
@@ -132,8 +132,6 @@
       integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
       crossorigin="anonymous"></script>
     <script src="../../js/script.js"></script>
-
-
     <script src="../../js/patient_logout.js"></script>
     <script src="../../js/doctor_logout.js"></script>
 

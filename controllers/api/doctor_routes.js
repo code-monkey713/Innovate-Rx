@@ -55,7 +55,6 @@ router.post('/doctor_login', async (req, res) => {
       req.body.dLoginPassword,
       doctorData.password
     );
-
     if (!validPassword) {
       res
         .status(400)
@@ -79,7 +78,7 @@ router.post('/doctor_login', async (req, res) => {
 
 router.post('/doctor_logout', (req, res) => {
   try {
-  if (req.session.loggedIn && req.session.isDoctor) {
+  if (req.session.loggedIn) {
     req.session.destroy(() => {
       res.status(204).end();
     });

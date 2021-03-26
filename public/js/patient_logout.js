@@ -1,7 +1,6 @@
 const patientLogoutButton = document.querySelector('#patientLogoutBtn')
 
 async function logoutHandler () {
-  alert('trying to log out')
   const response = await fetch('/api/patients/patient_logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -13,6 +12,10 @@ async function logoutHandler () {
     logoutFailModalLaunch();
   }
 };
+
+async function logoutFailModalLaunch (){
+  $('#myModal').modal('show');
+  }
 
 if (patientLogoutButton){
 patientLogoutButton.addEventListener('click', logoutHandler);

@@ -9,11 +9,13 @@ async function logoutHandler () {
   if (response.ok) {
       document.location.replace('/home');
   } else {
-    console.log(response)
     logoutFailModalLaunch();
   }
 };
 
+async function logoutFailModalLaunch (){
+  $('#myModal').modal('show');
+  }
 
 if(doctorLogoutButton){
   doctorLogoutButton.addEventListener('click', logoutHandler);
