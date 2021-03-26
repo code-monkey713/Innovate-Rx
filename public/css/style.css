@@ -143,9 +143,6 @@ body {
   margin: 15px;
 }
 
-#doctorDashboardInfo {
-}
-
 footer {
   position: fixed;
   width: 100%;
@@ -196,14 +193,6 @@ footer {
   font-size: 30px;
 }
 
-#splashSubtitle {
-  /* line-height: 50vh; */
-}
-
-#splashText {
-  /* line-height: 50vh; */
-}
-
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -219,4 +208,9 @@ footer {
 .fade-in3 {
   opacity: 0;
   animation: fadeIn 3s ease-in forwards;
+}
+
+.custom-file-container {
+  max-width: 400px;
+  margin: 0 auto;
 }

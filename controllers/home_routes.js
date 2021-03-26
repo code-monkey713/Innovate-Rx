@@ -353,28 +353,30 @@ router.get('/patients/:id', async (req, res) => {
   }
 })
 
-router.get('/visits/:id', async (req, res) => {
-  try{
-    console.log(req.params.id)
-    const visitData = await Visit.findByPk(req.params.id,{
-      include: [{ 
-        model: STDmodel,
-        through: Visit_Symptoms,
-        as: 'visits_stdmodel',
-      },{
-        model: Doctor,
-      },{
-        model: Visit_Symptoms,
-        include: [{
-          model: STDmodel,
-        }]
-      }]
-    });
+router.get('/sign-s3', (req, res) => {
+  const s3 = new AWS.S3();
+  const fileName = req.query["file-name"];
+  const fileType = req.query["file-type"];
+  const s3Params = {
+    Bucket: S3_BUCKET,
+    Key: fileName,
+    Expires: 60,
+    ContentType: fileType,
+    ACL: "public-read",
+  };
 
-    res.status(200).json(visitData);
-  } catch (err) {
-    res.status(500).json(err);
-  }
-})
+  s3.getSignedUrl('putObject', s3Params, (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.end();
+    }
+    const returnData = {
+      signedRequest: data,
+      url: `https://${S3_BUCKET}.s3.amazonaws.com/${fileName}`,
+    };
+    res.write(JSON.stringify(returnData));
+    res.end();
+  });
+});
 
 module.exports = router;
