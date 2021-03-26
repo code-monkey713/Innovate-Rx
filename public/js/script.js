@@ -1,5 +1,27 @@
-const dismissSplashBtn = document.querySelector('#dismissSplashBtn');
 
+// if (homeBtn){
+//   homeBtn.addEventListener('click', homeActive);
+// }
+// if (docDashBtn){
+//   docDashBtn.addEventListener('click', docDashActive);
+// }
+// if (patDashBtn){
+//   patDashBtn.addEventListener('click', patDashActive);
+// }
+// if (parPortalBtn){
+//   parPortalBtn.addEventListener('click', patPortalActive);
+// }
+// if (docPortalBtn){  
+//   docPortalBtn.addEventListener('click', docPortalActive);
+// }
+
+
+
+
+
+
+
+// const dismissSplashBtn = document.querySelector('#dismissSplashBtn');
 
 // function makeSplash (){
 //   let splash = document.querySelector('.splash');

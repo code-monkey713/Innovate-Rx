@@ -52,31 +52,31 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
         <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" href="/home">Home</a>
+          <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
+            <a class="nav-link" id="homeBtn" href="/home">Home</a>
           </li>
           {{#if loggedIn}}
           {{#if isDoctor}}
-          <li class="nav-item">
-            <a class="nav-link" href="/doctor_dashboard">Doctor Dashboard</a>
+          <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
+            <a class="nav-link" id="doctorDashboardBtn" href="/doctor_dashboard">Doctor Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="doctorLogoutBtn">Logout</a>
           </li>
           {{else}}
           <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" href="/patient_dashboard">Patient Dashboard</a>
+            <a class="nav-link" id="patientDashboardBtn" href="/patient_dashboard">Patient Dashboard</a>
           </li>
           {{!-- <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
               <a class="nav-link" href="#">Chat</a>
             </li> --}}
-          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
+          <li class="nav-item active">
             <a class="nav-link" id="patientLogoutBtn">Logout</a>
           </li>
           {{/if}}
           {{else}}
           <li class="nav-item dropdown" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Patient Portal</a>
+            <a class="nav-link dropdown-toggle" id="patientPortalBtn" href="#" data-toggle="dropdown">Patient Portal</a>
             <div class="dropdown-menu" style="background-color: black;  padding-bottom: 0px"
               aria-labelledby="navbarDropdown">
               <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_registration">Register</a>
@@ -86,7 +86,7 @@
             </div>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/doctor_login">Doctor Portal</a>
+            <a class="nav-link" id="doctorPortalBtn" href="/doctor_login">Doctor Portal</a>
           </li>
           {{/if}}
         </ul>
