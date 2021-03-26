@@ -1,7 +1,7 @@
-const patientLogoutButton = document.querySelector('#patientLogoutBtn')
+ const doctorLogoutButton = document.querySelector('#doctorLogoutBtn')
 
 async function logoutHandler () {
-  const response = await fetch('/api/patients/patient_logout', {
+  const response = await fetch('/api/doctors/doctor_logout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
   });
@@ -17,6 +17,6 @@ async function logoutFailModalLaunch (){
   $('#myModal').modal('show');
   }
 
-if (patientLogoutButton){
-patientLogoutButton.addEventListener('click', logoutHandler);
+if(doctorLogoutButton){
+  doctorLogoutButton.addEventListener('click', logoutHandler);
 }

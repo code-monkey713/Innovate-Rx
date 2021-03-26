@@ -18,10 +18,13 @@ Treatment.init(
     description: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
+    doctor_id: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: DataTypes.NOW,
+      references: {
+        model: 'doctor',
+        key: 'id',
+      }
     },
   },
   {

@@ -20,13 +20,6 @@ async function createNewVisit() {
       "Content-Type": "application/json",
     },
   });
-
-  if (response.ok) {
-    alert("new visit created");
-    console.log(response);
-  } else {
-    alert("new visit not created");
-  }
 }
 
 async function getSymptoms(event) {
@@ -44,24 +37,26 @@ async function getSymptoms(event) {
     }
   });
   console.log(checkedSymptomsIdArray);
-  console.log(patientID);
-  const response1 = await fetch(`/patients/${patientID}`, {
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
 
-  if (response1.ok){
-    console.log(response1);
-    let data = await response1.json();
-    let visitArr = data.visits
-    let lastId = visitArr.length -1;
-    lastVisitId = parseInt(visitArr[lastId].id);
-    console.log(lastVisitId);
-  } else  {
-    alert('oops')
-  }
+      console.log(patientID);
+      const response1 = await fetch(`/patients/${patientID}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (response1.ok){
+        console.log(response1);
+        let data = await response1.json();
+        let visitArr = data.visits
+        let lastId = visitArr.length -1;
+        lastVisitId = parseInt(visitArr[lastId].id);
+        console.log(lastVisitId);
+      } else  {
+        alert('oops')
+      }
+
 
   // --------------------------------------------------------------------------------------
   // Positive Test Shuffle Logic part 1
@@ -82,72 +77,69 @@ async function getSymptoms(event) {
   let is_positive = false;
   // ---------------------------------------------------------------------------------------
 
-  const stdMaker = checkedSymptomsIdArray.map(async (stdModelId) => {
-  
-    // -------------------------------------------------------------------------
-    //  Positive Test Shuffle Logic part 2 
-    if (x === 0){
-      is_positive = true;
-      x++;
-    } else {
-      is_positive = false;
-    }
-    // -------------------------------------------------------------------------
 
-    console.log(is_positive);
-    console.log(stdModelId);
-    console.log(lastVisitId);
-    let response2 = await fetch(`/api/visit_symptoms`, {
-      method: "POST",
-      body: JSON.stringify({ 
-        stdModelId,
-        lastVisitId,
-        is_positive }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (response2.ok) {
-      console.log("new VS model created");
-    } else {
-      console.log("new VS model not created");
-    }
-  })
-
-  const response3 = await fetch(`/visits/${lastVisitId}`, {
-    method: 'GET',
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-
-  if (response3.ok){
-    let data3 = await response3.json();
-    // console.log(data3)
-    let stdArray = data3.visits_stdmodel;
-    let vsArray = data3.visit_symptoms;
-    console.log(vsArray);
-
-    let checkedSymptomArray = stdArray.map((std) => {
-      return std.symptom;
-    })
-
-    let assignedTestArray = stdArray.map((std) => {
-      return std.test;
-    })
-
-    let xyz = assignedTestArray.forEach((test) => {
-      let t = document.createElement('li');
-      t.innerHTML = test;
-      document.querySelector('#assignedTestsList').appendChild(t);
-    })
+  if (!checkedSymptomsIdArray.length){
+    launchVisitFailModal();
   } else {
-    console.log('oopsie daisy')
-  }
 
-  launchVisitCompleteModal();
-}
+    const stdMaker = checkedSymptomsIdArray.map(async (stdModelId) => {
+    
+      // -------------------------------------------------------------------------
+      //  Positive Test Shuffle Logic part 2 
+      if (x === 0){
+        is_positive = true;
+        x++;
+      } else {
+        is_positive = false;
+      }
+      // -------------------------------------------------------------------------
+
+      let response2 = await fetch(`/api/visit_symptoms`, {
+        method: "POST",
+        body: JSON.stringify({ 
+          stdModelId,
+          lastVisitId,
+          is_positive }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+    })
+
+      const response3 = await fetch(`/visits/${lastVisitId}`, {
+        method: 'GET',
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+
+      if (response3.ok){
+        let data3 = await response3.json();
+        console.log(data3)
+        let stdArray = data3.visits_stdmodel;
+        let vsArray = data3.visit_symptoms;
+        console.log(vsArray);
+
+        let checkedSymptomArray = stdArray.map((std) => {
+          return std.symptom;
+        })
+
+        let assignedTestArray = stdArray.map((std) => {
+          return std.test;
+        })
+
+        let xyz = assignedTestArray.forEach((test) => {
+          let t = document.createElement('li');
+          t.innerHTML = test;
+          document.querySelector('#assignedTestsList').appendChild(t);
+        })
+      } else {
+        console.log('oopsie daisy')
+      }
+      launchVisitCompleteModal();
+    };
+  };
 
 async function launchVisitCompleteModal() {
   $("#visitCompleteModal").modal("show");

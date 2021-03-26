@@ -18,7 +18,7 @@ const doctorData = [
     image: "../images/strange.png",
   }, 
   {
-    intro: "A double board certified specialist in infectious disease and neurology, Dr. House's diagnostic skills are only matched by his wit and bedside manner.",
+    intro: "A double board certified specialist in infectious disease and nephrology, Dr. House's diagnostic skills are only matched by his wit and bedside manner.",
     first_name: "Greg",
     last_name: "House",
     email: "ghouse@email.com",

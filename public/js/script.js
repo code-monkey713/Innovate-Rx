@@ -1,28 +1,6 @@
 const dismissSplashBtn = document.querySelector('#dismissSplashBtn');
 
 
-
-async function doctorLogoutHandler () {
-const response = await fetch('/api/doctors/logout', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-});
-
-if (response.ok) {
-    document.location.replace('/home');
-} else {
-  logoutFailModalLaunch();
-}
-};
-
-async function logoutFailModalLaunch (){
-$('#myModal').modal('show');
-}
-
-// document.querySelector('#doctorLogoutBtn').addEventListener('click', doctorLogoutHandler);
-
-
-
 // function makeSplash (){
 //   let splash = document.querySelector('.splash');
 //   setTimeout (()=>{

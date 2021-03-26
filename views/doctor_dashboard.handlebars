@@ -1,36 +1,35 @@
 <section class="container mx-auto" id="doctorDashboardContainer">
-  <div class="row" style="margin: 30px;">
+  <div class="row justify-content-center" style="margin: 30px;">
     <h1>Welcome to your dashboard, Dr. {{{last_name}}}</h1>
   </div>
-  <br />
-  <div class="row">
+</section>
+<section class="container mx-auto" id="doctorInfoContainer">
+  <div class="row justify-content-center" style="margin: 30px;">
     <div class="card">
-      <div class="card-header">
+      <div class="card-title">
         <h2>Your information</h2>
       </div>
-      <div class="card-body">
+      <div class="card-body" id="doctorInfoBody">
         <div class="row mx-auto">
           <div class="col-sm-12 col-md-4 my-auto">
             <img id="doctorDashboardImg" src="{{{image}}}" alt="doctor_pic">
           </div>
           <div class="col-sm-12 col-md-8 my-auto">
-            <div id="doctorDashboardInfo">
-              <p>Name: {{{first_name}}} {{{last_name}}}</p>
-              <p>Intro: {{{intro}}}</p>
-              <p>Join Date: {{{format_date date_created}}}</p>
-            </div>
+            <p>Name: {{{first_name}}} {{{last_name}}}</p>
+            <p>Intro: {{{intro}}}</p>
+            <p>Join Date: {{{format_date date_created}}}</p>
           </div>
         </div>
       </div>
-      <div class="card-footer"></div>
     </div>
+  </div>
   </div>
 </section>
 <br />
-<section class="container mx-auto">
-  <div class="row">
+<section class="container mx-auto" id="doctorVisitContainer">
+  <div class="row justify-content-center" style="margin: 30px;">
     <div class="card">
-      <div class="card-header">
+      <div class="card-title">
         <h2>Your Visits - {{{visits.length}}} total.</h2>
       </div>
       <div class="card-body" id="previousVisitBody">
@@ -62,17 +61,66 @@
               {{#each visit.visits_stdmodel as |std|}}
               {{#if std.visit_symptoms.is_positive}}<span style='font-weight: bolder; color: blue;'>
                 "{{{std.diagnosis}}}"</span>
-              {{/if}} {{/each}}. </p>
+              {{/if}}
+              {{/each}}.
+            </p>
+            <br />
+            {{#if visit.visit_treatment.length}}
+            <p>Your prescribed treatment for this diagnosis was <span
+                style='font-weight: bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.</p>
+            {{else}}
+            <p>No treatment assigned yet. Please assign treatment as soon as possible! <span class='btn btn-danger'
+                type='button' id='assignTreatmentButton' data-id='{{{visit.id}}}'>Assign Treatment</span> </p>
+            <div class="modal fade" id="assignModal{{visit.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="assignModalTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="assignModalTitle">Dr. {{{last_name}}}, please recommend a treatment.
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {{#each visit.visits_stdmodel as |std|}}
+                    {{#if std.visit_symptoms.is_positive}}
+                    <h4>Patient's Diagnosis: <span style='font-weight: bolder; color: blue;'>
+                        "{{{std.diagnosis}}}"</span>.</h4>
+                    {{/if}}
+                    {{/each}}
+                    <br />
+                    <p>Treatments Available: {{{../treatments.length}}}</p>
+                    <div class="input-group">
+                      <select class="custom-select" id="treatmentSelect">
+                        <option selected>Choose...</option>
+                        {{#each ../treatments as |treatment|}}
+                        <option value="{{{treatment.id}}}">{{{treatment.name}}}</option>>
+                        {{/each}}
+                      </select>
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="saveAssignedTreatmentBtn"
+                          data-dismiss="modal" data-id='{{{visit.id}}}'>Assign Treatment</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
           </li>
           {{/each}}
         </ol>
         {{else}}
-        <h4>You don't had any visits yet!</h4>
+        <div class="row justify-content-center" style="margin-top: 30px">
+          <h4>You haven't had any visits yet!</h4>
+        </div>
         {{/if}}
       </div>
-      <div class="card-footer"></div>
     </div>
   </div>
 </section>
+
+
 
 <script src="../js/doctor_dashboard.js"></script>

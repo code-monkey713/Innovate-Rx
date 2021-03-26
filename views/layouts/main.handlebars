@@ -56,24 +56,24 @@
             <a class="nav-link" href="/home">Home</a>
           </li>
           {{#if loggedIn}}
-          {{#unless isDoctor}}
-          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" href="/patient_dashboard">Dashboard</a>
-          </li>
-          {{!-- <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" href="#">Chat</a>
-          </li> --}}
-          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" id="patientLogoutBtn">Logout</a>
-          </li>
-          {{else}}
+          {{#if isDoctor}}
           <li class="nav-item">
-            <a class="nav-link" href="/doctor/doctor_dashboard">Doctor Dashboard</a>
+            <a class="nav-link" href="/doctor_dashboard">Doctor Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" id="doctorLogoutBtn">Logout</a>
           </li>
-          {{/unless}}
+          {{else}}
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
+            <a class="nav-link" href="/patient_dashboard">Patient Dashboard</a>
+          </li>
+          {{!-- <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
+              <a class="nav-link" href="#">Chat</a>
+            </li> --}}
+          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
+            <a class="nav-link" id="patientLogoutBtn">Logout</a>
+          </li>
+          {{/if}}
           {{else}}
           <li class="nav-item dropdown" style="border-right:solid 1px rgb(255, 255, 255);">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Patient Portal</a>
@@ -132,15 +132,9 @@
       integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
       crossorigin="anonymous"></script>
     <script src="../../js/script.js"></script>
-
-
-    {{#if loggedIn}}
-    {{#unless isDoctor}}
     <script src="../../js/patient_logout.js"></script>
-    {{else}}
     <script src="../../js/doctor_logout.js"></script>
-    {{/unless}}
-    {{/if}}
+
 
 
   </body>

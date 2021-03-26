@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Patient, Doctor, Visit, Symptom, Diagnosis, Test, Treatment, Feedback, Chat, Specialty, STDmodel, Visit_Symptoms } = require('../models');
+const { Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel } = require('../models');
 const { withPatientAuth, withDoctorAuth } = require('../utils/auth');
 
 
@@ -33,16 +33,23 @@ router.get('/doctors', async (req, res) => {
     const doctorsData = await Doctor.findAll({
       include: [{
         model: Visit,
-        include: {
+        include: [{
           model: STDmodel,
           through: Visit_Symptoms,
           as: 'visits_stdmodel',
-        }
+        },{
+          model: Treatment,
+          through: Visit_Treatment,
+          as: 'visit_treatment',
+        }],
       },
       {
         model: Patient,
         through: Visit,
         as: 'doctors_patient'
+      },
+      {
+        model: Treatment,
       }],
     });
     res.status(200).json(doctorsData);
@@ -63,6 +70,10 @@ router.get('/visits', async (req, res) => {
         model: STDmodel,
         through: Visit_Symptoms,
         as: 'visits_stdmodel'
+      },{
+        model: Treatment,
+        through: Visit_Treatment,
+        as: 'visit_treatment'
       }],
     });
     res.status(200).json(visitsData);
@@ -87,6 +98,23 @@ router.get('/stdmodels', async (req, res) => {
   }
 });
 
+//temporary route to get all Treatments in insomnia//
+router.get('/treatments', async (req, res) => {
+  try {
+    const patientData = await Treatment.findAll({
+      include: [{ 
+          model: Visit,
+          through: Visit_Treatment,
+          as: 'treatment_visit'
+        }],
+    });
+    res.status(200).json(patientData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+});
+
 router.get('/visit_symptoms', async (req, res) => {
   try {
     const vsData = await Visit_Symptoms.findAll({
@@ -95,6 +123,22 @@ router.get('/visit_symptoms', async (req, res) => {
         }],
     });
     res.status(200).json(vsData);
+  } catch (err) {
+    res.status(500).json(err);
+    console.log(err)
+  }
+});
+
+router.get('/visit_treatment', async (req, res) => {
+  try {
+    const vtData = await Visit_Treatment.findAll({
+      include: [{ 
+          model: Visit,
+        },{
+          model: Treatment,
+        }],
+    });
+    res.status(200).json(vtData);
   } catch (err) {
     res.status(500).json(err);
     console.log(err)
@@ -151,6 +195,10 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
               model: STDmodel,
               through: Visit_Symptoms,
               as: 'visits_stdmodel',
+            },{
+              model: Treatment,
+              through: Visit_Treatment,
+              as: 'visit_treatment'
             }
           ]
         }],
@@ -160,7 +208,8 @@ router.get('/patient_dashboard', withPatientAuth, async (req, res) => {
 
     res.render('patient_dashboard', {
       ...patient, 
-      loggedIn: true 
+      loggedIn: req.session.loggedIn,
+      isDoctor: req.session.isDoctor 
     });
   } catch (err) {
     res.status(500).json(err);
@@ -185,8 +234,14 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
             through: Visit_Symptoms,
             as: 'visits_stdmodel',
           },{
+            model: Treatment,
+            through: Visit_Treatment,
+            as: 'visit_treatment'
+          },{
             model: Patient,
           }]
+      },{
+        model: Treatment,
       }]
     });
 
@@ -194,7 +249,8 @@ router.get('/doctor_dashboard', withDoctorAuth, async (req, res) => {
 
     res.render('doctor_dashboard', {
       ...doctor, 
-      loggedIn: true 
+      loggedIn: req.session.loggedIn,
+      isDoctor: req.session.isDoctor 
     });
   } catch (err) {
     res.status(500).json(err);
