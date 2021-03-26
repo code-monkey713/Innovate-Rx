@@ -25,6 +25,11 @@ body {
   background-color: rgb(50, 49, 49);
 }
 
+.pressed {
+  color: white;
+  font-size: larger;
+}
+
 #patientLogoutBtn,
 #doctorLogoutBtn {
   cursor: pointer;
@@ -34,10 +39,18 @@ body {
   box-shadow: 2px 2px 4px 2px #767676;
   margin-bottom: 50px;
 }
-.carousel {
-  height: 500px;
-  width: 750px;
-  padding: 0px;
+
+.carousel,
+.carousel-item {
+  height: 600px;
+  width: 1100px;
+}
+
+.carousel-caption {
+  opacity: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-left: 120px;
+  margin-right: 120px;
 }
 
 #registrationWelcome,
@@ -48,17 +61,6 @@ body {
 
 .navbar {
   background-color: black;
-}
-
-#carouselIndicators {
-  margin: 20px 30px 20px 30px;
-}
-
-.carousel-caption {
-  opacity: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  margin-left: 120px;
-  margin-right: 120px;
 }
 
 .card {
