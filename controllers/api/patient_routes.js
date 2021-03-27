@@ -23,6 +23,7 @@ router.post('/', async (req, res) => {
     });
   } catch (err) {
     res.status(400).json(err);
+    console.log(err)
   }
 });
 
@@ -75,6 +76,26 @@ router.post('/patient_logout', (req, res) => {
       res.status(404).json(err);
     };
 });
+
+router.put('/:id', async (req,res) => {
+  try {
+      const editPatient = await Patient.update(req.body, {
+          where: {
+              id: req.params.id,
+          },
+      });
+
+      if(!editPatient){
+          res.status(404).json('No Patient found')
+      }
+
+      res.status(200).json(editPatient);
+      console.log(editPatient)
+  } catch (err) {
+      res.status(500).json(err);
+      console.log(err)
+  }
+})
 
 
 
