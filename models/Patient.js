@@ -41,7 +41,8 @@ Patient.init(
     },
     image: {
       type: DataTypes.STRING,
-      allowNull: true,
+      defaultValue: '../images/placeholder_image.png',
+      allowNull: false,
     },
     date_created: {
       type: DataTypes.DATE,

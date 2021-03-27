@@ -1,6 +1,10 @@
 const newVisitStartBtn = document.querySelector('#newVisitStartBtn');
-const uploadImgBtn = document.querySelector('#patientImageSubmit');
-let uploadedImg = document.querySelector('#uploadImg').value
+const submitImgBtn = document.querySelector('#patientImageUploadForm');
+
+let uploadImgBtn = document.querySelector('#uploadImg');
+let uploadedImg;
+
+
 
 async function startNewVisit(){
     location.href = '/visit'
@@ -9,9 +13,15 @@ async function startNewVisit(){
 async function uploadImg(event){
     event.preventDefault();
 
+    if (uploadImgBtn){
+        uploadedImg = uploadImgBtn.value
+    }
+
     console.log(uploadedImg);
 }
 
 newVisitStartBtn.addEventListener('click', startNewVisit)
 
-uploadImgBtn.addEventListener('submit' uploadImg)
+
+
+submitImgBtn.addEventListener('submit', uploadImg)

@@ -11,19 +11,9 @@
       </div>
       <div class="card-body" id="patientInfoBody">
         <div class="row mx-auto">
-          <div class="col-sm-12 col-md-4">
-            <div id="patientDashboardImageDiv">
-              <img class="mx-auto" id="patientDashboardImg" src="{{{image}}}" alt="patient picture (coming soon)">
-              <form id="patientImageUploadForm">
-                <div class="form-row mx-auto">
-                  <div class="form-group">
-                    <label for="pRegisterImage">Upload your image (Not Required)</label>
-                    <input type="file" class="form-control-file" id="uploadImage">
-                  </div>
-                </div><br />
-                <button type="submit" class="btn btn-primary" id="patientImageSubmit">Submit</button>
-              </form>
-            </div>
+          <div class="col-sm-12 col-md-4 my-auto">
+            <img id="patientDashboardImg" style="height: 200px; width: 175px; box-shadow: 2px 2px 2px 2px grey"
+              src="{{{image}}}" alt="patient picture (coming soon)">
           </div>
           <div class="col-sm-12 col-md-8">
             <div id="patientDashboardInfo">
