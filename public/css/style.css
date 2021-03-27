@@ -103,7 +103,7 @@ body {
 
 .container {
   padding: 20px;
-  margin: 30px;
+  margin: 40px;
 }
 
 #patientVisitContainer .card .card-body li {
@@ -147,9 +147,6 @@ body {
   width: 250px;
   box-shadow: 2px 2px 4px #767676;
   margin: 15px;
-}
-
-#doctorDashboardInfo {
 }
 
 footer {
