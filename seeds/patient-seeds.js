@@ -8,6 +8,7 @@ const patientData = [
     dob: "9-1-1964",
     email: "jwick@email.com",
     password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
+    image: "../images/placeholder_image.png",
   },
   {
     title: "Mr",
@@ -16,6 +17,7 @@ const patientData = [
     dob: "9-12-1970",
     email: "jbourne@email.com",
     password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
+    image: "../images/placeholder_image.png",
   },
   {
     title: "Mr",
@@ -24,6 +26,7 @@ const patientData = [
     dob: "4-7-1954",
     email: "jchan@email.com",
     password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
+    image: "../images/placeholder_image.png",
   },
   {
     title: "Mr",
@@ -32,6 +35,7 @@ const patientData = [
     dob: "6-1-1937",
     email: "mfreeman@email.com",
     password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
+    image: "../images/placeholder_image.png",
   },
   {
     title: "Ms",
@@ -40,6 +44,7 @@ const patientData = [
     dob: "9-1-1963",
     email: "jgrey@email.com",
     password: "$2b$10$tvzvXciQ/ia4RzL4228Ag.Bp/JEAVSD0dcdUZYPJWNhW7wzZm2VwK",
+    image: "../images/placeholder_image.png",
   },
 ];
 
