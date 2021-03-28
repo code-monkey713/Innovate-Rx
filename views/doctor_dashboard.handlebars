@@ -59,15 +59,15 @@
             <br />
             <p> You assigned the patient the diagnosis of
               {{#each visit.visits_stdmodel as |std|}}
-              {{#if std.visit_symptoms.is_positive}}<span style='font-weight: bolder; color: blue;'>
+              {{#if std.visit_symptoms.is_positive}}<span style='font-size: 20px; font-weight: bolder; color: blue;'>
                 "{{{std.diagnosis}}}"</span>
               {{/if}}
               {{/each}}.
             </p>
             <br />
             {{#if visit.visit_treatment.length}}
-            <p>Your prescribed treatment for this diagnosis was <span
-                style='font-weight: bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.</p>
+            <p>Your prescribed treatment for this diagnosis was <span style='font-size: 20px; font-weight:
+                bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.</p>
             {{else}}
             <p>No treatment assigned yet. Please assign treatment as soon as possible! <span class='btn btn-danger'
                 type='button' id='assignTreatmentButton' data-id='{{{visit.id}}}'>Assign Treatment</span> </p>

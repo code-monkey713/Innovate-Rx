@@ -26,10 +26,15 @@ async function getSymptoms(event) {
   event.preventDefault();
 
   let checkedSymptomsIdArray = [];
+  let symptomsArr = [];
+  let checkedSymptomArray = [];
+  let assignedTestArray = [];
+  let vsArray = [];
+  let stdArray = [];
 
   const symptomContainer = document.querySelector('#symptomsForm');
   const symptoms = symptomContainer.querySelectorAll('.form-check-input');
-  const symptomsArr = Array.from(symptoms)
+  symptomsArr = Array.from(symptoms)
   const newArr = symptomsArr.map((s) => {
     if (s.checked){
       s.intId = parseInt(s.dataset.id)
@@ -84,7 +89,7 @@ async function getSymptoms(event) {
 
     const stdMaker = checkedSymptomsIdArray.map(async (stdModelId) => {
     
-      // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
       //  Positive Test Shuffle Logic part 2 
       if (x === 0){
         is_positive = true;
@@ -92,7 +97,7 @@ async function getSymptoms(event) {
       } else {
         is_positive = false;
       }
-      // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
 
       let response2 = await fetch(`/api/visit_symptoms`, {
         method: "POST",
@@ -117,25 +122,25 @@ async function getSymptoms(event) {
       if (response3.ok){
         let data3 = await response3.json();
         console.log(data3)
-        let stdArray = data3.visits_stdmodel;
-        let vsArray = data3.visit_symptoms;
+        stdArray = data3.visits_stdmodel;
+        vsArray = data3.visit_symptoms;
         console.log(vsArray);
 
-        let checkedSymptomArray = stdArray.map((std) => {
+        checkedSymptomArray = stdArray.map((std) => {
           return std.symptom;
         })
 
-        let assignedTestArray = stdArray.map((std) => {
+        assignedTestArray = stdArray.map((std) => {
           return std.test;
         })
 
-        let xyz = assignedTestArray.forEach((test) => {
+        let xyz = assignedTestArray.forEach(async (test) => {
           let t = document.createElement('li');
           t.innerHTML = test;
           document.querySelector('#assignedTestsList').appendChild(t);
         })
       } else {
-        console.log('oopsie daisy')
+        console.log('Response from Visit/id search not ok.')
       }
       launchVisitCompleteModal();
     };
@@ -143,6 +148,9 @@ async function getSymptoms(event) {
 
 async function launchVisitCompleteModal() {
   $("#visitCompleteModal").modal("show");
+  $('#visitCompleteModal').on('hidden.bs.modal', function (e) {
+    location.href = '/tests';
+})
 }
 
 async function redirectToPatientDashboard(){
