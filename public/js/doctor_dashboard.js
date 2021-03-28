@@ -7,7 +7,6 @@ let treatment_id;
 
 async function assignTreatment (){
   $(`#assignModal${this.dataset.id}`).modal('show');
-  console.log(this.dataset.id)
 };
 
 async function saveTreatment (){
@@ -26,19 +25,17 @@ async function saveTreatment (){
     },
   });
 
-  console.log(response);
 
   if (response.ok) {
       document.location.reload();
   } else {
-    alert('error')
-    console.log(response)
+    alert('Error saving treatment. Please try again.')
   }
 
 };
 
 if (treatmentButtons){
-  let x = treatmentButtons.forEach((treatmentButton)=>{
+  let x = treatmentButtons.forEach( async (treatmentButton)=>{
     console.log(treatmentButton.dataset.id)
     treatmentButton.addEventListener('click', assignTreatment);
   })
