@@ -351,7 +351,30 @@ router.get('/patients/:id', async (req, res) => {
   } catch (err) {
     res.status(500).json(err);
   }
-})
+});
+
+router.get('/visits/:id', async (req, res) => {
+  try{
+    console.log(req.params.id)
+    const visitData = await Visit.findByPk(req.params.id,{
+      include: [{ 
+        model: STDmodel,
+        through: Visit_Symptoms,
+        as: 'visits_stdmodel',
+      },{
+        model: Doctor,
+      },{
+        model: Visit_Symptoms,
+        include: [{
+          model: STDmodel,
+        }]
+      }]
+    });
+    res.status(200).json(visitData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 router.get('/sign-s3', (req, res) => {
   const s3 = new AWS.S3();
