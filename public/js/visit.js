@@ -13,7 +13,7 @@ async function createNewVisit() {
 
   const doctor_id = chosenDoctorId;
 
-  const response = fetch(`/api/visits`, {
+  const response = await fetch(`/api/visits`, {
     method: "POST",
     body: JSON.stringify({ doctor_id }),
     headers: {
@@ -26,10 +26,17 @@ async function getSymptoms(event) {
   event.preventDefault();
 
   let checkedSymptomsIdArray = [];
+  let symptomsArr = [];
+  let checkedSymptomArray = [];
+  let assignedTestArray = [];
+  let vsArray = [];
+  let stdArray = [];
+
 
   const symptomContainer = document.querySelector("#symptomsForm");
   const symptoms = symptomContainer.querySelectorAll(".form-check-input");
-  const symptomsArr = Array.from(symptoms);
+  symptomsArr = Array.from(symptoms)
+
   const newArr = symptomsArr.map((s) => {
     if (s.checked) {
       s.intId = parseInt(s.dataset.id);
@@ -81,6 +88,7 @@ async function getSymptoms(event) {
     launchVisitFailModal();
   } else {
     const stdMaker = checkedSymptomsIdArray.map(async (stdModelId) => {
+
       // -------------------------------------------------------------------------
       //  Positive Test Shuffle Logic part 2
       if (x === 0) {
@@ -89,7 +97,7 @@ async function getSymptoms(event) {
       } else {
         is_positive = false;
       }
-      // -------------------------------------------------------------------------
+  // -------------------------------------------------------------------------
 
       let response2 = await fetch(`/api/visit_symptoms`, {
         method: "POST",
@@ -126,8 +134,24 @@ async function getSymptoms(event) {
         return std.test;
       });
 
-      let xyz = assignedTestArray.forEach((test) => {
-        let t = document.createElement("li");
+
+      if (response3.ok){
+        let data3 = await response3.json();
+        console.log(data3)
+        stdArray = data3.visits_stdmodel;
+        vsArray = data3.visit_symptoms;
+        console.log(vsArray);
+
+        checkedSymptomArray = stdArray.map((std) => {
+          return std.symptom;
+        })
+
+        assignedTestArray = stdArray.map((std) => {
+          return std.test;
+        })
+
+        let xyz = assignedTestArray.forEach(async (test) => {
+         let t = document.createElement("li");
         t.innerHTML = test;
         document.querySelector("#assignedTestsList").appendChild(t);
       });
@@ -138,8 +162,12 @@ async function getSymptoms(event) {
   }
 }
 
+
 async function launchVisitCompleteModal() {
   $("#visitCompleteModal").modal("show");
+  $('#visitCompleteModal').on('hidden.bs.modal', function (e) {
+    location.href = '/tests';
+})
 }
 
 async function redirectToPatientDashboard() {
@@ -159,3 +187,4 @@ document.querySelector("#symptomsForm").addEventListener("submit", getSymptoms);
 document
   .querySelector("#visitCompleteModalCloseBtn")
   .addEventListener("click", redirectToPatientDashboard);
+

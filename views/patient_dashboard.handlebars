@@ -76,16 +76,21 @@
               </li>
               {{/each}}
             </ul>
-            <p> Based on your test results, Dr. {{{visit.doctor.last_name}}} gave you the diagnosis of
+            <br />
+            <p> Dr. {{{visit.doctor.last_name}}}'s diagnosis:
               {{#each visit.visits_stdmodel as |std|}}
               {{#if std.visit_symptoms.is_positive}} <span
-                style='font-weight: bolder; color: blue;'>"{{{std.diagnosis}}}"</span> {{/if}} {{/each}}.
+                style='font-size: 22px; font-weight: bolder; color: blue;'>"{{{std.diagnosis}}}"</span> {{/if}}
+              {{/each}}.
             </p>
             <br />
             {{#if visit.visit_treatment.length}}
-            <p>Dr. {{{visit.doctor.last_name}}}'s recommended treatment for this diagnosis was <span
-                style='font-weight: bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.</p>
-            <p>Doctor's remarks: {{visit.visit_treatment.0.description}}</p>
+            <p>Dr. {{{visit.doctor.last_name}}}'s recommended treatment: <span
+                style='font-size: 22px; font-weight: bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.
+            </p>
+            <br />
+            <p>Doctor's remarks: <span style="font-size: 20px; color: magenta"> {{visit.visit_treatment.0.description}}
+              </span></p>
             {{else}}
             <p>No treatment assigned yet. Please wait for Dr. {{{visit.doctor.last_name}}} to analyze your results and
               diagnosis, and make a recommendation.</p>

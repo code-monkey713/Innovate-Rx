@@ -39,7 +39,7 @@ async function showDiagnosis(){
     let data2 = await response2.json();
     const allResults = data2.visit_symptoms;
 
-    let allTests = allResults.forEach((test) => {
+    let allTests = allResults.forEach(async (test) => {
       let t = document.createElement('li');
       if (test.is_positive){
         testResult = `<span style='color: red;'>'Positive/ Abnormal/ "Uh-Oh!"'</span>`
@@ -50,7 +50,7 @@ async function showDiagnosis(){
       testsList.appendChild(t);
     })
 
-    const getDiagnosis = allResults.forEach((result) =>{ 
+    const getDiagnosis = allResults.forEach(async (result) =>{ 
       if (result.is_positive){
         diagnosis = result.stdmodel.diagnosis;
         diagnosingDoctor = data2.doctor.last_name + '...';
