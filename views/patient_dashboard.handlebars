@@ -11,8 +11,21 @@
       </div>
       <div class="card-body" id="patientInfoBody">
         <div class="row mx-auto">
-          <div class="col-sm-12 col-md-4 my-auto">
-            <img id="patientDashboardImg" src="{{{image}}}" alt="patient picture (coming soon)">
+          <div class="col-sm-12 col-md-4">
+            <div id="patientDashboardImageDiv">
+              <img class="mx-auto" id="patientDashboardImg" src="{{{image}}}" alt="no patient picture">
+              <form id="patientImageUploadForm">
+                <div class="form-row mx-auto">
+                  <div class="form-group">
+                    <hr>
+                    <label for="pRegisterImage">Upload your image</label>
+                    <input type="file" class="form-control-file" id="uploadImg">
+                  </div>
+                </div>
+                <hr>
+                <button type="file" class="btn btn-primary" id="patientImageSubmit">Submit</button>
+              </form>
+            </div>
           </div>
           <div class="col-sm-12 col-md-8 my-auto">
             <div id="patientDashboardInfo">
