@@ -21,7 +21,6 @@
         <li><a href="#elevator-pitch">Elevator Pitch</a></li>
         <li><a href="#description">Description</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#relational-database-diagram">Relational Database Diagram</a></li>
         <li><a href="#development-team">Development Team</a></li>
         <li><a href="#technologies-used">Technologies Used</a></li>
         <li><a href="#usage">Usage</a></li>
@@ -76,10 +75,6 @@ Our web application works with the following steps:
 - Doctor prescribes treatment (based on their character and personality)
 - Look up your prescribed treatments
 
-### Relational-Database-Diagram
-
-<img> pending...
-
 ### Development-Team
 
     Tony Tran - Project manager and back end development,
@@ -94,7 +89,7 @@ Hosting is done through Heroku.com.
 
 ### Usage
 
-Visit our deployed website on Heroku at `https://www.placeholder-link.com`.
+Visit our deployed website on Heroku at <a href="https://innovate-rx.herokuapp.com/">Heroku live link</a>.
 
 ### License
 

@@ -17,6 +17,12 @@ body {
   font-size: large;
 }
 
+#patientDashboardImg {
+  height: 200px;
+  width: 175px;
+  margin: 15px;
+}
+
 .nav-link {
   margin: 20px;
 }
