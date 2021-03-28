@@ -41,7 +41,11 @@
 
 ### Preview-Image
 
-pending
+<img src="./preview/preview.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./preview/preview2.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./preview/preview3.png" alt="project preview img" style="height: 250px; width: 300px;">
 
 ### User-Story
 
