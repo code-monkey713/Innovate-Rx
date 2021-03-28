@@ -89,7 +89,7 @@ Hosting is done through Heroku.com.
 
 ### Usage
 
-Visit our deployed website on Heroku at `https://www.placeholder-link.com`.
+Visit our deployed website on Heroku at <a href="https://innovate-rx.herokuapp.com/">Heroku live link</a>.
 
 ### License
 

@@ -58,8 +58,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 // const S3_BUCKET = process.env.S3_BUCKET;
 
 app.post('/upload', upload.array('avatar'), (req, res) => {
-  // return res.json({ status: 'OK', uploaded: req.files.length });
-  return res(console.log('Your image has been uploaded!'));
+  return res.json({ status: 'OK', uploaded: req.files.length });
+  // return res(console.log('Your image has been uploaded!'));
 });
 
 app.use(routes);

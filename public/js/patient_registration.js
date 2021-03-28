@@ -1,5 +1,5 @@
-let birthDate ;
-let upload = new FileUploadWithPreview("myUniqueUploadId");
+// let birthDate ;
+// let upload = new FileUploadWithPreview("myUniqueUploadId");
 
 async function registrationFailModal(){
   $('#registrationFailModal').modal('show');
@@ -18,6 +18,7 @@ async function patientRegistrationHandler(event){
   const title = document.querySelector('#pRegisterTitle').value;
   const firstName = document.querySelector('#pRegisterFirstName').value;
   const lastName = document.querySelector('#pRegisterLastName').value;
+  const birthDate = document.querySelector('#pRegisterBirthDate').value;
   const email = document.querySelector('#pRegisterEmail').value;
   const password = document.querySelector('#pRegisterPassword').value;
 

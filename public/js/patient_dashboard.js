@@ -4,24 +4,18 @@ const submitImgBtn = document.querySelector('#patientImageUploadForm');
 let uploadImgBtn = document.querySelector('#uploadImg');
 let uploadedImg;
 
-
-
 async function startNewVisit(){
     location.href = '/visit'
 };
 
-async function uploadImg(event){
-    event.preventDefault();
-
-    if (uploadImgBtn){
-        uploadedImg = uploadImgBtn.value
-    }
-
-    console.log(uploadedImg);
-}
+async function uploadImg(e){
+  e.preventDefault();
+  if (uploadImgBtn){
+    uploadedImg = uploadImgBtn.value
+  }
+  console.log(uploadedImg);
+};
 
 newVisitStartBtn.addEventListener('click', startNewVisit)
 
-
-
-submitImgBtn.addEventListener('submit', uploadImg)
+submitImgBtn.addEventListener('submit', uploadImg);

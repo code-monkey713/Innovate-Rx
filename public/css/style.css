@@ -220,3 +220,11 @@ footer {
   max-width: 400px;
   margin: 0 auto;
 }
+
+#patientDashboardImg {
+  display: block;
+  max-width: 300px;
+  max-height: 360px;
+  width: auto;
+  height: auto;
+}
