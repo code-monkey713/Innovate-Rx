@@ -1,18 +1,11 @@
-// const Chat = require('./Chat');
 const Doctor = require('./Doctor');
-const Diagnosis = require('./Diagnosis');
-// const Feedback = require('./Feedback');
 const Patient = require('./Patient');
-// const Specialty = require('./Specialty');
 const Symptom = require('./Symptom');
-const Test = require('./Test');
-const Visit = require('./Visit');
 const STDmodel = require('./STDmodel');
+const Visit = require('./Visit');
 const Visit_Symptoms = require('./Visit_Symptoms');
 const Treatment = require('./Treatment');
 const Visit_Treatment = require('./Visit_Treatment');
-
-
 
 Patient.hasMany(Visit, {
   foreignKey: 'patient_id',
@@ -23,8 +16,6 @@ Visit.belongsTo(Patient, {
   foreignKey: 'patient_id',
 });
 
-
-
 Doctor.hasMany(Visit, {
   foreignKey: 'doctor_id',
   onDelete: 'cascade'
@@ -33,8 +24,6 @@ Doctor.hasMany(Visit, {
 Visit.belongsTo(Doctor, {
   foreignKey: 'doctor_id',
 });
-
-
 
 Patient.belongsToMany(Doctor,{
   through: {
@@ -52,8 +41,6 @@ Doctor.belongsToMany(Patient,{
   as: 'doctors_patient',
 });
 
-
-
 Visit.belongsToMany(STDmodel,{
   through: {
     model: Visit_Symptoms,
@@ -61,8 +48,6 @@ Visit.belongsToMany(STDmodel,{
   },
   as: 'visits_stdmodel',
 });
-
-
 
 Visit.hasMany(Visit_Symptoms, {
   foreignKey: 'visit_id',
@@ -72,8 +57,6 @@ Visit_Symptoms.belongsTo(Visit, {
   foreignKey: 'visit_id'
 });
 
-
-
 STDmodel.hasMany(Visit_Symptoms, {
   foreignKey: 'stdmodel_id',
 });
@@ -82,8 +65,6 @@ Visit_Symptoms.belongsTo(STDmodel, {
   foreignKey: 'stdmodel_id'
 });
 
-
-
 Doctor.hasMany(Treatment, {
   foreignKey: 'doctor_id'
 })
@@ -91,22 +72,6 @@ Doctor.hasMany(Treatment, {
 Treatment.belongsTo(Doctor, {
   foreignKey: 'doctor_id'
 });
-
-// Visit.hasMany(Visit_Treatment, {
-//   foreignKey: 'visit_id'
-// })
-
-// Visit_Treatment.belongsTo(Visit, {
-//   foreignKey: 'visit_id'
-// })
-
-// Treatment.hasMany(Visit_Treatment, {
-//   foreignKey: 'treatment_id'
-// })
-
-// Visit_Treatment.belongsTo(Treatment, {
-//   foreignKey: 'treatment_id'
-// })
 
 Treatment.belongsToMany(Visit, {
   through: {
@@ -124,18 +89,11 @@ Visit.belongsToMany(Treatment, {
   as: 'visit_treatment'
 });
 
-
-
 module.exports = { 
   Doctor, 
-  Diagnosis, 
   Patient, 
-  // Feedback, 
-  // Chat, 
-  // Specialty, 
   STDmodel,
   Symptom, 
-  Test, 
   Treatment, 
   Visit_Treatment, 
   Visit,

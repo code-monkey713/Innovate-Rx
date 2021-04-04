@@ -1,65 +1,56 @@
-const path = require('path');
-const exphbs = require('express-handlebars');
-const express = require('express');
+const path = require("path");
+const exphbs = require("express-handlebars");
+const express = require("express");
 const app = express();
-const routes = require('./controllers');
-const session = require('express-session');
-const helpers = require('./utils/helpers');
-const sequelize = require('./config/connection');
-const SequelizeStore = require('connect-session-sequelize')(session.Store);
-// const FileUploadWithPreview = require("file-upload-with-preview");
-// import FileUploadWithPreview from "file-upload-with-preview";
-// const upload = new FileUploadWithPreview("myUniqueUploadId");
-// import "file-upload-with-preview/dist/file-upload-with-preview.min.css";
-// const aws = require('aws-sdk');
-const uuid = require('uuid').v1;
-const multer = require('multer');
+const routes = require("./controllers");
+const session = require("express-session");
+const helpers = require("./utils/helpers");
+const sequelize = require("./config/connection");
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+const uuid = require("uuid").v1;
+const multer = require("multer");
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-      cb(null, 'public/images')
+    cb(null, "public/images");
   },
   filename: (req, file, cb) => {
-      const { originalname } = file;
-      // or 
-      // uuid, or fieldname
-      cb(null, originalname);
-  }
-})
-const upload = multer({ storage }); // or simply { dest: 'uploads/' }
+    const { originalname } = file;
+    cb(null, originalname);
+  },
+});
 
-app.use(express.static('public'))
+const upload = multer({ storage });
+
+app.use(express.static("public"));
 
 const PORT = process.env.PORT || 8080;
 
 const hbs = exphbs.create({ helpers });
 
 const sess = {
-  secret: 'Super secret secret',
+  secret: "Super secret secret",
   cookie: {
-    maxAge: 1000*60*30 //Cookie expires in 30min
+    maxAge: 1000 * 60 * 60, // Cookie expires in 60 mins
   },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore({
-    db: sequelize
-  })
+    db: sequelize,
+  }),
 };
 
 app.use(session(sess));
 
-app.engine('handlebars', hbs.engine);
-app.set('view engine', 'handlebars');
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, "public")));
 
-// aws.config.region = process.env.AWSRegion;
-// const S3_BUCKET = process.env.S3_BUCKET;
-
-app.post('/upload', upload.array('avatar'), (req, res) => {
-  return res.json({ status: 'OK', uploaded: req.files.length });
-  // return res(console.log('Your image has been uploaded!'));
+app.post("/upload", upload.array("avatar"), (req, res) => {
+  return res.json({ status: "OK", uploaded: req.files.length });
 });
 
 app.use(routes);

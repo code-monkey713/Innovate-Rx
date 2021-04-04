@@ -1,6 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const { Visit } = require('.');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class STDmodel extends Model {}
 
@@ -24,19 +23,12 @@ STDmodel.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // visit_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'visit',
-    //     key: 'id',
-    //   }
-    // }
   },
   {
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'stdmodel',
+    modelName: "stdmodel",
   }
 );
 

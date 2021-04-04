@@ -1,40 +1,32 @@
 <section class="container mx-auto" id="patientDashboardContainer">
-  <div class="row justify-content-center" style="margin: 30px;">
-    <h1>Welcome to your dashboard, {{{title}}} {{{last_name}}}.</h1>
+  <div class="row justify-content-center dashboard-heading">
+    Welcome to your dashboard, {{{title}}}. {{{last_name}}}!
   </div>
 </section>
 <section class="container mx-auto" id="patientInfoContainer">
-  <div class="row justify-content-center" style="margin: 30px;">
+  <div class="row justify-content-center" style="margin: 15px;">
     <div class="card">
-      <div class="card-title">
-        <h2>Your Information</h2>
+      <div class="card-title head-card">
+        Your Information
       </div>
       <div class="card-body" id="patientInfoBody">
         <div class="row mx-auto">
-          <div class="col-sm-12 col-md-4">
+          <div class="col-sm-12 col-md-7 image-card mb-1">
             <div id="patientDashboardImageDiv">
               <img class="mx-auto" id="patientDashboardImg" src="{{{image}}}" alt="no patient picture">
               <form id="patientImageUploadForm">
                 <div class="form-row mx-auto">
-                  {{!-- <div>
-                    <form action="/upload" method="post" enctype="multipart/form-data">
-                      <input type="file" name="avatar" single />
-                      <button>Submit</button>
-                    </form>
-                    <h4>File Upload Here</h4>
-                  </div> --}}
                   <div class="form-group">
                     <hr>
                     <label for="pRegisterImage">Upload your image</label>
                     <input type="file" class="form-control-file" id="uploadImg">
                   </div>
                 </div>
-                <hr>
                 <button type="file" class="btn btn-primary" id="patientImageSubmit">Submit</button>
               </form>
             </div>
           </div>
-          <div class="col-sm-12 col-md-8">
+          <div class="col-sm-12 col-md-5 info-card">
             <div id="patientDashboardInfo">
               <p>Title: {{{title}}}</p>
               <p>Name: {{{first_name}}} {{{last_name}}}</p>
@@ -50,7 +42,7 @@
   <div class="row justify-content-center" style="margin: 30px;">
     <div class="card">
       <div class="card-title">
-        <h2 style="display: inline;">Your Previous Visits - {{{visits.length}}} in total.</h2>
+        <h4 style="display: inline;">Your Previous Visits - {{{visits.length}}} in total.</h4>
         <button type="button" class="btn btn-success" id="newVisitStartBtn" style="float: right;">Start a new virtual
           visit</button>
       </div>

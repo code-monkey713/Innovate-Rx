@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Visit_Symptoms extends Model {}
 
@@ -14,28 +14,27 @@ Visit_Symptoms.init(
     visit_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'visit',
-        key: 'id',
+        model: "visit",
+        key: "id",
       },
     },
     stdmodel_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'stdmodel',
-        key: 'id',
+        model: "stdmodel",
+        key: "id",
       },
     },
     is_positive: {
       type: DataTypes.BOOLEAN,
       defaultValue: false,
-    }
+    },
   },
   {
     sequelize,
-    // timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'visit_symptoms',
+    modelName: "visit_symptoms",
   }
 );
 

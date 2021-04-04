@@ -1,117 +1,111 @@
-  <!DOCTYPE html>
-  <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Innovate Rx</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link rel="stylesheet" type="text/css"
-  href="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-      integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-      crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/style.css">
-  </head>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Innovate Rx</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link rel="stylesheet" type="text/css"
+    href="https://unpkg.com/file-upload-with-preview@4.1.0/dist/file-upload-with-preview.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
 
-  <body>
+<body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark">
-      <img src="../../images/logo4.png" id="logo" alt="">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-          <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" id="homeBtn" href="/home">Home</a>
-          </li>
-          {{#if loggedIn}}
-          {{#if isDoctor}}
-          <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" id="doctorDashboardBtn" href="/doctor_dashboard">Doctor Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="doctorLogoutBtn">Logout</a>
-          </li>
-          {{else}}
-          <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link" id="patientDashboardBtn" href="/patient_dashboard">Patient Dashboard</a>
-          </li>
-          {{!-- <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
-              <a class="nav-link" href="#">Chat</a>
-            </li> --}}
-          <li class="nav-item active">
-            <a class="nav-link" id="patientLogoutBtn">Logout</a>
-          </li>
-          {{/if}}
-          {{else}}
-          <li class="nav-item dropdown" style="border-right:solid 1px rgb(255, 255, 255);">
-            <a class="nav-link dropdown-toggle" id="patientPortalBtn" href="#" data-toggle="dropdown">Patient Portal</a>
-            <div class="dropdown-menu" style="background-color: black;  padding-bottom: 0px"
-              aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_registration">Register</a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_login">Login</a>
-              <div class="dropdown-divider" style="margin-bottom: 0px;"></div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" id="doctorPortalBtn" href="/doctor_login">Doctor Portal</a>
-          </li>
-          {{/if}}
-        </ul>
-      </div>
-    </nav>
-
-    {{{body}}}
-
-    {{!-- Logout Fail Notification Modal --}}
-    <div class="modal fade" id="logoutFailModal" tabindex="-1" role="dialog" aria-labelledby="logoutFailModalTitle"
-      aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="logoutFailModalTitle">Logout Failed.</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  <nav class="navbar flex-row ml-auto navbar-expand-md navbar-dark">
+    <img src="../../images/logo4.png" id="logo" alt="">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
+          <a class="nav-link" id="homeBtn" href="/home">Home</a>
+        </li>
+        {{#if loggedIn}}
+        {{#if isDoctor}}
+        <li class="nav-item" style="border-right:solid 1px rgb(255, 255, 255);">
+          <a class="nav-link" id="doctorDashboardBtn" href="/doctor_dashboard">Doctor Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="doctorLogoutBtn">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item active" style="border-right:solid 1px rgb(255, 255, 255);">
+          <a class="nav-link" id="patientDashboardBtn" href="/patient_dashboard">Patient Dashboard</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" id="patientLogoutBtn">Logout</a>
+        </li>
+        {{/if}}
+        {{else}}
+        <li class="nav-item dropdown" style="border-right:solid 1px rgb(255, 255, 255);">
+          <a class="nav-link dropdown-toggle" id="patientPortalBtn" href="#" data-toggle="dropdown">Patient Portal</a>
+          <div class="dropdown-menu" style="background-color: black;  padding-bottom: 0px"
+            aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_registration">Register</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" style=" color:rgb(255, 255, 255)" href="/patient_login">Login</a>
+            <div class="dropdown-divider" style="margin-bottom: 0px;"></div>
           </div>
-          <div class="modal-body">
-            <p>Please try again.</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
-          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="doctorPortalBtn" href="/doctor_login">Doctor Portal</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+  {{{body}}}
+
+  {{!-- Logout Fail Notification Modal --}}
+  <div class="modal fade" id="logoutFailModal" tabindex="-1" role="dialog" aria-labelledby="logoutFailModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutFailModalTitle">Logout Failed.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Please try again.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">OK</button>
         </div>
       </div>
     </div>
+  </div>
 
 
-    <footer>
-      <p>Innovate Rx, a part of the Attempted Humor Group LLC. All Right Reserved.</p>
-    </footer>
+  <footer>
+    <p>Innovate Rx, a part of the Attempted Humor Group LLC. All Right Reserved.</p>
+  </footer>
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
-      integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
-      integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg=="
-      crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
-      integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
-      crossorigin="anonymous"></script>
-    <script src="../../js/script.js"></script>
-    <script src="../../js/patient_logout.js"></script>
-    <script src="../../js/doctor_logout.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+    integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/js/bootstrap.min.js"
+    integrity="sha512-XKa9Hemdy1Ui3KSGgJdgMyYlUg1gM+QhL6cnlyTe2qzMCYm4nAZ1PsVerQzTTXzonUR+dmswHqgJPuwCq1MaAg=="
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+    integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+    crossorigin="anonymous"></script>
+  <script src="../../js/patient_logout.js"></script>
+  <script src="../../js/doctor_logout.js"></script>
 
+</body>
 
-
-  </body>
-
-  </html>
+</html>

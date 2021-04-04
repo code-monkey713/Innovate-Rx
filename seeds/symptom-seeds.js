@@ -2,52 +2,52 @@ const { Symptom } = require("../models");
 
 const symptomData = [
   {
-    name: "headache"
+    name: "headache",
   },
   {
-    name: "blurry vision"
+    name: "blurry vision",
   },
   {
-    name: "runny nose"
+    name: "runny nose",
   },
   {
-    name: "cough"
+    name: "cough",
   },
   {
-    name: "fever"
+    name: "fever",
   },
   {
-    name: "high blood pressure"
+    name: "high blood pressure",
   },
   {
-    name: "high blood sugar"
+    name: "high blood sugar",
   },
   {
-    name: "nausea"
+    name: "nausea",
   },
   {
-    name: "vomiting"
+    name: "vomiting",
   },
   {
-    name: "back pain"
+    name: "back pain",
   },
   {
-    name: "joint pain"
+    name: "joint pain",
   },
   {
-    name: "weakness"
+    name: "weakness",
   },
   {
-    name: "difficulty breathing"
+    name: "difficulty breathing",
   },
   {
-    name: "urinary issues"
+    name: "urinary issues",
   },
   {
-    name: "digestive issues"
+    name: "digestive issues",
   },
   {
-    name: "other"
+    name: "other",
   },
 ];
 

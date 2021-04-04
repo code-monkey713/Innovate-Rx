@@ -1,20 +1,20 @@
 <section class="container mx-auto" id="doctorDashboardContainer">
-  <div class="row justify-content-center" style="margin: 30px;">
-    <h1>Welcome to your dashboard, Dr. {{{last_name}}}</h1>
+  <div class="row justify-content-center dashboard-heading">
+    Welcome to your dashboard, Dr. {{{last_name}}}
   </div>
 </section>
 <section class="container mx-auto" id="doctorInfoContainer">
-  <div class="row justify-content-center" style="margin: 30px;">
+  <div class="row justify-content-center" style="margin: 15px;">
     <div class="card">
-      <div class="card-title">
-        <h2>Your information</h2>
+      <div class="card-title head-card">
+        Your information
       </div>
       <div class="card-body" id="doctorInfoBody">
         <div class="row mx-auto">
-          <div class="col-sm-12 col-md-4 my-auto">
+          <div class="col-sm-12 col-md-7 image-card mb-1 my-auto">
             <img id="doctorDashboardImg" src="{{{image}}}" alt="doctor_pic">
           </div>
-          <div class="col-sm-12 col-md-8 my-auto">
+          <div class="col-sm-12 col-md-5 my-auto">
             <p>Name: {{{first_name}}} {{{last_name}}}</p>
             <p>Intro: {{{intro}}}</p>
             <p>Join Date: {{{format_date date_created}}}</p>
@@ -30,7 +30,7 @@
   <div class="row justify-content-center" style="margin: 30px;">
     <div class="card">
       <div class="card-title">
-        <h2>Your Visits - {{{visits.length}}} total.</h2>
+        <h4>Your Visits - {{{visits.length}}} total.</h4>
       </div>
       <div class="card-body" id="previousVisitBody">
         {{#if visits.length}}
@@ -121,7 +121,5 @@
     </div>
   </div>
 </section>
-
-
 
 <script src="../js/doctor_dashboard.js"></script>
