@@ -95,6 +95,7 @@ Hosting is done through Heroku.com
 ### Usage
 
 Visit our deployed website on Heroku at <a href="https://innovate-rx.herokuapp.com/">Heroku live link</a>.
+Our application is best viewed with 480px+ width. 
 
 ### License
 
