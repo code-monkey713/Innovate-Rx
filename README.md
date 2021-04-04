@@ -87,9 +87,10 @@ Our web application works with the following steps:
 
 ### Technologies-Used
 
-Front end uses HTML, CSS, Bootstrap, Javascript.
-Back end development uses Node, NPM, ExpressJS, SQL, Sequelize and MVC format.
-Hosting is done through Heroku.com.
+MVC Model
+Front end uses HTML, CSS, Bootstrap, Javascript
+Back end development uses Node, NPM, ExpressJS, MySQL, Sequelize
+Hosting is done through Heroku.com
 
 ### Usage
 
