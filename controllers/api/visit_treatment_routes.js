@@ -1,11 +1,9 @@
-const router = require('express').Router();
-const { PDoctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel } = require('../../models');
-const bcrypt = require('bcrypt');
+const router = require("express").Router();
+
+const { Visit_Treatment } = require("../../models");
 const { withDoctorAuth } = require("../../utils/auth");
 
-router.post('/', withDoctorAuth, async (req,res) => {
-
-  console.log(req)
+router.post("/", withDoctorAuth, async (req, res) => {
   try {
     const newVisitTreatmentData = await Visit_Treatment.create({
       ...req.body,
@@ -14,9 +12,8 @@ router.post('/', withDoctorAuth, async (req,res) => {
     res.status(200).json(newVisitTreatmentData);
   } catch (err) {
     res.status(500).json(err);
-    console.log(err)
-    console.log(newVisitTreatmentData);
+    console.log(err);
   }
-})
+});
 
 module.exports = router;

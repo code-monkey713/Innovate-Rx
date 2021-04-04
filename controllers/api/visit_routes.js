@@ -1,15 +1,11 @@
 const router = require("express").Router();
-const {
-  Doctor, Patient, Visit, Symptom, Diagnosis, Test, Treatment, Visit_Treatment, Visit_Symptoms, STDmodel
-} = require("../../models");
+
+const { Visit } = require("../../models");
 const bcrypt = require("bcrypt");
 const { withPatientAuth } = require("../../utils/auth");
 
 router.get("/", (req, res) => {
   Visit.findAll({})
-    // .then((console) => {
-    //   console.log(console);
-    // })
     .then((dbVisitData) => res.json(dbVisitData))
     .catch((err) => {
       console.log(err);
@@ -27,27 +23,27 @@ router.post("/", withPatientAuth, async (req, res) => {
     res.status(200).json(newVisitData);
   } catch (err) {
     res.status(500).json(err);
+    console.log(err);
   }
 });
 
-router.put('/:id', async (req,res) => {
+router.put("/:id", async (req, res) => {
   try {
-      const editVisit = await Visit.update(req.body, {
-          where: {
-              id: req.params.id,
-          },
-      });
+    const editVisit = await Visit.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
 
-      if(!editVisit){
-          res.status(404).json('No Visit found')
-      }
+    if (!editVisit) {
+      res.status(404).json("No Visit found");
+    }
 
-      res.status(200).json(editVisit);
-      console.log(editVisit)
+    res.status(200).json(editVisit);
   } catch (err) {
-      res.status(500).json(err);
-      console.log(err)
+    res.status(500).json(err);
+    console.log(err);
   }
-})
+});
 
 module.exports = router;
