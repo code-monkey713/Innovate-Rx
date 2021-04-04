@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Patient extends Model {}
 
@@ -42,7 +42,7 @@ Patient.init(
     image: {
       type: DataTypes.STRING,
       allowNull: true,
-      defaultValue: '../images/placeholder_image.png',
+      defaultValue: "../images/placeholder_image.png",
     },
     date_created: {
       type: DataTypes.DATE,
@@ -55,7 +55,7 @@ Patient.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'patient',
+    modelName: "patient",
   }
 );
 

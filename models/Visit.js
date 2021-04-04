@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Visit extends Model {}
 
@@ -19,15 +19,15 @@ Visit.init(
     patient_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'patient',
-        key: 'id',
+        model: "patient",
+        key: "id",
       },
     },
     doctor_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'doctor',
-        key: 'id',
+        model: "doctor",
+        key: "id",
       },
     },
   },
@@ -36,7 +36,7 @@ Visit.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'visit',
+    modelName: "visit",
   }
 );
 

@@ -1,5 +1,5 @@
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 class Symptom extends Model {}
 
@@ -15,15 +15,11 @@ Symptom.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // is_positive: {
-    //   type: DataTypes.BOOLEAN,
-    //   allowNull: false,
-    // },
     visit_id: {
       type: DataTypes.INTEGER,
       references: {
-        model: 'visit',
-        key: 'id',
+        model: "visit",
+        key: "id",
       },
     },
   },
@@ -31,7 +27,7 @@ Symptom.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'symptom',
+    modelName: "symptom",
   }
 );
 
