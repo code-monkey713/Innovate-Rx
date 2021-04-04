@@ -234,3 +234,16 @@ footer {
   max-height: 100%;
   object-fit: cover;
 }
+
+.dashboard-heading {
+  margin: 30px;
+  font-size: xx-large;
+}
+
+.head-card {
+  font-size: x-large;
+}
+
+#patientDashboardImageDiv {
+  margin: .6rem;
+}
