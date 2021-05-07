@@ -1,0 +1,58 @@
+<section class="container mx-auto" id="patientLoginWelcome">
+  <div class="row" style="margin: 0px;">
+    <div class="col-sm-12 mx-auto" id="patientRegistration" style="margin: 30px;">
+      <div id="portalHeader">
+        <h2>Welcome to the Patient Portal.</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto" id="portalContainer">
+  <div class="row" style="margin: 0px;">
+
+    <div class="card col-sm-12 mx-auto" id="patientLogin" style="margin: 30px;">
+      <div class="card-title" id="portalSubheader">
+        <h3> Please Log In.</h3>
+        <p>Switch to <span><a href="/patient_registration">Registration</a></span>
+        </p>
+      </div>
+      <div class="card-body" id="portalForm">
+
+        <form id="loginForm">
+          <div class="form-row">
+            <div class="form-group col-sm-12">
+              <label for="loginEmail">Email</label>
+              <input type="email" class="form-control" id="pLoginEmail" placeholder="Hint: first initial last name @email.com">
+            </div>
+            <div class="form-group col-sm-12">
+              <label for="loginPassword">Password</label>
+              <input type="password" class="form-control" id="pLoginPassword" placeholder="Default password is 'password1'">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary" id="patientLoginSubmit">Log in</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loginFailModal" tabindex="-1" role="dialog" aria-labelledby="loginFailModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginFailModalTitle">Login Error</h5>
+          <button type="button" id="failModalCloseBtn" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Failed to log in with these credentials. Please try again.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/patient_login.js"></script>

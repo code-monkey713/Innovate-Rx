@@ -1,0 +1,125 @@
+<section class="container mx-auto" id="doctorDashboardContainer">
+  <div class="row justify-content-center dashboard-heading">
+    Welcome to your dashboard, Dr. {{{last_name}}}
+  </div>
+</section>
+<section class="container mx-auto" id="doctorInfoContainer">
+  <div class="row justify-content-center" style="margin: 15px;">
+    <div class="card">
+      <div class="card-title head-card">
+        Your information
+      </div>
+      <div class="card-body" id="doctorInfoBody">
+        <div class="row mx-auto">
+          <div class="col-sm-12 col-md-7 image-card mb-1 my-auto">
+            <img id="doctorDashboardImg" src="{{{image}}}" alt="doctor_pic">
+          </div>
+          <div class="col-sm-12 col-md-5 my-auto">
+            <p>Name: {{{first_name}}} {{{last_name}}}</p>
+            <p>Intro: {{{intro}}}</p>
+            <p>Join Date: {{{format_date date_created}}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+<br />
+<section class="container mx-auto" id="doctorVisitContainer">
+  <div class="row justify-content-center" style="margin: 30px;">
+    <div class="card">
+      <div class="card-title">
+        <h4>Your Visits - {{{visits.length}}} total.</h4>
+      </div>
+      <div class="card-body" id="previousVisitBody">
+        {{#if visits.length}}
+        <ol>
+          {{#each visits as |visit|}}
+          <li class='row' id='previousVisitRow'>
+            <p>Date: {{{format_date visit.date_visited}}}</p>
+            <p>Patient Name: {{{visit.patient.title}}} {{{visit.patient.first_name}}} {{{visit.patient.last_name}}}
+            </p>
+            <p>Patient Date of Birth: {{{format_date visit.patient.dob}}}</p>
+            <p>Patient presented with:
+            <ul>
+              {{#each visit.visits_stdmodel as |std|}}
+              <li>{{{std.symptom}}}</li>
+              {{/each}}
+            </ul>
+            </p>
+            <p>Patient tested for:
+            <ul>
+              {{#each visit.visits_stdmodel as |std|}}
+              <li>{{{std.test}}}{{#if std.visit_symptoms.is_positive}}<span style='color: red;'> (positive)
+                </span>{{/if}}
+              </li>
+              {{/each}}
+            </ul>
+            <br />
+            <p> You assigned the patient the diagnosis of
+              {{#each visit.visits_stdmodel as |std|}}
+              {{#if std.visit_symptoms.is_positive}}<span style='font-size: 20px; font-weight: bolder; color: blue;'>
+                "{{{std.diagnosis}}}"</span>
+              {{/if}}
+              {{/each}}.
+            </p>
+            <br />
+            {{#if visit.visit_treatment.length}}
+            <p>Your prescribed treatment for this diagnosis was <span style='font-size: 20px; font-weight:
+                bolder; color: green;'>{{{visit.visit_treatment.0.name}}}</span>.</p>
+            {{else}}
+            <p>No treatment assigned yet. Please assign treatment as soon as possible! <span class='btn btn-danger'
+                type='button' id='assignTreatmentButton' data-id='{{{visit.id}}}'>Assign Treatment</span> </p>
+            <div class="modal fade" id="assignModal{{visit.id}}" tabindex="-1" role="dialog"
+              aria-labelledby="assignModalTitle" aria-hidden="true">
+              <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="assignModalTitle">
+                      Dr. {{{last_name}}}, please recommend a treatment.
+                    </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    {{#each visit.visits_stdmodel as |std|}}
+                    {{#if std.visit_symptoms.is_positive}}
+                    <h4>Patient's Diagnosis: <span style='font-weight: bolder; color: blue;'>
+                        "{{{std.diagnosis}}}"</span>.</h4>
+                    {{/if}}
+                    {{/each}}
+                    <br />
+                    <p>Treatments Available: {{{../treatments.length}}}</p>
+                    <div class="input-group">
+                      <select class="custom-select" id="treatmentSelect">
+                        <option selected>Choose...</option>
+                        {{#each ../treatments as |treatment|}}
+                        <option value="{{{treatment.id}}}">{{{treatment.name}}}</option>>
+                        {{/each}}
+                      </select>
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="saveAssignedTreatmentBtn"
+                          data-dismiss="modal" data-id='{{{visit.id}}}'>Assign Treatment</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {{/if}}
+          </li>
+          {{/each}}
+        </ol>
+        {{else}}
+        <div class="row justify-content-center" style="margin-top: 30px">
+          <h4>You haven't had any visits yet!</h4>
+        </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/doctor_dashboard.js"></script>

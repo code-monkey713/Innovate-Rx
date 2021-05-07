@@ -21,14 +21,13 @@
         <li><a href="#elevator-pitch">Elevator Pitch</a></li>
         <li><a href="#description">Description</a></li>
         <li><a href="#features">Features</a></li>
-        <li><a href="#relational-database-diagram">Relational Database Diagram</a></li>
         <li><a href="#development-team">Development Team</a></li>
         <li><a href="#technologies-used">Technologies Used</a></li>
         <li><a href="#usage">Usage</a></li>
         <li><a href="#license">License</a></li>
         <li><a href="#future-development">Future Development</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="#conclusion">Contact</a></li>
+        <li><a href="#conclusion">Conclusion</a></li>
     </ol>
 </details>
 
@@ -42,7 +41,11 @@
 
 ### Preview-Image
 
-pending
+<img src="./preview/preview.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./preview/preview2.png" alt="project preview img" style="height: 250px; width: 300px;">
+<br/>
+<img src="./preview/preview3.png" alt="project preview img" style="height: 250px; width: 300px;">
 
 ### User-Story
 
@@ -60,24 +63,21 @@ Side effects include; none! That's right, 'humerus' therapy has not been proven 
 
 ### Application-Description
 
-This application simulates a basic EMR (Electronic Medical Records) system for a small scale medical practice. In this case, the application serves as a website for a non-traditional (read 'Innovative'!) treatment practice where the doctors specialize in what they call 'humor'.
+This application simulates an Online Medical Visit Simulator for a small medical practice. In this case, the application serves as a website for a non-traditional (read 'Innovative'!) treatment practice where the doctors specialize in their own brand of innovative treatments.
 
 ### Features
 
 Our web application works with the following steps:
 
 - Sign-Up and Log-In for patients
-- Safely store private medical information
-- Choose a doctor from a list
+- Hashed password storage for security
 - Request an appointment
+- Choose a doctor from a list
 - Accept the prescribed tests
 - Look up test results
-- Look up prescribed treatments
-- Give feedback on the treatment and request new ones if not satisfied with current one
-
-### Relational-Database-Diagram
-
-<img> pending...
+- Doctor logs in to review test results and preliminary diagnosis
+- Doctor prescribes treatment (based on their character and personality)
+- Look up your prescribed treatments
 
 ### Development-Team
 
@@ -87,13 +87,15 @@ Our web application works with the following steps:
 
 ### Technologies-Used
 
-Front end uses HTML, CSS, Bootstrap, Javascript.
-Back end development uses Node, NPM, ExpressJS, SQL, Sequelize and MVC format.
-Hosting is done through Heroku.com.
+MVC Model
+Front end uses HTML, CSS, Bootstrap, Javascript
+Back end development uses Node, NPM, ExpressJS, MySQL, Sequelize
+Hosting is done through Heroku.com
 
 ### Usage
 
-Visit our deployed website on Heroku at `https://www.placeholder-link.com`.
+Visit our deployed website on Heroku at <a href="https://innovate-rx.herokuapp.com/">Heroku live link</a>.
+Our application is best viewed with 480px+ width.
 
 ### License
 
@@ -101,7 +103,18 @@ This application is hosted under the MIT license.
 
 ### Future-Development
 
-We aim to build a larger database with more doctors, tests and treatment responses. We also plan on hosting relevant and similarly themed articles in a new 'readables' resource section for our patients.
+We aim to add the following features for the app in the future:
+
+- Build a larger database with more doctors, tests and treatment responses
+- Hosting relevant and similarly themed articles in a new 'readables' resource section
+- Give feedback on the treatment
+- Request new treatment
+- Give feedback on the doctors and treatments
+- Use a private messageboard-style chat to communicate directly with your doctors
+
+### Known Issues
+
+- On screens with max width of 768px and below, Carousel image captions will disappear and images may show up with different heights. This is on purpose to maintain image scale and viewability due to responsiveness concerns.
 
 ### Contact
 
@@ -113,4 +126,4 @@ You can contact us through the following sources:
 
 ### Conclusion
 
-We hope that our unconventional take on an Electronic Medical Record system for a small scale medical practice was both enjoyable and informative
+We hope that our unconventional take on an Online Medical Visit Simulator for a small medical practice was both enjoyable and informative. We look forward to your feedback! Cheers!

@@ -1,0 +1,74 @@
+<section class="container mx-auto" id="patientLoginWelcome">
+  <div class="row" style="margin: 0px;">
+    <div class="col-sm-12 mx-auto" id="patientTests" style="margin: 30px;">
+      <div id="testsHeader">
+        <h2 style="text-align: center;">After Visit Summary.</h2>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container mx-auto" id="testsContainer">
+  <div class="row">
+    <div class="col-sm-12" id="testsHeader">
+      <div class="card" id="testsCard">
+        <div class="card-title">
+          <h3 style="text-align: center;">Visit complete!</h3>
+          <p id="pId" style="display: none;">{{{id}}}</p>
+        </div>
+        <div class="card-body">
+          <p>Thank you for completing the tests assigned to you. The results have arrived and your doctor has assigned a
+            preliminary diagnosis. Please click below to see your test results and diagnosis.</p>
+        </div>
+        <div class="row d-flex justify-content-md-center">
+          <button class='btn btn-success mx-auto' type='button' id='showDiagnosisBtn'>View Diagnosis</button>
+          <br />
+          <button class='btn btn-primary mx-auto' type='button' id='returnToDashboardBtn'>Go to my dashboard</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal for Diagnosis-->
+  <div class="modal fade" id="diagnosisModal" tabindex="-1" role="dialog" aria-labelledby="diagnosisModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="diagnosisModalTitle">Your Diagnosis</h5>
+        </div>
+        <div class="modal-body">
+          <p>Your test results</p>
+          <ul id="testResultsList">
+          </ul>
+          <br />
+          <p id="diagnosisIntro">Based on the test results above, the following diagnosis has been assigned by Dr. </p>
+          <br />
+          <h2 style="text-align: center; font-weight: bolder; color: blue;" id="diagnosisTitle"></h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"
+            id="diagnosisModalCloseBtn">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Error Modal -->
+  <div class="modal fade" id="errorModal" tabindex="-1" role="dialog" aria-labelledby="errorModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="errorModalTitle">An unknown error occurred. Please close this notification and
+            refresh the page.</h5>
+          <button type="button" class="close" id="errorModalCloseBtn" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/tests.js"></script>

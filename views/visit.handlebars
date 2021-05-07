@@ -1,0 +1,137 @@
+<section class="container mx-auto" id="chooseDoctorContainer">
+  <div class="row">
+    <div class="col-sm-12" id="chooseHeader">
+      <h1 style="text-align: center; margin: 15px">Meet our Team!</h1>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12" id="chooseSubheader">
+      <p style="text-align: center;">Thank you for requesting an online visit. Please choose your doctor.</p>
+    </div>
+  </div>
+  <br />
+  <div class="row mx-auto">
+    {{#each doctors as |doctor|}}
+    <div class="card mx-auto col-sm-12 col-md-8 col-lg-4 text-white bg-dark mb-3" style="max-width: 18rem;"
+      id="chooseDoctorCard">
+      <img class="card-img-top" src="{{{image}}}" id="doctorImage">
+      <div class="card-body">
+        <div class="card-title">
+          <h4>Dr. {{{first_name}}} {{{last_name}}}</h4>
+        </div>
+        <div class="card-text">
+          <p>{{{intro}}}
+          </p>
+        </div>
+      </div>
+      <div class="card-footer mx-auto">
+        <button class="btn btn-primary" type="button" id="chooseDoctorButton" data-doctorId="{{{id}}}">Choose this
+          doctor!</button>
+      </div>
+    </div>
+    {{/each}}
+  </div>
+</section>
+
+
+<section class="container mx-auto" id="visitContainer" style="display: none;">
+  <div class="row">
+    <div class="col-sm-12">
+      <h1 style="text-align: center; margin: 15px" id="visitFormTitle">Welcome to your online visit.
+      </h1>
+    </div>
+  </div>
+  <br />
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="row">
+        <div class="col-sm-12">
+          <p id="pId" style="display: none;">{{{id}}}</p>
+          <h3 style="padding: 5px 10px 5px 20px">Hello {{{title}}} {{{last_name}}}! What brings you in
+            today?</h3>
+        </div>
+      </div>
+      <br />
+      <div class="row">
+        <div class="col-sm-12">
+          <form id="symptomsForm">
+            <p style="padding: 5px 10px 5px 20px">Please check all the issues or symptoms you might be feeling today.
+              (Select all that
+              apply.)</p>
+            <div class="row mx-auto" style="padding: 5px 10px 5px 20px">
+              {{#each stds as |std|}}
+              <div class="form-check col-sm-12 col-md-3">
+                <input type="checkbox" class="form-check-input" data-id="{{{std.id}}}" id="checkbox{{{std.symptom}}}">
+                <label class="form-check-label" for="checkbox">{{{std.symptom}}}</label>
+              </div>
+              {{/each}}
+            </div>
+            <br />
+            <div class="row">
+              <div class="form-group  col-sm-12">
+                <label for="descriptionBox">Details</label>
+                <textarea class="form-control" id="descriptionBox" rows="6"></textarea>
+                <small id="passwordHelpBlock" class="form-text text-muted">
+                  If there is anything else you would like to tell your doctor, please enter it
+                  here.
+                </small>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit complete Modal -->
+  <div class="modal fade" id="visitCompleteModal" tabindex="-1" role="dialog" aria-labelledby="visitCompleteModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="visitCompleteModalTitle">Visit successfully completed!</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Based on your symptoms, your doctor has prescribed the following tests for you.</p>
+          <ul id="assignedTestsList">
+
+          </ul>
+          <p>Click 'Accept' to perform these tests. You will be redirected to your "After Visit Summary". You will be
+            able to see your test results and your preliminary diagnosis.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-success" data-dismiss="modal"
+            id="visitCompleteModalCloseBtn">Accept</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Visit Fail Modal -->
+  <div class="modal fade" id="visitFailModal" tabindex="-1" role="dialog" aria-labelledby="visitFailModalTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="visitFailModalTitle">Visit failed.</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>You did not select at least one option. Please select one or more to continue.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="../js/visit.js"></script>
