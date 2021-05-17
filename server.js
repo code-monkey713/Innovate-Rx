@@ -24,7 +24,7 @@ const upload = multer({ storage });
 
 app.use(express.static("public"));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7070;
 
 const hbs = exphbs.create({ helpers });
 
@@ -58,3 +58,4 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT:${PORT}`));
 });
+
