@@ -6,8 +6,14 @@ const Visit = require('./Visit');
 const Visit_Symptoms = require('./Visit_Symptoms');
 const Treatment = require('./Treatment');
 const Visit_Treatment = require('./Visit_Treatment');
+const Feedback = require('./Feedback');
 
 Patient.hasMany(Visit, {
+  foreignKey: 'patient_id',
+  onDelete: 'cascade'
+});
+
+Patient.hasMany(Feedback, {
   foreignKey: 'patient_id',
   onDelete: 'cascade'
 });
@@ -98,4 +104,5 @@ module.exports = {
   Visit_Treatment, 
   Visit,
   Visit_Symptoms,
+  Feedback,
 };
