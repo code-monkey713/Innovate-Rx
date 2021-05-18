@@ -36,3 +36,5 @@ router.get("/patients", async (req, res) => {
     console.log(err);
   }
 });
+
+module.exports = router;
