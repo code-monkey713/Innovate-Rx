@@ -7,6 +7,7 @@ const session = require("express-session");
 const helpers = require("./utils/helpers");
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const compression = require("compression");
 
 const uuid = require("uuid").v1;
 const multer = require("multer");
@@ -22,9 +23,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+app.use(compression());
 app.use(express.static("public"));
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 7070;
 
 const hbs = exphbs.create({ helpers });
 
@@ -58,3 +60,4 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log(`Now listening on PORT:${PORT}`));
 });
+

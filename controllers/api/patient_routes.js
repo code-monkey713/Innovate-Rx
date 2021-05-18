@@ -1,6 +1,7 @@
 const router = require("express").Router();
 
 const { Patient } = require("../../models");
+const {Feedback}=require('../../models/Feedback')
 const bcrypt = require("bcrypt");
 const withPatientAuth = require("../../utils/auth");
 
@@ -25,6 +26,21 @@ router.post("/", async (req, res) => {
   } catch (err) {
     res.status(400).json(err);
     console.log(err);
+  }
+});
+
+
+router.post("/feedback", async (req, res) => {
+  try{
+    //SAVE FEEDBACK INTO THE DB
+    const newFeedback = req.body.feedbackVar;
+    console.log(newFeedback);
+    const newfeedback = await Feedback.create({text: newFeedback,patient_id: req.session.user_id})
+    if(newfeedback){
+      res.status(200).json({message: "successfully added new feedback"})
+    }
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
@@ -64,6 +80,8 @@ router.post("/patient_login", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+router.get("/patiet_feedback")
 
 router.post("/patient_logout", (req, res) => {
   try {
